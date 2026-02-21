@@ -146,7 +146,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(14, 29, 48, 0.7); /* Затемнение под цвет сайта */
+            background-color: rgba(14, 29, 48, 0.7);
             z-index: 2;
         }
         
@@ -462,6 +462,8 @@
             border-radius: 2rem;
             padding: 2rem;
             margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
         }
         .contact-info {
             display: flex;
@@ -612,7 +614,6 @@
             };
 
             // ---------- BACKGROUND IMAGES ----------
-            // Фоновые изображения для разных секций из папки images
             const heroBackgrounds = [
                 "hero-bg-1.jpg",
                 "hero-bg-2.jpg",
@@ -876,13 +877,26 @@
             let currentHeroBgIndex = 0;
             let currentFilterBgIndex = 0;
             let currentContactBgIndex = 0;
+            
+            // Сохраняем позицию скролла
+            let scrollPosition = 0;
 
-            // Смена фоновых изображений каждые 8 секунд
+            // Смена фоновых изображений каждые 8 секунд (только если нет открытых модалок)
             setInterval(() => {
-                currentHeroBgIndex = (currentHeroBgIndex + 1) % heroBackgrounds.length;
-                currentFilterBgIndex = (currentFilterBgIndex + 1) % filterBackgrounds.length;
-                currentContactBgIndex = (currentContactBgIndex + 1) % contactBackgrounds.length;
-                render();
+                if (!selectedProperty && !showFullscreen) {
+                    scrollPosition = window.scrollY; // Сохраняем текущую позицию
+                    
+                    currentHeroBgIndex = (currentHeroBgIndex + 1) % heroBackgrounds.length;
+                    currentFilterBgIndex = (currentFilterBgIndex + 1) % filterBackgrounds.length;
+                    currentContactBgIndex = (currentContactBgIndex + 1) % contactBackgrounds.length;
+                    
+                    render();
+                    
+                    // Восстанавливаем позицию скролла после рендера
+                    setTimeout(() => {
+                        window.scrollTo(0, scrollPosition);
+                    }, 10);
+                }
             }, 8000);
             
             function render() {
@@ -912,7 +926,7 @@
                             <div class="mt-4 md:mt-0">
                                 <div class="bg-[#17324D] px-5 py-2 rounded-full border border-[#B89A5E]/30 shadow-lg">
                                     <i class="fas fa-crown text-[#B89A5E] mr-2"></i>
-                                    <a href="#" class="text-[#F0F0F0]/80 no-underline border-b border-dotted border-[#B89A5E]/30">www.niceplaceproperty.com</a>
+                                    <a href="#" class="text-[#F0F0F0]/80 no-underline border-b border-dotted border-[#B89A5E]/30">www.niceplacehome.com</a>
                                 </div>
                             </div>
                         </header>
@@ -958,7 +972,7 @@
 
                         <!-- Contact Form with Background Image -->
                         ${showContactForm ? `
-                            <div class="contact-form" style="position: relative; overflow: hidden;">
+                            <div class="contact-form">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('${contactBackgrounds[currentContactBgIndex]}'); background-size: cover; background-position: center; animation: slowZoom 20s infinite alternate; z-index: 1;"></div>
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(14, 29, 48, 0.8); z-index: 2;"></div>
                                 <div style="position: relative; z-index: 3;">
