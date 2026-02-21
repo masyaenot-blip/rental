@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>NICE PLACE · Property</title>
+    <title>NICE PLACE · GOLD EDITION</title>
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,38 +20,188 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #fbf9f7;
-            color: #1e1e1e;
+            background-color: #000000;
+            color: #FFD700;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            background-image: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 30%);
         }
         
-        .btn-lang-active {
-            background-color: #a77b5a;
-            color: white;
+        /* Gold text variations */
+        .text-gold {
+            color: #FFD700;
         }
         
-        .btn-lang-inactive {
-            background-color: #f2ede8;
-            color: #4d443d;
+        .text-gold-light {
+            color: #FDB931;
         }
         
-        .btn-lang-inactive:hover {
-            background-color: #e5d9d0;
+        .text-gold-pale {
+            color: #D4AF37;
         }
         
-        .card-hover {
+        /* Border gold */
+        .border-gold {
+            border-color: #FFD700;
+        }
+        
+        .border-gold-dim {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Background gold */
+        .bg-gold {
+            background-color: #FFD700;
+        }
+        
+        .bg-gold-dim {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .bg-gold-soft {
+            background-color: rgba(255, 215, 0, 0.05);
+        }
+        
+        .bg-black-soft {
+            background-color: #0A0A0A;
+        }
+        
+        .bg-black-card {
+            background-color: #111111;
+        }
+        
+        /* Buttons */
+        .btn-gold {
+            background-color: #FFD700;
+            color: #000000;
             transition: all 0.3s ease;
         }
         
-        .card-hover:hover {
+        .btn-gold:hover {
+            background-color: #FDB931;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.3);
+        }
+        
+        .btn-gold-outline {
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold-outline:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-color: #FDB931;
+            color: #FDB931;
+        }
+        
+        /* Cards */
+        .card-gold {
+            background-color: #111111;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-gold:hover {
+            border-color: #FFD700;
+            box-shadow: 0 20px 30px -10px rgba(255, 215, 0, 0.15);
             transform: translateY(-4px);
-            box-shadow: 0 20px 30px -10px rgba(167, 123, 90, 0.15);
+        }
+        
+        /* Filters */
+        .filter-gold-active {
+            background-color: #FFD700;
+            color: #000000;
+        }
+        
+        .filter-gold-inactive {
+            background-color: #1A1A1A;
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .filter-gold-inactive:hover {
+            background-color: rgba(255, 215, 0, 0.15);
+            border-color: #FFD700;
+        }
+        
+        /* Inputs */
+        .input-gold {
+            background-color: #1A1A1A;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+        }
+        
+        .input-gold:focus {
+            border-color: #FFD700;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+        
+        .input-gold::placeholder {
+            color: rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Select */
+        .select-gold {
+            background-color: #1A1A1A;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+        }
+        
+        .select-gold option {
+            background-color: #111111;
+            color: #FFD700;
+        }
+        
+        /* Badges */
+        .badge-gold {
+            background-color: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Links */
+        .link-gold {
+            color: rgba(255, 215, 0, 0.7);
+            transition: color 0.2s;
+        }
+        
+        .link-gold:hover {
+            color: #FFD700;
+        }
+        
+        /* Gold line */
+        .gold-line {
+            border-bottom: 2px solid #FFD700;
+        }
+        
+        .gold-line-dim {
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
         }
         
         /* iOS tap highlight disable */
         .no-tap-highlight {
             -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1A1A1A;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FDB931;
         }
     </style>
 </head>
@@ -64,7 +214,7 @@
             const translations = {
                 en: {
                     heroTitle: "Premium Villas, Condos & Homes for Rent",
-                    heroDesc: "Discover exclusive properties in Thailand.",
+                    heroDesc: "Discover exclusive gold-standard properties.",
                     admin: "Admin Panel",
                     add: "Add Property",
                     title: "Title",
@@ -89,11 +239,12 @@
                     save: "Save",
                     cancel: "Cancel",
                     edit: "Edit",
-                    delete: "Delete"
+                    delete: "Delete",
+                    goldStandard: "Gold Standard Living"
                 },
                 ru: {
                     heroTitle: "Премиальные виллы, кондо и дома в аренду",
-                    heroDesc: "Эксклюзивная недвижимость в Таиланде.",
+                    heroDesc: "Эксклюзивная недвижимость золотого стандарта.",
                     admin: "Админ панель",
                     add: "Добавить объект",
                     title: "Название",
@@ -118,11 +269,12 @@
                     save: "Сохранить",
                     cancel: "Отмена",
                     edit: "Изменить",
-                    delete: "Удалить"
+                    delete: "Удалить",
+                    goldStandard: "Золотой стандарт жизни"
                 },
                 th: {
                     heroTitle: "วิลล่า คอนโด และบ้านให้เช่าระดับพรีเมียม",
-                    heroDesc: "ค้นพบอสังหาริมทรัพย์สุดพิเศษในประเทศไทย",
+                    heroDesc: "อสังหาริมทรัพย์มาตรฐานทองคำ",
                     admin: "แผงผู้ดูแลระบบ",
                     add: "เพิ่มประกาศ",
                     title: "ชื่อ",
@@ -147,11 +299,12 @@
                     save: "บันทึก",
                     cancel: "ยกเลิก",
                     edit: "แก้ไข",
-                    delete: "ลบ"
+                    delete: "ลบ",
+                    goldStandard: "การใช้ชีวิตมาตรฐานทองคำ"
                 },
                 zh: {
                     heroTitle: "高端别墅、公寓和住宅出租",
-                    heroDesc: "发现泰国独家房产",
+                    heroDesc: "探索黄金标准 Exclusive 房产",
                     admin: "管理面板",
                     add: "添加房源",
                     title: "标题",
@@ -176,7 +329,8 @@
                     save: "保存",
                     cancel: "取消",
                     edit: "编辑",
-                    delete: "删除"
+                    delete: "删除",
+                    goldStandard: "黄金标准生活"
                 }
             };
 
@@ -253,17 +407,17 @@
                 root.innerHTML = `
                     <div class="container max-w-7xl mx-auto px-4 md:px-6">
                         <!-- HEADER with Logo -->
-                        <header class="flex flex-col md:flex-row justify-between items-center py-6 border-b-2 border-[#e5d9d0]">
+                        <header class="flex flex-col md:flex-row justify-between items-center py-6 gold-line">
                             <div class="flex flex-col items-start">
-                                <span class="text-5xl md:text-6xl font-light tracking-tight text-[#1e1e1e]">NICE</span>
-                                <span class="text-5xl md:text-6xl font-light tracking-tight text-[#1e1e1e] -mt-2">PLACE</span>
-                                <span class="text-2xl md:text-3xl font-light text-[#a77b5a] border-t-2 border-[#dccfc4] pt-1 mt-1">PROPERTY</span>
+                                <span class="text-5xl md:text-6xl font-light tracking-tight text-gold">NICE</span>
+                                <span class="text-5xl md:text-6xl font-light tracking-tight text-gold -mt-2">PLACE</span>
+                                <span class="text-2xl md:text-3xl font-light text-gold border-t-2 border-gold-dim pt-1 mt-1">PROPERTY</span>
                             </div>
                             
                             <div class="mt-4 md:mt-0">
-                                <div class="bg-white px-5 py-2 rounded-full border border-[#e2d6cc] shadow-sm">
-                                    <i class="fas fa-globe text-[#a77b5a] mr-2"></i>
-                                    <a href="#" class="text-[#4a3f38] no-underline border-b border-dotted border-[#c9b6a7]">www.niceplacehome.com</a>
+                                <div class="bg-black-card px-5 py-2 rounded-full border border-gold-dim shadow-lg">
+                                    <i class="fas fa-crown text-gold mr-2"></i>
+                                    <a href="#" class="text-gold-light no-underline border-b border-dotted border-gold-dim">www.niceplace.gold</a>
                                 </div>
                             </div>
                         </header>
@@ -278,7 +432,7 @@
                                     { code: 'zh', flag: '🇨🇳', label: '中文' }
                                 ].map(lang => `
                                     <button 
-                                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-tap-highlight ${currentLang === lang.code ? 'btn-lang-active' : 'btn-lang-inactive'}"
+                                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-tap-highlight ${currentLang === lang.code ? 'filter-gold-active' : 'filter-gold-inactive'}"
                                         onclick="setLanguage('${lang.code}')"
                                     >
                                         ${lang.flag} ${lang.label}
@@ -287,25 +441,27 @@
                             </div>
                             
                             <button
-                                class="border border-[#decbbd] bg-white/90 backdrop-blur px-6 py-2 rounded-full text-sm font-medium text-[#5c4f45] hover:bg-[#f3eae3] transition shadow-sm"
+                                class="btn-gold-outline px-6 py-2 rounded-full text-sm font-medium transition shadow-lg"
                                 onclick="toggleAdmin()"
                             >
-                                <i class="fas fa-lock text-[#a77b5a] mr-2"></i>
+                                <i class="fas fa-crown mr-2"></i>
                                 ${t.admin}
                             </button>
                         </div>
 
-                        <!-- Hero Section -->
-                        <section class="text-center px-6 py-12 bg-white/30 rounded-3xl my-4">
-                            <h2 class="text-3xl md:text-5xl mb-4 font-light text-[#1e1e1e]">${t.heroTitle}</h2>
-                            <p class="text-[#6b625a]">${t.heroDesc}</p>
+                        <!-- Hero Section with gold accent -->
+                        <section class="text-center px-6 py-16 bg-black-card rounded-3xl my-4 border border-gold-dim relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-gold-dim/5 to-transparent"></div>
+                            <h2 class="text-4xl md:text-6xl mb-4 font-light text-gold relative z-10">${t.heroTitle}</h2>
+                            <p class="text-gold-light text-lg relative z-10">${t.heroDesc}</p>
+                            <div class="mt-6 text-gold-pale text-sm">✨ ${t.goldStandard} ✨</div>
                         </section>
 
                         ${isAdmin ? `
                             <!-- Admin Panel Toggle -->
                             <div class="my-4 flex justify-end">
                                 <button
-                                    class="bg-[#a77b5a] text-white px-6 py-3 rounded-full font-medium hover:bg-[#8f684b] transition shadow-md"
+                                    class="btn-gold px-6 py-3 rounded-full font-medium transition shadow-lg flex items-center"
                                     onclick="toggleAddForm()"
                                 >
                                     <i class="fas fa-plus-circle mr-2"></i>
@@ -315,40 +471,40 @@
 
                             ${showAddForm ? `
                                 <!-- Add Property Form -->
-                                <div class="my-6 bg-[#fcf9f7] border-2 border-[#e5d9d0] rounded-3xl p-6">
-                                    <h3 class="text-xl font-light text-[#7b6859] mb-6">
-                                        <i class="fas fa-plus-circle text-[#a77b5a] mr-2"></i>
+                                <div class="my-6 bg-black-card border-2 border-gold-dim rounded-3xl p-6">
+                                    <h3 class="text-xl font-light text-gold mb-6">
+                                        <i class="fas fa-plus-circle text-gold mr-2"></i>
                                         ${t.add}
                                     </h3>
                                     
                                     <div class="grid gap-4 md:grid-cols-2">
                                         <input
                                             placeholder="Title (EN) *"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.titleEn}"
                                             oninput="updateNewProperty('titleEn', this.value)"
                                         />
                                         <input
                                             placeholder="Title (RU)"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.titleRu}"
                                             oninput="updateNewProperty('titleRu', this.value)"
                                         />
                                         <input
                                             placeholder="Title (TH)"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.titleTh}"
                                             oninput="updateNewProperty('titleTh', this.value)"
                                         />
                                         <input
                                             placeholder="标题 (中文)"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.titleZh}"
                                             oninput="updateNewProperty('titleZh', this.value)"
                                         />
                                         
                                         <select
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="select-gold p-3 rounded-2xl w-full"
                                             onchange="updateNewProperty('type', this.value)"
                                         >
                                             <option value="Villa" ${newProperty.type === 'Villa' ? 'selected' : ''}>Villa</option>
@@ -359,20 +515,20 @@
                                         <input
                                             placeholder="${t.price} *"
                                             type="number"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.price}"
                                             oninput="updateNewProperty('price', this.value)"
                                         />
                                         
                                         <input
                                             placeholder="Location (EN) *"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.locationEn}"
                                             oninput="updateNewProperty('locationEn', this.value)"
                                         />
                                         <input
                                             placeholder="Location (RU)"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.locationRu}"
                                             oninput="updateNewProperty('locationRu', this.value)"
                                         />
@@ -380,42 +536,42 @@
                                         <input
                                             placeholder="Bedrooms"
                                             type="number"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.beds}"
                                             oninput="updateNewProperty('beds', this.value)"
                                         />
                                         <input
                                             placeholder="Bathrooms"
                                             type="number"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.baths}"
                                             oninput="updateNewProperty('baths', this.value)"
                                         />
                                         
                                         <input
                                             placeholder="Feature (EN) (e.g. pool)"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            class="input-gold p-3 rounded-2xl w-full"
                                             value="${newProperty.featureEn}"
                                             oninput="updateNewProperty('featureEn', this.value)"
                                         />
                                         
                                         <input
                                             placeholder="Image URL *"
-                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full md:col-span-2"
+                                            class="input-gold p-3 rounded-2xl w-full md:col-span-2"
                                             value="${newProperty.image}"
                                             oninput="updateNewProperty('image', this.value)"
                                         />
                                         
                                         <div class="md:col-span-2 flex gap-3">
                                             <button
-                                                class="bg-[#a77b5a] text-white py-3 px-6 rounded-full font-medium hover:bg-[#8f684b] transition flex-1"
+                                                class="btn-gold py-3 px-6 rounded-full font-medium transition flex-1"
                                                 onclick="addProperty()"
                                             >
                                                 <i class="fas fa-save mr-2"></i>
                                                 ${t.save}
                                             </button>
                                             <button
-                                                class="bg-[#f2ede8] text-[#4d443d] py-3 px-6 rounded-full font-medium hover:bg-[#e5d9d0] transition"
+                                                class="btn-gold-outline py-3 px-6 rounded-full font-medium transition"
                                                 onclick="toggleAddForm()"
                                             >
                                                 ${t.cancel}
@@ -427,11 +583,11 @@
                         ` : ''}
 
                         <!-- Filters -->
-                        <div class="py-6 flex flex-col md:flex-row gap-4 border-b border-[#e5d9d0]">
+                        <div class="py-6 flex flex-col md:flex-row gap-4 gold-line-dim">
                             <div class="flex gap-2 overflow-x-auto pb-2">
                                 ${['All', 'Villa', 'Condo', 'House'].map(type => `
                                     <button
-                                        class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'bg-[#a77b5a] text-white' : 'bg-[#f2ede8] text-[#4d443d] hover:bg-[#e5d9d0]'}"
+                                        class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'filter-gold-active' : 'filter-gold-inactive'}"
                                         onclick="setFilterType('${type}')"
                                     >
                                         ${type === 'All' ? t.all : type === 'Villa' ? t.villa : type === 'Condo' ? t.condo : t.house}
@@ -440,7 +596,7 @@
                             </div>
 
                             <select
-                                class="bg-[#f2ede8] p-3 rounded-full w-full md:w-64 border-none"
+                                class="select-gold p-3 rounded-full w-full md:w-64"
                                 onchange="setFilterLocation(this.value)"
                             >
                                 <option value="All">${t.all}</option>
@@ -457,46 +613,46 @@
                                                    p.feature.en.includes('sea') ? 'fa-water' :
                                                    p.feature.en.includes('garden') ? 'fa-leaf' : 'fa-star';
                                 return `
-                                    <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-[#f0e7e0] card-hover p-4">
-                                        <img src="${p.image}" alt="" class="h-56 w-full object-cover rounded-xl" loading="lazy" />
+                                    <div class="card-gold rounded-2xl overflow-hidden p-4">
+                                        <img src="${p.image}" alt="" class="h-56 w-full object-cover rounded-xl border border-gold-dim" loading="lazy" />
                                         <div class="pt-4">
                                             <div class="flex justify-between items-center mb-2">
-                                                <span class="text-[#a77b5a] text-sm font-medium bg-[#f2ede8] px-3 py-1 rounded-full">
+                                                <span class="badge-gold text-sm font-medium px-3 py-1 rounded-full">
                                                     ${p.type === 'Villa' ? t.villa : p.type === 'Condo' ? t.condo : t.house}
                                                 </span>
-                                                <span class="text-xl font-medium text-[#a77b5a]">$${p.price}</span>
+                                                <span class="text-xl font-medium text-gold">$${p.price}</span>
                                             </div>
                                             
-                                            <h4 class="text-xl font-light text-[#1e1e1e] mb-1">
+                                            <h4 class="text-xl font-light text-gold mb-1">
                                                 ${p.title[currentLang] || p.title.en}
                                             </h4>
                                             
-                                            <p class="text-[#786a5e] text-sm mb-3">
-                                                <i class="fas fa-map-pin text-[#a77b5a] mr-1"></i>
+                                            <p class="text-gold-light text-sm mb-3">
+                                                <i class="fas fa-map-pin text-gold mr-1"></i>
                                                 ${p.location[currentLang] || p.location.en}
                                             </p>
                                             
-                                            <div class="flex gap-4 text-sm text-[#5f5f5f] border-t border-[#eeded2] pt-3">
-                                                <span><i class="fas fa-bed text-[#a77b5a] mr-1"></i> ${p.beds} ${t.beds}</span>
-                                                <span><i class="fas fa-bath text-[#a77b5a] mr-1"></i> ${p.baths} ${t.baths}</span>
+                                            <div class="flex gap-4 text-sm text-gold-light border-t border-gold-dim pt-3">
+                                                <span><i class="fas fa-bed text-gold mr-1"></i> ${p.beds} ${t.beds}</span>
+                                                <span><i class="fas fa-bath text-gold mr-1"></i> ${p.baths} ${t.baths}</span>
                                                 <span>
-                                                    <i class="fas ${featureIcon} text-[#a77b5a] mr-1"></i>
+                                                    <i class="fas ${featureIcon} text-gold mr-1"></i>
                                                     ${p.feature[currentLang] || p.feature.en}
                                                 </span>
                                             </div>
                                             
                                             <div class="mt-3">
-                                                <span class="bg-[#faf6f2] text-[#a77b5a] text-xs px-3 py-1 rounded-full">
-                                                    ${t.rent}
+                                                <span class="badge-gold text-xs px-3 py-1 rounded-full">
+                                                    <i class="fas fa-crown mr-1"></i> ${t.rent}
                                                 </span>
                                             </div>
 
                                             ${isAdmin ? `
                                                 <div class="mt-4 flex gap-2">
-                                                    <button class="flex-1 bg-[#f2ede8] text-[#4d443d] py-2 rounded-full text-sm hover:bg-[#e5d9d0] transition" onclick="editProperty(${p.id})">
+                                                    <button class="flex-1 btn-gold-outline py-2 rounded-full text-sm" onclick="editProperty(${p.id})">
                                                         <i class="fas fa-edit mr-1"></i> ${t.edit}
                                                     </button>
-                                                    <button class="flex-1 bg-red-50 text-red-600 py-2 rounded-full text-sm hover:bg-red-100 transition" onclick="deleteProperty(${p.id})">
+                                                    <button class="flex-1 border border-red-700 text-red-400 py-2 rounded-full text-sm hover:bg-red-900/20 transition" onclick="deleteProperty(${p.id})">
                                                         <i class="fas fa-trash mr-1"></i> ${t.delete}
                                                     </button>
                                                 </div>
@@ -507,19 +663,19 @@
                             }).join('')}
                         </div>
 
-                        <!-- Bottom Line -->
-                        <div class="w-full my-10 border-b-2 border-[#e5d9d0]"></div>
+                        <!-- Gold Line -->
+                        <div class="w-full my-10 gold-line"></div>
 
                         <!-- Footer -->
-                        <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-[#6b625a] text-sm">
+                        <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-gold-light text-sm">
                             <div class="mb-4 md:mb-0">
-                                © ${new Date().getFullYear()} NICE PLACE PROPERTY — ${t.footer}
+                                © ${new Date().getFullYear()} NICE PLACE GOLD — ${t.footer}
                             </div>
                             <div class="flex gap-6">
-                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-villa mr-1"></i>${t.villas}</a>
-                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-building mr-1"></i>${t.condos}</a>
-                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-home mr-1"></i>${t.houses}</a>
-                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-envelope mr-1"></i>${t.contact}</a>
+                                <a href="#" class="link-gold"><i class="fas fa-villa mr-1"></i>${t.villas}</a>
+                                <a href="#" class="link-gold"><i class="fas fa-building mr-1"></i>${t.condos}</a>
+                                <a href="#" class="link-gold"><i class="fas fa-home mr-1"></i>${t.houses}</a>
+                                <a href="#" class="link-gold"><i class="fas fa-envelope mr-1"></i>${t.contact}</a>
                             </div>
                         </footer>
                     </div>
@@ -534,14 +690,13 @@
 
             window.toggleAdmin = function() {
                 isAdmin = !isAdmin;
-                showAddForm = false; // Reset form visibility
+                showAddForm = false;
                 render();
             };
 
             window.toggleAddForm = function() {
                 showAddForm = !showAddForm;
                 if (!showAddForm) {
-                    // Reset form when closing
                     newProperty = {
                         titleEn: '', titleRu: '', titleTh: '', titleZh: '',
                         type: 'Villa',
@@ -562,7 +717,7 @@
 
             window.addProperty = function() {
                 if (!newProperty.titleEn || !newProperty.price || !newProperty.image || !newProperty.locationEn) {
-                    alert('Please fill in all required fields (Title EN, Price, Location EN, Image URL)');
+                    alert('Please fill in all required fields');
                     return;
                 }
 
@@ -593,7 +748,6 @@
                     image: newProperty.image
                 });
 
-                // Reset form
                 newProperty = {
                     titleEn: '', titleRu: '', titleTh: '', titleZh: '',
                     type: 'Villa',
@@ -609,14 +763,13 @@
             };
 
             window.deleteProperty = function(id) {
-                if (confirm('Are you sure you want to delete this property?')) {
+                if (confirm('Delete this property?')) {
                     properties = properties.filter(p => p.id !== id);
                     render();
                 }
             };
 
             window.editProperty = function(id) {
-                // For simplicity, just show an alert - in a real app you'd populate the form
                 alert('Edit functionality - would populate form with property data');
             };
 
