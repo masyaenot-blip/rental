@@ -171,10 +171,10 @@
 
     <script>
         (function() {
-            // ---------- TRANSLATIONS С МИНИМАЛИСТИЧНЫМ ЗАГОЛОВКОМ ----------
+            // ---------- TRANSLATIONS - МИНИМАЛИСТИЧНЫЙ ЗАГОЛОВОК НА ВСЕХ ЯЗЫКАХ ----------
             const translations = {
                 en: {
-                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroTitle: "Premium real estate Phuket Island",
                     heroDesc: "",
                     admin: "Admin Panel",
                     add: "Add Property",
@@ -232,7 +232,7 @@
                     delete: "Удалить",
                 },
                 th: {
-                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroTitle: "อสังหาริมทรัพย์ระดับพรีเมียม เกาะภูเก็ต",
                     heroDesc: "",
                     admin: "แผงผู้ดูแลระบบ",
                     add: "เพิ่มประกาศ",
@@ -261,7 +261,7 @@
                     delete: "ลบ",
                 },
                 zh: {
-                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroTitle: "普吉岛高端房产",
                     heroDesc: "",
                     admin: "管理面板",
                     add: "添加房源",
@@ -446,9 +446,14 @@
                                         <input placeholder="${t.price} *" type="number" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.price}" oninput="updateNewProperty('price', this.value)" />
                                         <input placeholder="Location (EN) *" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.locationEn}" oninput="updateNewProperty('locationEn', this.value)" />
                                         <input placeholder="Location (RU)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.locationRu}" oninput="updateNewProperty('locationRu', this.value)" />
+                                        <input placeholder="Location (TH)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.locationTh}" oninput="updateNewProperty('locationTh', this.value)" />
+                                        <input placeholder="Location (ZH)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.locationZh}" oninput="updateNewProperty('locationZh', this.value)" />
                                         <input placeholder="Bedrooms" type="number" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.beds}" oninput="updateNewProperty('beds', this.value)" />
                                         <input placeholder="Bathrooms" type="number" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.baths}" oninput="updateNewProperty('baths', this.value)" />
-                                        <input placeholder="Feature (EN) (e.g. pool)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.featureEn}" oninput="updateNewProperty('featureEn', this.value)" />
+                                        <input placeholder="Feature (EN)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.featureEn}" oninput="updateNewProperty('featureEn', this.value)" />
+                                        <input placeholder="Feature (RU)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.featureRu}" oninput="updateNewProperty('featureRu', this.value)" />
+                                        <input placeholder="Feature (TH)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.featureTh}" oninput="updateNewProperty('featureTh', this.value)" />
+                                        <input placeholder="Feature (ZH)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.featureZh}" oninput="updateNewProperty('featureZh', this.value)" />
                                         <input placeholder="Image URL *" class="input-navy p-3 rounded-2xl w-full md:col-span-2" value="${newProperty.image}" oninput="updateNewProperty('image', this.value)" />
                                         
                                         <div class="md:col-span-2 flex gap-3">
@@ -547,10 +552,20 @@
                     title: { en: newProperty.titleEn, ru: newProperty.titleRu || newProperty.titleEn, th: newProperty.titleTh || newProperty.titleEn, zh: newProperty.titleZh || newProperty.titleEn },
                     type: newProperty.type,
                     price: Number(newProperty.price),
-                    location: { en: newProperty.locationEn, ru: newProperty.locationRu || newProperty.locationEn, th: newProperty.locationTh || newProperty.locationEn, zh: newProperty.locationZh || newProperty.locationEn },
+                    location: { 
+                        en: newProperty.locationEn, 
+                        ru: newProperty.locationRu || newProperty.locationEn, 
+                        th: newProperty.locationTh || newProperty.locationEn, 
+                        zh: newProperty.locationZh || newProperty.locationEn 
+                    },
                     beds: Number(newProperty.beds) || 2,
                     baths: Number(newProperty.baths) || 2,
-                    feature: { en: newProperty.featureEn || 'luxury', ru: newProperty.featureRu || newProperty.featureEn || 'роскошь', th: newProperty.featureTh || newProperty.featureEn || 'หรูหรา', zh: newProperty.featureZh || newProperty.featureEn || '豪华' },
+                    feature: { 
+                        en: newProperty.featureEn || 'luxury', 
+                        ru: newProperty.featureRu || newProperty.featureEn || 'роскошь', 
+                        th: newProperty.featureTh || newProperty.featureEn || 'หรูหรา', 
+                        zh: newProperty.featureZh || newProperty.featureEn || '豪华' 
+                    },
                     image: newProperty.image
                 });
                 newProperty = { titleEn: '', titleRu: '', titleTh: '', titleZh: '', type: 'Villa', price: '', locationEn: '', locationRu: '', locationTh: '', locationZh: '', beds: '2', baths: '2', featureEn: '', featureRu: '', featureTh: '', featureZh: '', image: '' };
