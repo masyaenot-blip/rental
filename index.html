@@ -24,7 +24,6 @@
             color: #F0F0F0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: radial-gradient(circle at 80% 20%, rgba(184, 154, 94, 0.02) 0%, transparent 40%);
             overflow-x: hidden;
         }
         
@@ -80,11 +79,71 @@
             border: 1px solid var(--border-dim);
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
         .card-navy:hover {
             border-color: var(--logo-gold);
             box-shadow: 0 20px 30px -10px rgba(184, 154, 94, 0.2);
             transform: translateY(-4px);
+        }
+
+        /* Стили для блока фильтров с фоновым изображением */
+        .filters-container {
+            position: relative;
+            width: 100%;
+            border-radius: 2rem;
+            overflow: hidden;
+            margin: 2rem 0;
+            border: 1px solid var(--border-dim);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .filters-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 8s ease;
+            z-index: 1;
+            animation: slowZoom 20s infinite alternate;
+        }
+        
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        .filters-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(14, 29, 48, 0.7); /* Затемнение под цвет сайта */
+            z-index: 2;
+        }
+        
+        .filters-content {
+            position: relative;
+            z-index: 3;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .filters-title {
+            color: var(--logo-gold);
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .filter-active {
@@ -95,6 +154,7 @@
             background-color: transparent;
             color: var(--logo-white);
             border: 1px solid rgba(240, 240, 240, 0.3);
+            backdrop-filter: blur(5px);
         }
         .filter-inactive:hover {
             background-color: rgba(184, 154, 94, 0.15);
@@ -432,7 +492,8 @@
                     footer: "All rights reserved",
                     villas: "Villas",
                     condos: "Condos",
-                    houses: "Houses"
+                    houses: "Houses",
+                    propertyTypes: "Property types"
                 },
                 ru: {
                     heroTitle: "Премиальная недвижимость о. Пхукет",
@@ -461,7 +522,8 @@
                     footer: "Все права защищены",
                     villas: "Виллы",
                     condos: "Кондо",
-                    houses: "Дома"
+                    houses: "Дома",
+                    propertyTypes: "Типы недвижимости"
                 },
                 th: {
                     heroTitle: "อสังหาริมทรัพย์ระดับพรีเมียม เกาะภูเก็ต",
@@ -490,7 +552,8 @@
                     footer: "สงวนลิขสิทธิ์",
                     villas: "วิลล่า",
                     condos: "คอนโด",
-                    houses: "บ้าน"
+                    houses: "บ้าน",
+                    propertyTypes: "ประเภทอสังหาริมทรัพย์"
                 },
                 zh: {
                     heroTitle: "普吉岛高端房产",
@@ -519,11 +582,21 @@
                     footer: "版权所有",
                     villas: "别墅",
                     condos: "公寓",
-                    houses: "住宅"
+                    houses: "住宅",
+                    propertyTypes: "房产类型"
                 }
             };
 
-            // ---------- PROPERTIES - 12 ОБЪЕКТОВ ТОЛЬКО НА ПХУКЕТЕ ----------
+            // ---------- BACKGROUND IMAGES FOR FILTERS ----------
+            // ВСТАВЬТЕ СВОИ ССЫЛКИ НА ИЗОБРАЖЕНИЯ ЗДЕСЬ
+            const backgroundImages = [
+                "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2000&auto=format&fit=crop",  // Роскошный дом
+                "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2000&auto=format&fit=crop",  // Современная вилла
+                "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop",  // Бассейн
+                "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000&auto=format&fit=crop"   // Вилла с видом
+            ];
+
+            // ---------- INITIAL PROPERTIES ----------
             let properties = [
                 {
                     id: 1,
@@ -582,177 +655,6 @@
                         "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop"
                     ],
                     map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sRawai%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 4,
-                    title: { en: "Luxury Pool Villa", ru: "Вилла с бассейном", th: "วิลล่าสระว่ายน้ำหรู", zh: "豪华泳池别墅" },
-                    type: "Villa",
-                    price: 5500,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 5,
-                    baths: 4,
-                    area: { en: "Bang Tao", ru: "Банг Тао", th: "บางเทา", zh: "邦涛" },
-                    nearby: { en: "Bang Tao Beach 3 min, Laguna complex", ru: "Пляж Банг Тао 3 мин, комплекс Laguna", th: "หาดบางเทา 3 นาที ลากูน่า", zh: "邦涛海滩3分钟, 乐古浪综合区" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "pool", ru: "бассейн", th: "สระว่ายน้ำ", zh: "游泳池" },
-                    images: [
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 5,
-                    title: { en: "Modern Sea View Condo", ru: "Современный кондо с видом на море", th: "คอนโดวิวทะเลทันสมัย", zh: "现代海景公寓" },
-                    type: "Condo",
-                    price: 3800,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 3,
-                    baths: 2,
-                    area: { en: "Kata", ru: "Ката", th: "กะตะ", zh: "卡塔" },
-                    nearby: { en: "Kata Beach 2 min, restaurants, bars", ru: "Пляж Ката 2 мин, рестораны, бары", th: "หาดกะตะ 2 นาที ร้านอาหาร บาร์", zh: "卡塔海滩2分钟, 餐厅, 酒吧" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "sea view", ru: "вид на море", th: "วิวทะเล", zh: "海景" },
-                    images: [
-                        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKata%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 6,
-                    title: { en: "Tropical Garden Villa", ru: "Вилла с тропическим садом", th: "วิลล่าสวนเขตร้อน", zh: "热带花园别墅" },
-                    type: "Villa",
-                    price: 4200,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 4,
-                    baths: 3,
-                    area: { en: "Chalong", ru: "Чалонг", th: "ฉลอง", zh: "查龙" },
-                    nearby: { en: "Chalong Bay 5 min, Big Buddha", ru: "Залив Чалонг 5 мин, Большой Будда", th: "อ่าวฉลอง 5 นาที พระใหญ่", zh: "查龙湾5分钟, 大佛" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "garden", ru: "сад", th: "สวน", zh: "花园" },
-                    images: [
-                        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sChalong%20Bay!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 7,
-                    title: { en: "Beachfront Luxury Condo", ru: "Роскошный кондо на пляже", th: "คอนโดหรูติดทะเล", zh: "海滨豪华公寓" },
-                    type: "Condo",
-                    price: 4800,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 3,
-                    baths: 3,
-                    area: { en: "Surin", ru: "Сурин", th: "สุรินทร์", zh: "苏林" },
-                    nearby: { en: "Surin Beach 1 min, high-end restaurants", ru: "Пляж Сурин 1 мин, рестораны", th: "หาดสุรินทร์ 1 นาที ร้านอาหารหรู", zh: "苏林海滩1分钟, 高档餐厅" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "sea view", ru: "вид на море", th: "วิวทะเล", zh: "海景" },
-                    images: [
-                        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sSurin%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 8,
-                    title: { en: "Private Pool Villa", ru: "Вилла с частным бассейном", th: "วิลล่าส่วนตัวสระว่ายน้ำ", zh: "私人泳池别墅" },
-                    type: "Villa",
-                    price: 6500,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 6,
-                    baths: 5,
-                    area: { en: "Kamala", ru: "Камала", th: "กมลา", zh: "卡马拉" },
-                    nearby: { en: "Kamala Beach 3 min, night market", ru: "Пляж Камала 3 мин, ночной рынок", th: "หาดกมลา 3 นาที ตลาดกลางคืน", zh: "卡马拉海滩3分钟, 夜市" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "pool", ru: "бассейн", th: "สระว่ายน้ำ", zh: "游泳池" },
-                    images: [
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 9,
-                    title: { en: "Modern City House", ru: "Современный дом в городе", th: "บ้านในเมืองทันสมัย", zh: "现代城市住宅" },
-                    type: "House",
-                    price: 2200,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 3,
-                    baths: 2,
-                    area: { en: "Phuket Town", ru: "Пхукет Таун", th: "เมืองภูเก็ต", zh: "普吉镇" },
-                    nearby: { en: "Old Town 5 min, markets, cafes", ru: "Старый город 5 мин, рынки, кафе", th: "เมืองเก่า 5 นาที ตลาด ร้านกาแฟ", zh: "老城区5分钟, 市场, 咖啡馆" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "garden", ru: "сад", th: "สวน", zh: "花园" },
-                    images: [
-                        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sPhuket%20Town!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 10,
-                    title: { en: "Ocean View Condo", ru: "Кондо с видом на океан", th: "คอนโดวิวทะเล", zh: "海景公寓" },
-                    type: "Condo",
-                    price: 4100,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 2,
-                    baths: 2,
-                    area: { en: "Karon", ru: "Карон", th: "กะรน", zh: "卡伦" },
-                    nearby: { en: "Karon Beach 3 min, viewpoint", ru: "Пляж Карон 3 мин, смотровая", th: "หาดกะรน 3 นาที จุดชมวิว", zh: "卡伦海滩3分钟, 观景点" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "sea view", ru: "вид на море", th: "วิวทะเล", zh: "海景" },
-                    images: [
-                        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKaron%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 11,
-                    title: { en: "Luxury Beach Villa", ru: "Роскошная вилла на пляже", th: "วิลล่าหรูติดทะเล", zh: "豪华海滨别墅" },
-                    type: "Villa",
-                    price: 7800,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 5,
-                    baths: 4,
-                    area: { en: "Bang Tao", ru: "Банг Тао", th: "บางเทา", zh: "邦涛" },
-                    nearby: { en: "Direct beach access, restaurants", ru: "Выход к пляжу, рестораны", th: "ติดหาด ร้านอาหาร", zh: "直达海滩, 餐厅" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "pool", ru: "бассейн", th: "สระว่ายน้ำ", zh: "游泳池" },
-                    images: [
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
-                },
-                {
-                    id: 12,
-                    title: { en: "Modern Pool Villa", ru: "Современная вилла с бассейном", th: "วิลล่าสระว่ายน้ำทันสมัย", zh: "现代泳池别墅" },
-                    type: "Villa",
-                    price: 5900,
-                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
-                    beds: 4,
-                    baths: 3,
-                    area: { en: "Rawai", ru: "Раваи", th: "ราไวย์", zh: "拉威" },
-                    nearby: { en: "Rawai Beach 5 min, seafood market", ru: "Пляж Раваи 5 мин, рыбный рынок", th: "หาดราไวย์ 5 นาที ตลาดอาหารทะเล", zh: "拉威海滩5分钟, 海鲜市场" },
-                    utilities: { en: "Internet, water, electricity included", ru: "Интернет, вода, свет включены", th: "อินเทอร์เน็ต น้ำ ไฟฟ้ารวม", zh: "包含网络、水、电" },
-                    feature: { en: "pool", ru: "бассейн", th: "สระว่ายน้ำ", zh: "游泳池" },
-                    images: [
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop"
-                    ],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sRawai%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
                 }
             ];
 
@@ -765,6 +667,13 @@
             let showFullscreen = false;
             let fullscreenIndex = 0;
             let showContactForm = false;
+            let currentBgIndex = 0;
+
+            // Смена фонового изображения каждые 8 секунд
+            setInterval(() => {
+                currentBgIndex = (currentBgIndex + 1) % backgroundImages.length;
+                render();
+            }, 8000);
             
             function render() {
                 const t = translations[currentLang];
@@ -866,14 +775,22 @@
                             </div>
                         ` : ''}
 
-                        <!-- Filters - только по типу -->
-                        <div class="py-6 flex justify-center gap-4 line-white">
-                            <div class="flex gap-2 overflow-x-auto pb-2">
-                                ${['All', 'Villa', 'Condo', 'House'].map(type => `
-                                    <button class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'filter-active' : 'filter-inactive'}" onclick="setFilterType('${type}')">
-                                        ${type === 'All' ? t.all : type === 'Villa' ? t.villa : type === 'Condo' ? t.condo : t.house}
-                                    </button>
-                                `).join('')}
+                        <!-- FILTERS SECTION WITH BACKGROUND IMAGE -->
+                        <div class="filters-container">
+                            <!-- Фоновое изображение с эффектом приближения -->
+                            <div class="filters-background" style="background-image: url('${backgroundImages[currentBgIndex]}');"></div>
+                            <!-- Затемнение под цвет сайта -->
+                            <div class="filters-overlay"></div>
+                            <!-- Контент фильтров -->
+                            <div class="filters-content">
+                                <h3 class="filters-title">${t.propertyTypes}</h3>
+                                <div class="flex gap-2 overflow-x-auto pb-2">
+                                    ${['All', 'Villa', 'Condo', 'House'].map(type => `
+                                        <button class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'filter-active' : 'filter-inactive'}" onclick="setFilterType('${type}')">
+                                            ${type === 'All' ? t.all : type === 'Villa' ? t.villa : type === 'Condo' ? t.condo : t.house}
+                                        </button>
+                                    `).join('')}
+                                </div>
                             </div>
                         </div>
 
@@ -948,7 +865,7 @@
                                 
                                 <!-- Gallery with arrows -->
                                 <div class="gallery-container">
-                                    <div class="gallery-main">
+                                    <div class="gallery-main" onclick="openFullscreen(${currentImageIndex})">
                                         <img src="${selectedProperty.images[currentImageIndex]}" alt="">
                                         <div class="gallery-nav prev" onclick="prevImage(event)">
                                             <i class="fas fa-chevron-left"></i>
