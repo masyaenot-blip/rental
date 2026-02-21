@@ -20,33 +20,41 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #0B1A2F;
-            color: #FFFFFF;
+            /* Цвета подобраны под логотип ncp2.jpg */
+            background-color: #0a1a2b;
+            color: #e5d5b5;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.02) 0%, transparent 40%);
+            background-image: radial-gradient(circle at 80% 20%, rgba(200, 170, 100, 0.03) 0%, transparent 40%);
         }
         
         :root {
-            --deep-navy: #0B1A2F;
-            --pure-white: #FFFFFF;
-            --signature-gold: #CFAF5E;
-            --gold-light: #E4C87E;
+            --deep-navy: #0a1a2b;      /* Подобрано под фон логотипа */
+            --pure-white: #f5efe0;      /* Тёплый белый под логотип */
+            --signature-gold: #c8aa64;  /* Золото точно как на логотипе */
+            --gold-light: #dabe7a;       /* Светлый оттенок золота */
+            --bg-card: #122435;          /* Цвет карточек под логотип */
+            --text-soft: #e5d5b5;        /* Мягкий текст */
         }
 
+        /* Текстовые цвета */
         .text-navy { color: var(--deep-navy); }
         .text-white-pure { color: var(--pure-white); }
         .text-gold-sig { color: var(--signature-gold); }
+        .text-soft { color: var(--text-soft); }
         
+        /* Фоновые цвета */
         .bg-navy { background-color: var(--deep-navy); }
-        .bg-navy-light { background-color: #132436; }
+        .bg-navy-light { background-color: var(--bg-card); }
         .bg-gold-sig { background-color: var(--signature-gold); }
         .bg-white-pure { background-color: var(--pure-white); }
 
+        /* Границы */
         .border-gold-sig { border-color: var(--signature-gold); }
-        .border-white-dim { border-color: rgba(255, 255, 255, 0.15); }
+        .border-white-dim { border-color: rgba(245, 239, 224, 0.15); }
         .border-white-pure { border-color: var(--pure-white); }
 
+        /* Кнопки */
         .btn-primary {
             background-color: var(--signature-gold);
             color: var(--deep-navy);
@@ -54,9 +62,9 @@
             font-weight: 500;
         }
         .btn-primary:hover {
-            background-color: #E4C87E;
+            background-color: #dabe7a;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(207, 175, 94, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(200, 170, 100, 0.3);
         }
 
         .btn-outline {
@@ -65,22 +73,24 @@
             transition: all 0.3s ease;
         }
         .btn-outline:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(200, 170, 100, 0.15);
             border-color: var(--signature-gold);
             color: var(--signature-gold);
         }
 
+        /* Карточки */
         .card-navy {
-            background-color: #132436;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-card);
+            border: 1px solid rgba(200, 170, 100, 0.15);
             transition: all 0.3s ease;
         }
         .card-navy:hover {
             border-color: var(--signature-gold);
-            box-shadow: 0 20px 30px -10px rgba(207, 175, 94, 0.15);
+            box-shadow: 0 20px 30px -10px rgba(200, 170, 100, 0.2);
             transform: translateY(-4px);
         }
 
+        /* Фильтры */
         .filter-active {
             background-color: var(--signature-gold);
             color: var(--deep-navy);
@@ -88,77 +98,83 @@
         .filter-inactive {
             background-color: transparent;
             color: var(--pure-white);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(245, 239, 224, 0.3);
         }
         .filter-inactive:hover {
-            background-color: rgba(207, 175, 94, 0.15);
+            background-color: rgba(200, 170, 100, 0.15);
             border-color: var(--signature-gold);
             color: var(--signature-gold);
         }
 
+        /* Поля ввода */
         .input-navy {
-            background-color: #1E2F40;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: #1e2f40;
+            border: 1px solid rgba(200, 170, 100, 0.2);
             color: var(--pure-white);
         }
         .input-navy:focus {
             border-color: var(--signature-gold);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(207, 175, 94, 0.2);
+            box-shadow: 0 0 0 2px rgba(200, 170, 100, 0.2);
         }
         .input-navy::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(245, 239, 224, 0.4);
         }
 
+        /* Селект */
         .select-navy {
-            background-color: #1E2F40;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: #1e2f40;
+            border: 1px solid rgba(200, 170, 100, 0.2);
             color: var(--pure-white);
         }
         .select-navy option {
-            background-color: #132436;
+            background-color: var(--bg-card);
             color: var(--pure-white);
         }
 
+        /* Бейджи */
         .badge-white {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(245, 239, 224, 0.1);
             color: var(--pure-white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(245, 239, 224, 0.2);
         }
         .badge-gold {
-            background-color: rgba(207, 175, 94, 0.15);
+            background-color: rgba(200, 170, 100, 0.15);
             color: var(--signature-gold);
-            border: 1px solid rgba(207, 175, 94, 0.3);
+            border: 1px solid rgba(200, 170, 100, 0.3);
         }
 
+        /* Ссылки */
         .link-white {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(245, 239, 224, 0.7);
             transition: color 0.2s;
         }
         .link-white:hover {
             color: var(--signature-gold);
         }
 
+        /* Линии */
         .line-white {
-            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 2px solid rgba(200, 170, 100, 0.2);
         }
         .line-gold {
             border-bottom: 2px solid var(--signature-gold);
         }
 
+        /* Скроллбар */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #1E2F40;
+            background: #1e2f40;
         }
         ::-webkit-scrollbar-thumb {
             background: var(--signature-gold);
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #E4C87E;
+            background: #dabe7a;
         }
     </style>
 </head>
@@ -362,22 +378,23 @@
                         <!-- ============================================== -->
                         <!-- HEADER with LOGO - СТРОКИ 320-327              -->
                         <!-- ============================================== -->
-                        <!-- ПРАВИЛЬНАЯ ССЫЛКА НА ЛОГОТИП - ИСПОЛЬЗУЕТ raw.githubusercontent.com -->
+                        <!-- ЦВЕТА САЙТА ПОЛНОСТЬЮ ПОДОБРАНЫ ПОД ЛОГОТИП ncp2.jpg -->
                         <header class="flex flex-col md:flex-row justify-between items-center py-6 line-white">
-                            <!-- Логотип с правильной ссылкой -->
+                            <!-- Логотип с цветами, под которые подобран сайт -->
                             <div class="flex items-center">
                                 <img 
                                     src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/ncp2.jpg" 
                                     alt="NICE PLACE PROPERTY" 
                                     class="h-20 md:h-24 w-auto object-contain"
-                                    onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/ncp2.jpg'; console.log('Логотип загружается по ссылке: raw.githubusercontent.com');"
+                                    style="filter: brightness(1.02) saturate(1.1);"
+                                    onerror="this.onerror=null; console.log('Логотип загружен по ссылке: raw.githubusercontent.com');"
                                 >
                             </div>
                             
                             <div class="mt-4 md:mt-0">
-                                <div class="bg-[#132436] px-5 py-2 rounded-full border border-white/20 shadow-lg">
-                                    <i class="fas fa-crown text-[#CFAF5E] mr-2"></i>
-                                    <a href="#" class="text-white/80 no-underline border-b border-dotted border-white/30">www.niceplacehome.com</a>
+                                <div class="bg-[#122435] px-5 py-2 rounded-full border border-[#c8aa64]/30 shadow-lg">
+                                    <i class="fas fa-crown text-[#c8aa64] mr-2"></i>
+                                    <a href="#" class="text-[#e5d5b5]/80 no-underline border-b border-dotted border-[#c8aa64]/30">www.niceplacehome.com</a>
                                 </div>
                             </div>
                         </header>
@@ -404,16 +421,16 @@
                                 class="btn-outline px-6 py-2 rounded-full text-sm font-medium transition shadow-lg"
                                 onclick="toggleAdmin()"
                             >
-                                <i class="fas fa-crown mr-2 text-[#CFAF5E]"></i>
+                                <i class="fas fa-crown mr-2 text-[#c8aa64]"></i>
                                 ${t.admin}
                             </button>
                         </div>
 
                         <!-- Hero Section -->
-                        <section class="text-center px-6 py-16 bg-[#132436] rounded-3xl my-4 border border-white/10 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#CFAF5E]/5 to-transparent"></div>
-                            <h2 class="text-4xl md:text-6xl mb-4 font-light text-white relative z-10">${t.heroTitle}</h2>
-                            <p class="text-white/70 text-lg relative z-10">${t.heroDesc}</p>
+                        <section class="text-center px-6 py-16 bg-[#122435] rounded-3xl my-4 border border-[#c8aa64]/20 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#c8aa64]/5 to-transparent"></div>
+                            <h2 class="text-4xl md:text-6xl mb-4 font-light text-[#e5d5b5] relative z-10">${t.heroTitle}</h2>
+                            <p class="text-[#e5d5b5]/70 text-lg relative z-10">${t.heroDesc}</p>
                         </section>
 
                         ${isAdmin ? `
@@ -430,9 +447,9 @@
 
                             ${showAddForm ? `
                                 <!-- Add Property Form -->
-                                <div class="my-6 bg-[#132436] border-2 border-white/20 rounded-3xl p-6">
-                                    <h3 class="text-xl font-light text-[#CFAF5E] mb-6">
-                                        <i class="fas fa-plus-circle text-[#CFAF5E] mr-2"></i>
+                                <div class="my-6 bg-[#122435] border-2 border-[#c8aa64]/20 rounded-3xl p-6">
+                                    <h3 class="text-xl font-light text-[#c8aa64] mb-6">
+                                        <i class="fas fa-plus-circle text-[#c8aa64] mr-2"></i>
                                         ${t.add}
                                     </h3>
                                     
@@ -573,29 +590,29 @@
                                                    p.feature.en.includes('garden') ? 'fa-leaf' : 'fa-star';
                                 return `
                                     <div class="card-navy rounded-2xl overflow-hidden p-4">
-                                        <img src="${p.image}" alt="" class="h-56 w-full object-cover rounded-xl border border-white/10" loading="lazy" />
+                                        <img src="${p.image}" alt="" class="h-56 w-full object-cover rounded-xl border border-[#c8aa64]/20" loading="lazy" />
                                         <div class="pt-4">
                                             <div class="flex justify-between items-center mb-2">
                                                 <span class="badge-white text-sm font-medium px-3 py-1 rounded-full">
                                                     ${p.type === 'Villa' ? t.villa : p.type === 'Condo' ? t.condo : t.house}
                                                 </span>
-                                                <span class="text-xl font-medium text-[#CFAF5E]">$${p.price}</span>
+                                                <span class="text-xl font-medium text-[#c8aa64]">$${p.price}</span>
                                             </div>
                                             
-                                            <h4 class="text-xl font-light text-white mb-1">
+                                            <h4 class="text-xl font-light text-[#e5d5b5] mb-1">
                                                 ${p.title[currentLang] || p.title.en}
                                             </h4>
                                             
-                                            <p class="text-white/60 text-sm mb-3">
-                                                <i class="fas fa-map-pin text-[#CFAF5E] mr-1"></i>
+                                            <p class="text-[#e5d5b5]/60 text-sm mb-3">
+                                                <i class="fas fa-map-pin text-[#c8aa64] mr-1"></i>
                                                 ${p.location[currentLang] || p.location.en}
                                             </p>
                                             
-                                            <div class="flex gap-4 text-sm text-white/70 border-t border-white/10 pt-3">
-                                                <span><i class="fas fa-bed text-[#CFAF5E] mr-1"></i> ${p.beds} ${t.beds}</span>
-                                                <span><i class="fas fa-bath text-[#CFAF5E] mr-1"></i> ${p.baths} ${t.baths}</span>
+                                            <div class="flex gap-4 text-sm text-[#e5d5b5]/70 border-t border-[#c8aa64]/20 pt-3">
+                                                <span><i class="fas fa-bed text-[#c8aa64] mr-1"></i> ${p.beds} ${t.beds}</span>
+                                                <span><i class="fas fa-bath text-[#c8aa64] mr-1"></i> ${p.baths} ${t.baths}</span>
                                                 <span>
-                                                    <i class="fas ${featureIcon} text-[#CFAF5E] mr-1"></i>
+                                                    <i class="fas ${featureIcon} text-[#c8aa64] mr-1"></i>
                                                     ${p.feature[currentLang] || p.feature.en}
                                                 </span>
                                             </div>
@@ -626,7 +643,7 @@
                         <div class="w-full my-10 line-gold"></div>
 
                         <!-- Footer -->
-                        <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-white/60 text-sm">
+                        <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-[#e5d5b5]/60 text-sm">
                             <div class="mb-4 md:mb-0">
                                 © ${new Date().getFullYear()} NICE PLACE — ${t.footer}
                             </div>
