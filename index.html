@@ -217,35 +217,158 @@
             background: var(--logo-gold);
             color: var(--logo-navy);
         }
-        .modal-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+
+        /* Gallery styles with arrows */
+        .gallery-container {
+            position: relative;
             margin-bottom: 2rem;
         }
-        .modal-gallery img {
+        .gallery-main {
+            position: relative;
             width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 1rem;
-            border: 1px solid var(--border-dim);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .modal-gallery img:hover {
-            border-color: var(--logo-gold);
-            transform: scale(1.02);
-        }
-        .modal-map {
-            margin: 1rem 0;
+            height: 400px;
             border-radius: 1rem;
             overflow: hidden;
             border: 1px solid var(--border-dim);
         }
-        .modal-map iframe {
+        .gallery-main img {
             width: 100%;
-            height: 300px;
-            border: none;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--logo-gold);
+            color: var(--logo-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 5;
+        }
+        .gallery-nav:hover {
+            background: var(--logo-gold);
+            color: var(--logo-navy);
+        }
+        .gallery-nav.prev {
+            left: 1rem;
+        }
+        .gallery-nav.next {
+            right: 1rem;
+        }
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .gallery-thumbnails img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-dim);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .gallery-thumbnails img:hover,
+        .gallery-thumbnails img.active {
+            border-color: var(--logo-gold);
+            transform: scale(1.02);
+        }
+
+        /* Fullscreen gallery */
+        .fullscreen-gallery {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fullscreen-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fullscreen-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .fullscreen-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--logo-gold);
+            color: var(--logo-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 2100;
+        }
+        .fullscreen-close:hover {
+            background: var(--logo-gold);
+            color: var(--logo-navy);
+        }
+        .fullscreen-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--logo-gold);
+            color: var(--logo-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 2100;
+            font-size: 1.5rem;
+        }
+        .fullscreen-nav:hover {
+            background: var(--logo-gold);
+            color: var(--logo-navy);
+        }
+        .fullscreen-nav.prev {
+            left: 2rem;
+        }
+        .fullscreen-nav.next {
+            right: 2rem;
+        }
+        .fullscreen-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--logo-white);
+            background: rgba(0,0,0,0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid var(--logo-gold);
         }
 
         /* Contact form */
@@ -417,7 +540,8 @@
                     images: [
                         "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop",
                         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
-                        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
+                        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop",
+                        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop"
                     ],
                     map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890"
                 },
@@ -633,22 +757,23 @@
             ];
 
             // ---------- APP STATE ----------
-            let currentLang = 'ru'; // По умолчанию русский
+            let currentLang = 'ru';
             let filterType = 'All';
-            let visibleCount = 6; // Показываем по 6 объектов
-            let selectedProperty = null; // Для модального окна
-            let showContactForm = false; // Для формы связи
+            let visibleCount = 6;
+            let selectedProperty = null;
+            let currentImageIndex = 0;
+            let showFullscreen = false;
+            let fullscreenIndex = 0;
+            let showContactForm = false;
             
             function render() {
                 const t = translations[currentLang];
                 const root = document.getElementById('root');
                 
-                // Фильтруем только объекты на Пхукете
                 const filteredProperties = properties.filter(p => 
                     (filterType === 'All' || p.type === filterType)
                 );
                 
-                // Показываем только visibleCount объектов
                 const visibleProperties = filteredProperties.slice(0, visibleCount);
                 const hasMore = visibleCount < filteredProperties.length;
 
@@ -811,7 +936,7 @@
                         </footer>
                     </div>
 
-                    ${selectedProperty ? `
+                    ${selectedProperty && !showFullscreen ? `
                         <!-- Property Modal -->
                         <div class="modal-overlay" onclick="closeModal()">
                             <div class="modal-content" onclick="event.stopPropagation()">
@@ -821,11 +946,22 @@
                                 
                                 <h2 class="text-3xl font-light text-[#B89A5E] mb-4">${selectedProperty.title[currentLang] || selectedProperty.title.en}</h2>
                                 
-                                <!-- Gallery -->
-                                <div class="modal-gallery">
-                                    ${selectedProperty.images.map(img => `
-                                        <img src="${img}" alt="" onclick="window.open(this.src, '_blank')">
-                                    `).join('')}
+                                <!-- Gallery with arrows -->
+                                <div class="gallery-container">
+                                    <div class="gallery-main">
+                                        <img src="${selectedProperty.images[currentImageIndex]}" alt="">
+                                        <div class="gallery-nav prev" onclick="prevImage(event)">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </div>
+                                        <div class="gallery-nav next" onclick="nextImage(event)">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-thumbnails">
+                                        ${selectedProperty.images.map((img, idx) => `
+                                            <img src="${img}" alt="" class="${idx === currentImageIndex ? 'active' : ''}" onclick="setImageIndex(event, ${idx})">
+                                        `).join('')}
+                                    </div>
                                 </div>
                                 
                                 <!-- Details -->
@@ -875,10 +1011,90 @@
                             </div>
                         </div>
                     ` : ''}
+
+                    ${showFullscreen ? `
+                        <!-- Fullscreen Gallery -->
+                        <div class="fullscreen-gallery" onclick="closeFullscreen()">
+                            <div class="fullscreen-content" onclick="event.stopPropagation()">
+                                <div class="fullscreen-close" onclick="closeFullscreen()">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="fullscreen-nav prev" onclick="prevFullscreen(event)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="fullscreen-nav next" onclick="nextFullscreen(event)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                                <img src="${selectedProperty.images[fullscreenIndex]}" class="fullscreen-image" alt="">
+                                <div class="fullscreen-counter">
+                                    ${fullscreenIndex + 1} / ${selectedProperty.images.length}
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
                 `;
             }
 
-            // Глобальные функции
+            // Gallery functions
+            window.prevImage = function(e) {
+                e.stopPropagation();
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                } else {
+                    currentImageIndex = selectedProperty.images.length - 1;
+                }
+                render();
+            };
+
+            window.nextImage = function(e) {
+                e.stopPropagation();
+                if (currentImageIndex < selectedProperty.images.length - 1) {
+                    currentImageIndex++;
+                } else {
+                    currentImageIndex = 0;
+                }
+                render();
+            };
+
+            window.setImageIndex = function(e, index) {
+                e.stopPropagation();
+                currentImageIndex = index;
+                render();
+            };
+
+            // Fullscreen functions
+            window.openFullscreen = function(index) {
+                showFullscreen = true;
+                fullscreenIndex = index;
+                render();
+            };
+
+            window.closeFullscreen = function() {
+                showFullscreen = false;
+                render();
+            };
+
+            window.prevFullscreen = function(e) {
+                e.stopPropagation();
+                if (fullscreenIndex > 0) {
+                    fullscreenIndex--;
+                } else {
+                    fullscreenIndex = selectedProperty.images.length - 1;
+                }
+                render();
+            };
+
+            window.nextFullscreen = function(e) {
+                e.stopPropagation();
+                if (fullscreenIndex < selectedProperty.images.length - 1) {
+                    fullscreenIndex++;
+                } else {
+                    fullscreenIndex = 0;
+                }
+                render();
+            };
+
+            // Other functions
             window.setLanguage = function(lang) { 
                 currentLang = lang; 
                 render(); 
@@ -886,7 +1102,7 @@
             
             window.setFilterType = function(type) { 
                 filterType = type; 
-                visibleCount = 6; // Сбрасываем счетчик при смене фильтра
+                visibleCount = 6;
                 render(); 
             };
             
@@ -914,6 +1130,8 @@
             
             window.openPropertyModal = function(id) {
                 selectedProperty = properties.find(p => p.id === id);
+                currentImageIndex = 0;
+                showFullscreen = false;
                 render();
             };
             
