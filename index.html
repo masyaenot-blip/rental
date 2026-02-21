@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>NICE PLACE · Property</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fbf9f7;
+            color: #1e1e1e;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .btn-lang-active {
+            background-color: #a77b5a;
+            color: white;
+        }
+        
+        .btn-lang-inactive {
+            background-color: #f2ede8;
+            color: #4d443d;
+        }
+        
+        .btn-lang-inactive:hover {
+            background-color: #e5d9d0;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -10px rgba(167, 123, 90, 0.15);
+        }
+        
+        /* iOS tap highlight disable */
+        .no-tap-highlight {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="root" class="min-h-screen flex flex-col justify-between"></div>
+
+    <script>
+        (function() {
+            // ---------- TRANSLATIONS ----------
+            const translations = {
+                en: {
+                    heroTitle: "Premium Villas, Condos & Homes for Rent",
+                    heroDesc: "Discover exclusive properties in Thailand.",
+                    admin: "Admin Panel",
+                    add: "Add Property",
+                    title: "Title",
+                    location: "Location",
+                    price: "Price",
+                    type: "Type",
+                    imageUrl: "Image URL",
+                    all: "All",
+                    villa: "Villa",
+                    condo: "Condo",
+                    house: "House",
+                    perMonth: "/ month",
+                    footer: "All rights reserved",
+                    contact: "Contact",
+                    villas: "Villas",
+                    condos: "Condos",
+                    houses: "Houses",
+                    rent: "For rent",
+                    beds: "beds",
+                    baths: "baths",
+                    feature: "Feature",
+                    save: "Save",
+                    cancel: "Cancel",
+                    edit: "Edit",
+                    delete: "Delete"
+                },
+                ru: {
+                    heroTitle: "Премиальные виллы, кондо и дома в аренду",
+                    heroDesc: "Эксклюзивная недвижимость в Таиланде.",
+                    admin: "Админ панель",
+                    add: "Добавить объект",
+                    title: "Название",
+                    location: "Локация",
+                    price: "Цена",
+                    type: "Тип",
+                    imageUrl: "URL изображения",
+                    all: "Все",
+                    villa: "Вилла",
+                    condo: "Кондо",
+                    house: "Дом",
+                    perMonth: "/ месяц",
+                    footer: "Все права защищены",
+                    contact: "Контакты",
+                    villas: "Виллы",
+                    condos: "Кондо",
+                    houses: "Дома",
+                    rent: "Аренда",
+                    beds: "спален",
+                    baths: "ванных",
+                    feature: "Особенность",
+                    save: "Сохранить",
+                    cancel: "Отмена",
+                    edit: "Изменить",
+                    delete: "Удалить"
+                },
+                th: {
+                    heroTitle: "วิลล่า คอนโด และบ้านให้เช่าระดับพรีเมียม",
+                    heroDesc: "ค้นพบอสังหาริมทรัพย์สุดพิเศษในประเทศไทย",
+                    admin: "แผงผู้ดูแลระบบ",
+                    add: "เพิ่มประกาศ",
+                    title: "ชื่อ",
+                    location: "ทำเล",
+                    price: "ราคา",
+                    type: "ประเภท",
+                    imageUrl: "URL รูปภาพ",
+                    all: "ทั้งหมด",
+                    villa: "วิลล่า",
+                    condo: "คอนโด",
+                    house: "บ้าน",
+                    perMonth: "/ เดือน",
+                    footer: "สงวนลิขสิทธิ์",
+                    contact: "ติดต่อ",
+                    villas: "วิลล่า",
+                    condos: "คอนโด",
+                    houses: "บ้าน",
+                    rent: "ให้เช่า",
+                    beds: "ห้องนอน",
+                    baths: "ห้องน้ำ",
+                    feature: "จุดเด่น",
+                    save: "บันทึก",
+                    cancel: "ยกเลิก",
+                    edit: "แก้ไข",
+                    delete: "ลบ"
+                },
+                zh: {
+                    heroTitle: "高端别墅、公寓和住宅出租",
+                    heroDesc: "发现泰国独家房产",
+                    admin: "管理面板",
+                    add: "添加房源",
+                    title: "标题",
+                    location: "位置",
+                    price: "价格",
+                    type: "类型",
+                    imageUrl: "图片网址",
+                    all: "全部",
+                    villa: "别墅",
+                    condo: "公寓",
+                    house: "住宅",
+                    perMonth: "/ 月",
+                    footer: "版权所有",
+                    contact: "联系方式",
+                    villas: "别墅",
+                    condos: "公寓",
+                    houses: "住宅",
+                    rent: "出租",
+                    beds: "卧室",
+                    baths: "浴室",
+                    feature: "特色",
+                    save: "保存",
+                    cancel: "取消",
+                    edit: "编辑",
+                    delete: "删除"
+                }
+            };
+
+            // ---------- INITIAL PROPERTIES ----------
+            let properties = [
+                {
+                    id: 1,
+                    title: { en: "Luxury Sea View Villa", ru: "Роскошная вилла с видом на море", th: "วิลล่าหรูวิวทะเล", zh: "豪华海景别墅" },
+                    type: "Villa",
+                    price: 4500,
+                    location: { en: "Koh Samui", ru: "Кох Самуи", th: "เกาะสมุย", zh: "苏梅岛" },
+                    beds: 4,
+                    baths: 3,
+                    feature: { en: "pool", ru: "бассейн", th: "สระว่ายน้ำ", zh: "游泳池" },
+                    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop"
+                },
+                {
+                    id: 2,
+                    title: { en: "Modern City Condo", ru: "Современный кондо в центре", th: "คอนโดทันสมัยในเมือง", zh: "现代城市公寓" },
+                    type: "Condo",
+                    price: 2500,
+                    location: { en: "Bangkok", ru: "Бангкок", th: "กรุงเทพฯ", zh: "曼谷" },
+                    beds: 2,
+                    baths: 2,
+                    feature: { en: "sea view", ru: "вид на море", th: "วิวทะเล", zh: "海景" },
+                    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop"
+                },
+                {
+                    id: 3,
+                    title: { en: "Tropical Garden House", ru: "Дом с тропическим садом", th: "บ้านสวนเขตร้อน", zh: "热带花园住宅" },
+                    type: "House",
+                    price: 3200,
+                    location: { en: "Phuket", ru: "Пхукет", th: "ภูเก็ต", zh: "普吉岛" },
+                    beds: 3,
+                    baths: 2,
+                    feature: { en: "garden", ru: "сад", th: "สวน", zh: "花园" },
+                    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+                }
+            ];
+
+            // ---------- APP STATE ----------
+            let currentLang = 'en';
+            let isAdmin = false;
+            let filterType = 'All';
+            let filterLocation = 'All';
+            let showAddForm = false;
+            
+            // New property form state
+            let newProperty = {
+                titleEn: '', titleRu: '', titleTh: '', titleZh: '',
+                type: 'Villa',
+                price: '',
+                locationEn: '', locationRu: '', locationTh: '', locationZh: '',
+                beds: '2',
+                baths: '2',
+                featureEn: '', featureRu: '', featureTh: '', featureZh: '',
+                image: ''
+            };
+
+            // ---------- RENDER FUNCTION ----------
+            function render() {
+                const t = translations[currentLang];
+                const root = document.getElementById('root');
+                
+                // Get unique locations for filter
+                const uniqueLocations = [...new Set(properties.map(p => p.location.en))];
+                
+                // Filter properties
+                const filteredProperties = properties.filter(p => 
+                    (filterType === 'All' || p.type === filterType) &&
+                    (filterLocation === 'All' || p.location.en === filterLocation)
+                );
+
+                root.innerHTML = `
+                    <div class="container max-w-7xl mx-auto px-4 md:px-6">
+                        <!-- HEADER with Logo -->
+                        <header class="flex flex-col md:flex-row justify-between items-center py-6 border-b-2 border-[#e5d9d0]">
+                            <div class="flex flex-col items-start">
+                                <span class="text-5xl md:text-6xl font-light tracking-tight text-[#1e1e1e]">NICE</span>
+                                <span class="text-5xl md:text-6xl font-light tracking-tight text-[#1e1e1e] -mt-2">PLACE</span>
+                                <span class="text-2xl md:text-3xl font-light text-[#a77b5a] border-t-2 border-[#dccfc4] pt-1 mt-1">PROPERTY</span>
+                            </div>
+                            
+                            <div class="mt-4 md:mt-0">
+                                <div class="bg-white px-5 py-2 rounded-full border border-[#e2d6cc] shadow-sm">
+                                    <i class="fas fa-globe text-[#a77b5a] mr-2"></i>
+                                    <a href="#" class="text-[#4a3f38] no-underline border-b border-dotted border-[#c9b6a7]">www.niceplacehome.com</a>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!-- Language & Admin Controls -->
+                        <div class="flex flex-wrap justify-between items-center py-4 gap-3">
+                            <div class="flex flex-wrap gap-2">
+                                ${[
+                                    { code: 'en', flag: '🇬🇧', label: 'EN' },
+                                    { code: 'ru', flag: '🇷🇺', label: 'RU' },
+                                    { code: 'th', flag: '🇹🇭', label: 'TH' },
+                                    { code: 'zh', flag: '🇨🇳', label: '中文' }
+                                ].map(lang => `
+                                    <button 
+                                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-tap-highlight ${currentLang === lang.code ? 'btn-lang-active' : 'btn-lang-inactive'}"
+                                        onclick="setLanguage('${lang.code}')"
+                                    >
+                                        ${lang.flag} ${lang.label}
+                                    </button>
+                                `).join('')}
+                            </div>
+                            
+                            <button
+                                class="border border-[#decbbd] bg-white/90 backdrop-blur px-6 py-2 rounded-full text-sm font-medium text-[#5c4f45] hover:bg-[#f3eae3] transition shadow-sm"
+                                onclick="toggleAdmin()"
+                            >
+                                <i class="fas fa-lock text-[#a77b5a] mr-2"></i>
+                                ${t.admin}
+                            </button>
+                        </div>
+
+                        <!-- Hero Section -->
+                        <section class="text-center px-6 py-12 bg-white/30 rounded-3xl my-4">
+                            <h2 class="text-3xl md:text-5xl mb-4 font-light text-[#1e1e1e]">${t.heroTitle}</h2>
+                            <p class="text-[#6b625a]">${t.heroDesc}</p>
+                        </section>
+
+                        ${isAdmin ? `
+                            <!-- Admin Panel Toggle -->
+                            <div class="my-4 flex justify-end">
+                                <button
+                                    class="bg-[#a77b5a] text-white px-6 py-3 rounded-full font-medium hover:bg-[#8f684b] transition shadow-md"
+                                    onclick="toggleAddForm()"
+                                >
+                                    <i class="fas fa-plus-circle mr-2"></i>
+                                    ${t.add}
+                                </button>
+                            </div>
+
+                            ${showAddForm ? `
+                                <!-- Add Property Form -->
+                                <div class="my-6 bg-[#fcf9f7] border-2 border-[#e5d9d0] rounded-3xl p-6">
+                                    <h3 class="text-xl font-light text-[#7b6859] mb-6">
+                                        <i class="fas fa-plus-circle text-[#a77b5a] mr-2"></i>
+                                        ${t.add}
+                                    </h3>
+                                    
+                                    <div class="grid gap-4 md:grid-cols-2">
+                                        <input
+                                            placeholder="Title (EN) *"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.titleEn}"
+                                            oninput="updateNewProperty('titleEn', this.value)"
+                                        />
+                                        <input
+                                            placeholder="Title (RU)"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.titleRu}"
+                                            oninput="updateNewProperty('titleRu', this.value)"
+                                        />
+                                        <input
+                                            placeholder="Title (TH)"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.titleTh}"
+                                            oninput="updateNewProperty('titleTh', this.value)"
+                                        />
+                                        <input
+                                            placeholder="标题 (中文)"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.titleZh}"
+                                            oninput="updateNewProperty('titleZh', this.value)"
+                                        />
+                                        
+                                        <select
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            onchange="updateNewProperty('type', this.value)"
+                                        >
+                                            <option value="Villa" ${newProperty.type === 'Villa' ? 'selected' : ''}>Villa</option>
+                                            <option value="Condo" ${newProperty.type === 'Condo' ? 'selected' : ''}>Condo</option>
+                                            <option value="House" ${newProperty.type === 'House' ? 'selected' : ''}>House</option>
+                                        </select>
+                                        
+                                        <input
+                                            placeholder="${t.price} *"
+                                            type="number"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.price}"
+                                            oninput="updateNewProperty('price', this.value)"
+                                        />
+                                        
+                                        <input
+                                            placeholder="Location (EN) *"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.locationEn}"
+                                            oninput="updateNewProperty('locationEn', this.value)"
+                                        />
+                                        <input
+                                            placeholder="Location (RU)"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.locationRu}"
+                                            oninput="updateNewProperty('locationRu', this.value)"
+                                        />
+                                        
+                                        <input
+                                            placeholder="Bedrooms"
+                                            type="number"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.beds}"
+                                            oninput="updateNewProperty('beds', this.value)"
+                                        />
+                                        <input
+                                            placeholder="Bathrooms"
+                                            type="number"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.baths}"
+                                            oninput="updateNewProperty('baths', this.value)"
+                                        />
+                                        
+                                        <input
+                                            placeholder="Feature (EN) (e.g. pool)"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full"
+                                            value="${newProperty.featureEn}"
+                                            oninput="updateNewProperty('featureEn', this.value)"
+                                        />
+                                        
+                                        <input
+                                            placeholder="Image URL *"
+                                            class="p-3 rounded-2xl border border-[#e0d2c7] bg-white w-full md:col-span-2"
+                                            value="${newProperty.image}"
+                                            oninput="updateNewProperty('image', this.value)"
+                                        />
+                                        
+                                        <div class="md:col-span-2 flex gap-3">
+                                            <button
+                                                class="bg-[#a77b5a] text-white py-3 px-6 rounded-full font-medium hover:bg-[#8f684b] transition flex-1"
+                                                onclick="addProperty()"
+                                            >
+                                                <i class="fas fa-save mr-2"></i>
+                                                ${t.save}
+                                            </button>
+                                            <button
+                                                class="bg-[#f2ede8] text-[#4d443d] py-3 px-6 rounded-full font-medium hover:bg-[#e5d9d0] transition"
+                                                onclick="toggleAddForm()"
+                                            >
+                                                ${t.cancel}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        ` : ''}
+
+                        <!-- Filters -->
+                        <div class="py-6 flex flex-col md:flex-row gap-4 border-b border-[#e5d9d0]">
+                            <div class="flex gap-2 overflow-x-auto pb-2">
+                                ${['All', 'Villa', 'Condo', 'House'].map(type => `
+                                    <button
+                                        class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'bg-[#a77b5a] text-white' : 'bg-[#f2ede8] text-[#4d443d] hover:bg-[#e5d9d0]'}"
+                                        onclick="setFilterType('${type}')"
+                                    >
+                                        ${type === 'All' ? t.all : type === 'Villa' ? t.villa : type === 'Condo' ? t.condo : t.house}
+                                    </button>
+                                `).join('')}
+                            </div>
+
+                            <select
+                                class="bg-[#f2ede8] p-3 rounded-full w-full md:w-64 border-none"
+                                onchange="setFilterLocation(this.value)"
+                            >
+                                <option value="All">${t.all}</option>
+                                ${uniqueLocations.map(loc => `
+                                    <option value="${loc}" ${filterLocation === loc ? 'selected' : ''}>${loc}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+
+                        <!-- Property Grid -->
+                        <div class="py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${filteredProperties.map(p => {
+                                const featureIcon = p.feature.en.includes('pool') ? 'fa-swimming-pool' : 
+                                                   p.feature.en.includes('sea') ? 'fa-water' :
+                                                   p.feature.en.includes('garden') ? 'fa-leaf' : 'fa-star';
+                                return `
+                                    <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-[#f0e7e0] card-hover p-4">
+                                        <img src="${p.image}" alt="" class="h-56 w-full object-cover rounded-xl" loading="lazy" />
+                                        <div class="pt-4">
+                                            <div class="flex justify-between items-center mb-2">
+                                                <span class="text-[#a77b5a] text-sm font-medium bg-[#f2ede8] px-3 py-1 rounded-full">
+                                                    ${p.type === 'Villa' ? t.villa : p.type === 'Condo' ? t.condo : t.house}
+                                                </span>
+                                                <span class="text-xl font-medium text-[#a77b5a]">$${p.price}</span>
+                                            </div>
+                                            
+                                            <h4 class="text-xl font-light text-[#1e1e1e] mb-1">
+                                                ${p.title[currentLang] || p.title.en}
+                                            </h4>
+                                            
+                                            <p class="text-[#786a5e] text-sm mb-3">
+                                                <i class="fas fa-map-pin text-[#a77b5a] mr-1"></i>
+                                                ${p.location[currentLang] || p.location.en}
+                                            </p>
+                                            
+                                            <div class="flex gap-4 text-sm text-[#5f5f5f] border-t border-[#eeded2] pt-3">
+                                                <span><i class="fas fa-bed text-[#a77b5a] mr-1"></i> ${p.beds} ${t.beds}</span>
+                                                <span><i class="fas fa-bath text-[#a77b5a] mr-1"></i> ${p.baths} ${t.baths}</span>
+                                                <span>
+                                                    <i class="fas ${featureIcon} text-[#a77b5a] mr-1"></i>
+                                                    ${p.feature[currentLang] || p.feature.en}
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="mt-3">
+                                                <span class="bg-[#faf6f2] text-[#a77b5a] text-xs px-3 py-1 rounded-full">
+                                                    ${t.rent}
+                                                </span>
+                                            </div>
+
+                                            ${isAdmin ? `
+                                                <div class="mt-4 flex gap-2">
+                                                    <button class="flex-1 bg-[#f2ede8] text-[#4d443d] py-2 rounded-full text-sm hover:bg-[#e5d9d0] transition" onclick="editProperty(${p.id})">
+                                                        <i class="fas fa-edit mr-1"></i> ${t.edit}
+                                                    </button>
+                                                    <button class="flex-1 bg-red-50 text-red-600 py-2 rounded-full text-sm hover:bg-red-100 transition" onclick="deleteProperty(${p.id})">
+                                                        <i class="fas fa-trash mr-1"></i> ${t.delete}
+                                                    </button>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Bottom Line -->
+                        <div class="w-full my-10 border-b-2 border-[#e5d9d0]"></div>
+
+                        <!-- Footer -->
+                        <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-[#6b625a] text-sm">
+                            <div class="mb-4 md:mb-0">
+                                © ${new Date().getFullYear()} NICE PLACE PROPERTY — ${t.footer}
+                            </div>
+                            <div class="flex gap-6">
+                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-villa mr-1"></i>${t.villas}</a>
+                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-building mr-1"></i>${t.condos}</a>
+                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-home mr-1"></i>${t.houses}</a>
+                                <a href="#" class="hover:text-[#a77b5a] transition"><i class="fas fa-envelope mr-1"></i>${t.contact}</a>
+                            </div>
+                        </footer>
+                    </div>
+                `;
+            }
+
+            // ---------- GLOBAL FUNCTIONS ----------
+            window.setLanguage = function(lang) {
+                currentLang = lang;
+                render();
+            };
+
+            window.toggleAdmin = function() {
+                isAdmin = !isAdmin;
+                showAddForm = false; // Reset form visibility
+                render();
+            };
+
+            window.toggleAddForm = function() {
+                showAddForm = !showAddForm;
+                if (!showAddForm) {
+                    // Reset form when closing
+                    newProperty = {
+                        titleEn: '', titleRu: '', titleTh: '', titleZh: '',
+                        type: 'Villa',
+                        price: '',
+                        locationEn: '', locationRu: '', locationTh: '', locationZh: '',
+                        beds: '2',
+                        baths: '2',
+                        featureEn: '', featureRu: '', featureTh: '', featureZh: '',
+                        image: ''
+                    };
+                }
+                render();
+            };
+
+            window.updateNewProperty = function(field, value) {
+                newProperty[field] = value;
+            };
+
+            window.addProperty = function() {
+                if (!newProperty.titleEn || !newProperty.price || !newProperty.image || !newProperty.locationEn) {
+                    alert('Please fill in all required fields (Title EN, Price, Location EN, Image URL)');
+                    return;
+                }
+
+                properties.push({
+                    id: Date.now(),
+                    title: {
+                        en: newProperty.titleEn,
+                        ru: newProperty.titleRu || newProperty.titleEn,
+                        th: newProperty.titleTh || newProperty.titleEn,
+                        zh: newProperty.titleZh || newProperty.titleEn
+                    },
+                    type: newProperty.type,
+                    price: Number(newProperty.price),
+                    location: {
+                        en: newProperty.locationEn,
+                        ru: newProperty.locationRu || newProperty.locationEn,
+                        th: newProperty.locationTh || newProperty.locationEn,
+                        zh: newProperty.locationZh || newProperty.locationEn
+                    },
+                    beds: Number(newProperty.beds) || 2,
+                    baths: Number(newProperty.baths) || 2,
+                    feature: {
+                        en: newProperty.featureEn || 'luxury',
+                        ru: newProperty.featureRu || newProperty.featureEn || 'роскошь',
+                        th: newProperty.featureTh || newProperty.featureEn || 'หรูหรา',
+                        zh: newProperty.featureZh || newProperty.featureEn || '豪华'
+                    },
+                    image: newProperty.image
+                });
+
+                // Reset form
+                newProperty = {
+                    titleEn: '', titleRu: '', titleTh: '', titleZh: '',
+                    type: 'Villa',
+                    price: '',
+                    locationEn: '', locationRu: '', locationTh: '', locationZh: '',
+                    beds: '2',
+                    baths: '2',
+                    featureEn: '', featureRu: '', featureTh: '', featureZh: '',
+                    image: ''
+                };
+                showAddForm = false;
+                render();
+            };
+
+            window.deleteProperty = function(id) {
+                if (confirm('Are you sure you want to delete this property?')) {
+                    properties = properties.filter(p => p.id !== id);
+                    render();
+                }
+            };
+
+            window.editProperty = function(id) {
+                // For simplicity, just show an alert - in a real app you'd populate the form
+                alert('Edit functionality - would populate form with property data');
+            };
+
+            window.setFilterType = function(type) {
+                filterType = type;
+                render();
+            };
+
+            window.setFilterLocation = function(location) {
+                filterLocation = location;
+                render();
+            };
+
+            // Initial render
+            render();
+        })();
+    </script>
+</body>
+</html>
