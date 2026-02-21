@@ -20,42 +20,37 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            /* ТОЧНЫЕ ЦВЕТА С ВАШЕГО ЛОГОТИПА */
-            background-color: #0E1D30;  /* Холодный синий как на логотипе */
-            color: #F0F0F0;              /* Светлый серо-белый */
+            background-color: #0E1D30;
+            color: #F0F0F0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background-image: radial-gradient(circle at 80% 20%, rgba(184, 154, 94, 0.02) 0%, transparent 40%);
         }
         
         :root {
-            --logo-navy: #0E1D30;        /* ТОЧНО С ЛОГОТИПА - холодный синий */
-            --logo-gold: #B89A5E;         /* ТОЧНО С ЛОГОТИПА - благородное золото */
-            --logo-white: #F0F0F0;         /* ТОЧНО С ЛОГОТИПА - мягкий белый */
-            --card-bg: #17324D;            /* Чуть светлее фона для карточек */
-            --gold-light: #CBAD71;          /* Светлый оттенок золота */
-            --text-soft: #E0E0E0;           /* Мягкий текст */
-            --border-dim: rgba(184, 154, 94, 0.2);  /* Золотая граница */
+            --logo-navy: #0E1D30;
+            --logo-gold: #B89A5E;
+            --logo-white: #F0F0F0;
+            --card-bg: #17324D;
+            --gold-light: #CBAD71;
+            --text-soft: #E0E0E0;
+            --border-dim: rgba(184, 154, 94, 0.2);
         }
 
-        /* Текстовые цвета */
         .text-navy { color: var(--logo-navy); }
         .text-white-pure { color: var(--logo-white); }
         .text-gold-sig { color: var(--logo-gold); }
         .text-soft { color: var(--text-soft); }
         
-        /* Фоновые цвета */
         .bg-navy { background-color: var(--logo-navy); }
         .bg-navy-light { background-color: var(--card-bg); }
         .bg-gold-sig { background-color: var(--logo-gold); }
         .bg-white-pure { background-color: var(--logo-white); }
 
-        /* Границы */
         .border-gold-sig { border-color: var(--logo-gold); }
         .border-white-dim { border-color: rgba(240, 240, 240, 0.15); }
         .border-white-pure { border-color: var(--logo-white); }
 
-        /* Кнопки */
         .btn-primary {
             background-color: var(--logo-gold);
             color: var(--logo-navy);
@@ -79,7 +74,6 @@
             color: var(--logo-gold);
         }
 
-        /* Карточки */
         .card-navy {
             background-color: var(--card-bg);
             border: 1px solid var(--border-dim);
@@ -91,7 +85,6 @@
             transform: translateY(-4px);
         }
 
-        /* Фильтры */
         .filter-active {
             background-color: var(--logo-gold);
             color: var(--logo-navy);
@@ -107,7 +100,6 @@
             color: var(--logo-gold);
         }
 
-        /* Поля ввода */
         .input-navy {
             background-color: #1E3A55;
             border: 1px solid var(--border-dim);
@@ -122,7 +114,6 @@
             color: rgba(240, 240, 240, 0.4);
         }
 
-        /* Селект */
         .select-navy {
             background-color: #1E3A55;
             border: 1px solid var(--border-dim);
@@ -133,7 +124,6 @@
             color: var(--logo-white);
         }
 
-        /* Бейджи */
         .badge-white {
             background-color: rgba(240, 240, 240, 0.1);
             color: var(--logo-white);
@@ -145,7 +135,6 @@
             border: 1px solid var(--border-dim);
         }
 
-        /* Ссылки */
         .link-white {
             color: rgba(240, 240, 240, 0.7);
             transition: color 0.2s;
@@ -154,7 +143,6 @@
             color: var(--logo-gold);
         }
 
-        /* Линии */
         .line-white {
             border-bottom: 2px solid var(--border-dim);
         }
@@ -162,7 +150,6 @@
             border-bottom: 2px solid var(--logo-gold);
         }
 
-        /* Скроллбар */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -184,11 +171,11 @@
 
     <script>
         (function() {
-            // ---------- TRANSLATIONS ----------
+            // ---------- TRANSLATIONS С МИНИМАЛИСТИЧНЫМ ЗАГОЛОВКОМ ----------
             const translations = {
                 en: {
-                    heroTitle: "Premium Villas, Condos & Homes for Rent",
-                    heroDesc: "Discover exclusive properties.",
+                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroDesc: "",
                     admin: "Admin Panel",
                     add: "Add Property",
                     title: "Title",
@@ -216,8 +203,8 @@
                     delete: "Delete",
                 },
                 ru: {
-                    heroTitle: "Премиальные виллы, кондо и дома в аренду",
-                    heroDesc: "Эксклюзивная недвижимость.",
+                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroDesc: "",
                     admin: "Админ панель",
                     add: "Добавить объект",
                     title: "Название",
@@ -245,8 +232,8 @@
                     delete: "Удалить",
                 },
                 th: {
-                    heroTitle: "วิลล่า คอนโด และบ้านให้เช่าระดับพรีเมียม",
-                    heroDesc: "อสังหาริมทรัพย์สุดพิเศษ",
+                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroDesc: "",
                     admin: "แผงผู้ดูแลระบบ",
                     add: "เพิ่มประกาศ",
                     title: "ชื่อ",
@@ -274,8 +261,8 @@
                     delete: "ลบ",
                 },
                 zh: {
-                    heroTitle: "高端别墅、公寓和住宅出租",
-                    heroDesc: "探索独家房产",
+                    heroTitle: "Премиальная недвижимость о. Пхукет",
+                    heroDesc: "",
                     admin: "管理面板",
                     add: "添加房源",
                     title: "标题",
@@ -348,7 +335,6 @@
             let filterLocation = 'All';
             let showAddForm = false;
             
-            // New property form state
             let newProperty = {
                 titleEn: '', titleRu: '', titleTh: '', titleZh: '',
                 type: 'Villa',
@@ -360,15 +346,12 @@
                 image: ''
             };
 
-            // ---------- RENDER FUNCTION ----------
             function render() {
                 const t = translations[currentLang];
                 const root = document.getElementById('root');
                 
-                // Get unique locations for filter
                 const uniqueLocations = [...new Set(properties.map(p => p.location.en))];
                 
-                // Filter properties
                 const filteredProperties = properties.filter(p => 
                     (filterType === 'All' || p.type === filterType) &&
                     (filterLocation === 'All' || p.location.en === filterLocation)
@@ -376,17 +359,14 @@
 
                 root.innerHTML = `
                     <div class="container max-w-7xl mx-auto px-4 md:px-6">
-                        <!-- ============================================== -->
-                        <!-- HEADER with LOGO - ТОЧНЫЕ ЦВЕТА С ЛОГОТИПА      -->
-                        <!-- ============================================== -->
+                        <!-- HEADER with LOGO -->
                         <header class="flex flex-col md:flex-row justify-between items-center py-6 line-white">
-                            <!-- Логотип - фон сайта точно как на логотипе #0D2742 -->
                             <div class="flex items-center">
                                 <img 
                                     src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/ncp2.jpg" 
                                     alt="NICE PLACE PROPERTY" 
                                     class="h-20 md:h-24 w-auto object-contain"
-                                    style="filter: brightness(1) saturate(1);" /* Без изменений */
+                                    style="filter: brightness(1) saturate(1);"
                                     onerror="this.onerror=null; console.log('Логотип загружен');"
                                 >
                             </div>
@@ -426,15 +406,14 @@
                             </button>
                         </div>
 
-                        <!-- Hero Section -->
-                        <section class="text-center px-6 py-16 bg-[#17324D] rounded-3xl my-4 border border-[#B89A5E]/20 relative overflow-hidden">
+                        <!-- Hero Section - МИНИМАЛИСТИЧНЫЙ ЗАГОЛОВОК -->
+                        <section class="text-center px-6 py-12 bg-[#17324D] rounded-3xl my-4 border border-[#B89A5E]/20 relative overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-r from-[#B89A5E]/5 to-transparent"></div>
-                            <h2 class="text-4xl md:text-6xl mb-4 font-light text-[#F0F0F0] relative z-10">${t.heroTitle}</h2>
-                            <p class="text-[#F0F0F0]/70 text-lg relative z-10">${t.heroDesc}</p>
+                            <h2 class="text-3xl md:text-5xl mb-2 font-light text-[#F0F0F0] relative z-10">${t.heroTitle}</h2>
+                            <!-- heroDesc удален - пустая строка -->
                         </section>
 
                         ${isAdmin ? `
-                            <!-- Admin Panel Toggle -->
                             <div class="my-4 flex justify-end">
                                 <button
                                     class="btn-primary px-6 py-3 rounded-full font-medium transition shadow-lg flex items-center"
@@ -446,7 +425,6 @@
                             </div>
 
                             ${showAddForm ? `
-                                <!-- Add Property Form -->
                                 <div class="my-6 bg-[#17324D] border-2 border-[#B89A5E]/20 rounded-3xl p-6">
                                     <h3 class="text-xl font-light text-[#B89A5E] mb-6">
                                         <i class="fas fa-plus-circle text-[#B89A5E] mr-2"></i>
@@ -454,104 +432,28 @@
                                     </h3>
                                     
                                     <div class="grid gap-4 md:grid-cols-2">
-                                        <input
-                                            placeholder="Title (EN) *"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.titleEn}"
-                                            oninput="updateNewProperty('titleEn', this.value)"
-                                        />
-                                        <input
-                                            placeholder="Title (RU)"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.titleRu}"
-                                            oninput="updateNewProperty('titleRu', this.value)"
-                                        />
-                                        <input
-                                            placeholder="Title (TH)"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.titleTh}"
-                                            oninput="updateNewProperty('titleTh', this.value)"
-                                        />
-                                        <input
-                                            placeholder="标题 (中文)"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.titleZh}"
-                                            oninput="updateNewProperty('titleZh', this.value)"
-                                        />
+                                        <input placeholder="Title (EN) *" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.titleEn}" oninput="updateNewProperty('titleEn', this.value)" />
+                                        <input placeholder="Title (RU)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.titleRu}" oninput="updateNewProperty('titleRu', this.value)" />
+                                        <input placeholder="Title (TH)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.titleTh}" oninput="updateNewProperty('titleTh', this.value)" />
+                                        <input placeholder="标题 (中文)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.titleZh}" oninput="updateNewProperty('titleZh', this.value)" />
                                         
-                                        <select
-                                            class="select-navy p-3 rounded-2xl w-full"
-                                            onchange="updateNewProperty('type', this.value)"
-                                        >
+                                        <select class="select-navy p-3 rounded-2xl w-full" onchange="updateNewProperty('type', this.value)">
                                             <option value="Villa" ${newProperty.type === 'Villa' ? 'selected' : ''}>Villa</option>
                                             <option value="Condo" ${newProperty.type === 'Condo' ? 'selected' : ''}>Condo</option>
                                             <option value="House" ${newProperty.type === 'House' ? 'selected' : ''}>House</option>
                                         </select>
                                         
-                                        <input
-                                            placeholder="${t.price} *"
-                                            type="number"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.price}"
-                                            oninput="updateNewProperty('price', this.value)"
-                                        />
-                                        
-                                        <input
-                                            placeholder="Location (EN) *"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.locationEn}"
-                                            oninput="updateNewProperty('locationEn', this.value)"
-                                        />
-                                        <input
-                                            placeholder="Location (RU)"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.locationRu}"
-                                            oninput="updateNewProperty('locationRu', this.value)"
-                                        />
-                                        
-                                        <input
-                                            placeholder="Bedrooms"
-                                            type="number"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.beds}"
-                                            oninput="updateNewProperty('beds', this.value)"
-                                        />
-                                        <input
-                                            placeholder="Bathrooms"
-                                            type="number"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.baths}"
-                                            oninput="updateNewProperty('baths', this.value)"
-                                        />
-                                        
-                                        <input
-                                            placeholder="Feature (EN) (e.g. pool)"
-                                            class="input-navy p-3 rounded-2xl w-full"
-                                            value="${newProperty.featureEn}"
-                                            oninput="updateNewProperty('featureEn', this.value)"
-                                        />
-                                        
-                                        <input
-                                            placeholder="Image URL *"
-                                            class="input-navy p-3 rounded-2xl w-full md:col-span-2"
-                                            value="${newProperty.image}"
-                                            oninput="updateNewProperty('image', this.value)"
-                                        />
+                                        <input placeholder="${t.price} *" type="number" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.price}" oninput="updateNewProperty('price', this.value)" />
+                                        <input placeholder="Location (EN) *" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.locationEn}" oninput="updateNewProperty('locationEn', this.value)" />
+                                        <input placeholder="Location (RU)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.locationRu}" oninput="updateNewProperty('locationRu', this.value)" />
+                                        <input placeholder="Bedrooms" type="number" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.beds}" oninput="updateNewProperty('beds', this.value)" />
+                                        <input placeholder="Bathrooms" type="number" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.baths}" oninput="updateNewProperty('baths', this.value)" />
+                                        <input placeholder="Feature (EN) (e.g. pool)" class="input-navy p-3 rounded-2xl w-full" value="${newProperty.featureEn}" oninput="updateNewProperty('featureEn', this.value)" />
+                                        <input placeholder="Image URL *" class="input-navy p-3 rounded-2xl w-full md:col-span-2" value="${newProperty.image}" oninput="updateNewProperty('image', this.value)" />
                                         
                                         <div class="md:col-span-2 flex gap-3">
-                                            <button
-                                                class="btn-primary py-3 px-6 rounded-full font-medium transition flex-1"
-                                                onclick="addProperty()"
-                                            >
-                                                <i class="fas fa-save mr-2"></i>
-                                                ${t.save}
-                                            </button>
-                                            <button
-                                                class="btn-outline py-3 px-6 rounded-full font-medium transition"
-                                                onclick="toggleAddForm()"
-                                            >
-                                                ${t.cancel}
-                                            </button>
+                                            <button class="btn-primary py-3 px-6 rounded-full font-medium transition flex-1" onclick="addProperty()"><i class="fas fa-save mr-2"></i>${t.save}</button>
+                                            <button class="btn-outline py-3 px-6 rounded-full font-medium transition" onclick="toggleAddForm()">${t.cancel}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -562,23 +464,15 @@
                         <div class="py-6 flex flex-col md:flex-row gap-4 line-white">
                             <div class="flex gap-2 overflow-x-auto pb-2">
                                 ${['All', 'Villa', 'Condo', 'House'].map(type => `
-                                    <button
-                                        class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'filter-active' : 'filter-inactive'}"
-                                        onclick="setFilterType('${type}')"
-                                    >
+                                    <button class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'filter-active' : 'filter-inactive'}" onclick="setFilterType('${type}')">
                                         ${type === 'All' ? t.all : type === 'Villa' ? t.villa : type === 'Condo' ? t.condo : t.house}
                                     </button>
                                 `).join('')}
                             </div>
 
-                            <select
-                                class="select-navy p-3 rounded-full w-full md:w-64"
-                                onchange="setFilterLocation(this.value)"
-                            >
+                            <select class="select-navy p-3 rounded-full w-full md:w-64" onchange="setFilterLocation(this.value)">
                                 <option value="All">${t.all}</option>
-                                ${uniqueLocations.map(loc => `
-                                    <option value="${loc}" ${filterLocation === loc ? 'selected' : ''}>${loc}</option>
-                                `).join('')}
+                                ${uniqueLocations.map(loc => `<option value="${loc}" ${filterLocation === loc ? 'selected' : ''}>${loc}</option>`).join('')}
                             </select>
                         </div>
 
@@ -593,44 +487,26 @@
                                         <img src="${p.image}" alt="" class="h-56 w-full object-cover rounded-xl border border-[#B89A5E]/20" loading="lazy" />
                                         <div class="pt-4">
                                             <div class="flex justify-between items-center mb-2">
-                                                <span class="badge-white text-sm font-medium px-3 py-1 rounded-full">
-                                                    ${p.type === 'Villa' ? t.villa : p.type === 'Condo' ? t.condo : t.house}
-                                                </span>
+                                                <span class="badge-white text-sm font-medium px-3 py-1 rounded-full">${p.type === 'Villa' ? t.villa : p.type === 'Condo' ? t.condo : t.house}</span>
                                                 <span class="text-xl font-medium text-[#B89A5E]">$${p.price}</span>
                                             </div>
                                             
-                                            <h4 class="text-xl font-light text-[#F0F0F0] mb-1">
-                                                ${p.title[currentLang] || p.title.en}
-                                            </h4>
+                                            <h4 class="text-xl font-light text-[#F0F0F0] mb-1">${p.title[currentLang] || p.title.en}</h4>
                                             
-                                            <p class="text-[#F0F0F0]/60 text-sm mb-3">
-                                                <i class="fas fa-map-pin text-[#B89A5E] mr-1"></i>
-                                                ${p.location[currentLang] || p.location.en}
-                                            </p>
+                                            <p class="text-[#F0F0F0]/60 text-sm mb-3"><i class="fas fa-map-pin text-[#B89A5E] mr-1"></i>${p.location[currentLang] || p.location.en}</p>
                                             
                                             <div class="flex gap-4 text-sm text-[#F0F0F0]/70 border-t border-[#B89A5E]/20 pt-3">
                                                 <span><i class="fas fa-bed text-[#B89A5E] mr-1"></i> ${p.beds} ${t.beds}</span>
                                                 <span><i class="fas fa-bath text-[#B89A5E] mr-1"></i> ${p.baths} ${t.baths}</span>
-                                                <span>
-                                                    <i class="fas ${featureIcon} text-[#B89A5E] mr-1"></i>
-                                                    ${p.feature[currentLang] || p.feature.en}
-                                                </span>
+                                                <span><i class="fas ${featureIcon} text-[#B89A5E] mr-1"></i> ${p.feature[currentLang] || p.feature.en}</span>
                                             </div>
                                             
-                                            <div class="mt-3">
-                                                <span class="badge-gold text-xs px-3 py-1 rounded-full">
-                                                    <i class="fas fa-key mr-1"></i> ${t.rent}
-                                                </span>
-                                            </div>
+                                            <div class="mt-3"><span class="badge-gold text-xs px-3 py-1 rounded-full"><i class="fas fa-key mr-1"></i> ${t.rent}</span></div>
 
                                             ${isAdmin ? `
                                                 <div class="mt-4 flex gap-2">
-                                                    <button class="flex-1 btn-outline py-2 rounded-full text-sm" onclick="editProperty(${p.id})">
-                                                        <i class="fas fa-edit mr-1"></i> ${t.edit}
-                                                    </button>
-                                                    <button class="flex-1 border border-red-700 text-red-400 py-2 rounded-full text-sm hover:bg-red-900/20 transition" onclick="deleteProperty(${p.id})">
-                                                        <i class="fas fa-trash mr-1"></i> ${t.delete}
-                                                    </button>
+                                                    <button class="flex-1 btn-outline py-2 rounded-full text-sm" onclick="editProperty(${p.id})"><i class="fas fa-edit mr-1"></i> ${t.edit}</button>
+                                                    <button class="flex-1 border border-red-700 text-red-400 py-2 rounded-full text-sm hover:bg-red-900/20 transition" onclick="deleteProperty(${p.id})"><i class="fas fa-trash mr-1"></i> ${t.delete}</button>
                                                 </div>
                                             ` : ''}
                                         </div>
@@ -644,9 +520,7 @@
 
                         <!-- Footer -->
                         <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-[#F0F0F0]/60 text-sm">
-                            <div class="mb-4 md:mb-0">
-                                © ${new Date().getFullYear()} NICE PLACE — ${t.footer}
-                            </div>
+                            <div class="mb-4 md:mb-0">© ${new Date().getFullYear()} NICE PLACE — ${t.footer}</div>
                             <div class="flex gap-6">
                                 <a href="#" class="link-white"><i class="fas fa-villa mr-1"></i>${t.villas}</a>
                                 <a href="#" class="link-white"><i class="fas fa-building mr-1"></i>${t.condos}</a>
@@ -658,108 +532,37 @@
                 `;
             }
 
-            // ---------- GLOBAL FUNCTIONS ----------
-            window.setLanguage = function(lang) {
-                currentLang = lang;
-                render();
-            };
-
-            window.toggleAdmin = function() {
-                isAdmin = !isAdmin;
-                showAddForm = false;
-                render();
-            };
-
-            window.toggleAddForm = function() {
-                showAddForm = !showAddForm;
-                if (!showAddForm) {
-                    newProperty = {
-                        titleEn: '', titleRu: '', titleTh: '', titleZh: '',
-                        type: 'Villa',
-                        price: '',
-                        locationEn: '', locationRu: '', locationTh: '', locationZh: '',
-                        beds: '2',
-                        baths: '2',
-                        featureEn: '', featureRu: '', featureTh: '', featureZh: '',
-                        image: ''
-                    };
-                }
-                render();
-            };
-
-            window.updateNewProperty = function(field, value) {
-                newProperty[field] = value;
-            };
-
+            window.setLanguage = function(lang) { currentLang = lang; render(); };
+            window.toggleAdmin = function() { isAdmin = !isAdmin; showAddForm = false; render(); };
+            window.toggleAddForm = function() { showAddForm = !showAddForm; if (!showAddForm) { newProperty = { titleEn: '', titleRu: '', titleTh: '', titleZh: '', type: 'Villa', price: '', locationEn: '', locationRu: '', locationTh: '', locationZh: '', beds: '2', baths: '2', featureEn: '', featureRu: '', featureTh: '', featureZh: '', image: '' }; } render(); };
+            window.updateNewProperty = function(field, value) { newProperty[field] = value; };
+            
             window.addProperty = function() {
                 if (!newProperty.titleEn || !newProperty.price || !newProperty.image || !newProperty.locationEn) {
                     alert('Please fill in all required fields');
                     return;
                 }
-
                 properties.push({
                     id: Date.now(),
-                    title: {
-                        en: newProperty.titleEn,
-                        ru: newProperty.titleRu || newProperty.titleEn,
-                        th: newProperty.titleTh || newProperty.titleEn,
-                        zh: newProperty.titleZh || newProperty.titleEn
-                    },
+                    title: { en: newProperty.titleEn, ru: newProperty.titleRu || newProperty.titleEn, th: newProperty.titleTh || newProperty.titleEn, zh: newProperty.titleZh || newProperty.titleEn },
                     type: newProperty.type,
                     price: Number(newProperty.price),
-                    location: {
-                        en: newProperty.locationEn,
-                        ru: newProperty.locationRu || newProperty.locationEn,
-                        th: newProperty.locationTh || newProperty.locationEn,
-                        zh: newProperty.locationZh || newProperty.locationEn
-                    },
+                    location: { en: newProperty.locationEn, ru: newProperty.locationRu || newProperty.locationEn, th: newProperty.locationTh || newProperty.locationEn, zh: newProperty.locationZh || newProperty.locationEn },
                     beds: Number(newProperty.beds) || 2,
                     baths: Number(newProperty.baths) || 2,
-                    feature: {
-                        en: newProperty.featureEn || 'luxury',
-                        ru: newProperty.featureRu || newProperty.featureEn || 'роскошь',
-                        th: newProperty.featureTh || newProperty.featureEn || 'หรูหรา',
-                        zh: newProperty.featureZh || newProperty.featureEn || '豪华'
-                    },
+                    feature: { en: newProperty.featureEn || 'luxury', ru: newProperty.featureRu || newProperty.featureEn || 'роскошь', th: newProperty.featureTh || newProperty.featureEn || 'หรูหรา', zh: newProperty.featureZh || newProperty.featureEn || '豪华' },
                     image: newProperty.image
                 });
-
-                newProperty = {
-                    titleEn: '', titleRu: '', titleTh: '', titleZh: '',
-                    type: 'Villa',
-                    price: '',
-                    locationEn: '', locationRu: '', locationTh: '', locationZh: '',
-                    beds: '2',
-                    baths: '2',
-                    featureEn: '', featureRu: '', featureTh: '', featureZh: '',
-                    image: ''
-                };
+                newProperty = { titleEn: '', titleRu: '', titleTh: '', titleZh: '', type: 'Villa', price: '', locationEn: '', locationRu: '', locationTh: '', locationZh: '', beds: '2', baths: '2', featureEn: '', featureRu: '', featureTh: '', featureZh: '', image: '' };
                 showAddForm = false;
                 render();
             };
 
-            window.deleteProperty = function(id) {
-                if (confirm('Delete this property?')) {
-                    properties = properties.filter(p => p.id !== id);
-                    render();
-                }
-            };
+            window.deleteProperty = function(id) { if (confirm('Delete this property?')) { properties = properties.filter(p => p.id !== id); render(); } };
+            window.editProperty = function(id) { alert('Edit functionality - would populate form with property data'); };
+            window.setFilterType = function(type) { filterType = type; render(); };
+            window.setFilterLocation = function(location) { filterLocation = location; render(); };
 
-            window.editProperty = function(id) {
-                alert('Edit functionality - would populate form with property data');
-            };
-
-            window.setFilterType = function(type) {
-                filterType = type;
-                render();
-            };
-
-            window.setFilterLocation = function(location) {
-                filterLocation = location;
-                render();
-            };
-
-            // Initial render
             render();
         })();
     </script>
