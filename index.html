@@ -603,8 +603,8 @@
         .property-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            font-size: 0.9rem;
+            gap: 1rem;
+            font-size: 1rem;
             margin-top: 0.5rem;
         }
         
@@ -613,15 +613,12 @@
             align-items: center;
             gap: 0.25rem;
             white-space: nowrap;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.5rem;
         }
         
         @media (max-width: 640px) {
             .property-features {
-                font-size: 0.8rem;
-                gap: 0.5rem;
+                font-size: 0.9rem;
+                gap: 0.75rem;
             }
         }
     </style>
@@ -646,8 +643,8 @@
                 internet: "Интернет",
                 water: "Вода",
                 electricity: "Свет",
-                bedrooms: "спален",
-                bathrooms: "ванных",
+                bedrooms: "", // убрали текст
+                bathrooms: "", // убрали текст
                 more: "Ещё",
                 close: "Закрыть",
                 villa: "Вилла",
@@ -1592,8 +1589,8 @@
                                             </p>
                                             
                                             <div class="property-features">
-                                                <span><i class="fas fa-bed text-[#B89A5E]"></i> ${p.beds} ${t.bedrooms}</span>
-                                                <span><i class="fas fa-bath text-[#B89A5E]"></i> ${p.baths} ${t.bathrooms}</span>
+                                                <span><i class="fas fa-bed text-[#B89A5E]"></i> ${p.beds}</span>
+                                                <span><i class="fas fa-bath text-[#B89A5E]"></i> ${p.baths}</span>
                                                 <span><i class="fas ${featureIcon} text-[#B89A5E]"></i> ${p.feature}</span>
                                             </div>
                                             
