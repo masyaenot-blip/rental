@@ -643,8 +643,8 @@
                 internet: "Интернет",
                 water: "Вода",
                 electricity: "Свет",
-                bedrooms: "",
-                bathrooms: "",
+                bedrooms: "", // убрали текст
+                bathrooms: "", // убрали текст
                 more: "Ещё",
                 close: "Закрыть",
                 villa: "Вилла",
@@ -976,7 +976,7 @@
                     beds: 1,
                     baths: 1,
                     area: "Central Phuket Floresta",
-                    nearby: "Central Phuket, торговый центр - 5 минут, 7/11, магазин - 2 минуты",
+                    nearby: "Central Phuket, торговый центр - 5 минут<br>7/11, магазин - 2 минуты",
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["1/115.jpeg", "1/114.jpeg", "1/118.jpeg", "1/125.jpeg", "1/119.jpeg", "1/120.jpeg", "1/121.jpeg", "1/122.jpeg", "1/123.jpeg", "1/126.jpeg", "1/116.jpeg"],
@@ -1026,7 +1026,7 @@
                     beds: 1,
                     baths: 1,
                     area: "Thalang",
-                    nearby: "7/11 - 5 минут, Кафе/ресторан - 2 минуты",
+                    nearby: "7/11 - 5 минут, <br> Кафе/ресторан - 2 минуты",
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["2/2.jpg", "2/22.jpeg", "2/21.jpeg", "2/210.jpeg", "2/212.jpeg", "2/215.jpeg", "2/216.jpeg", "2/218.jpeg", "2/213.jpeg", "2/213.jpeg", "2/214.jpeg"],
@@ -1489,10 +1489,10 @@
                 }
             ];
 
-            // ---------- ОБЪЕДИНЯЕМ ВСЕ ОБЪЕКТЫ ----------
+            // ---------- ОБЪЕДИНЯЕМ ВСЕ ОБЪЕКТЫ И ФИЛЬТРУЕМ СКРЫТЫЕ ----------
             let allProperties = [...villas, ...condos, ...houses];
             
-            // Функция для получения только активных объектов
+            // Функция для получения только активных объектов (hidden = false)
             function getActiveProperties() {
                 return allProperties.filter(p => !p.hidden);
             }
@@ -1508,19 +1508,24 @@
             let currentHeroBgIndex = 0;
             let currentFilterBgIndex = 0;
             let currentContactBgIndex = 0;
+            
             let scrollPosition = 0;
 
             // Контактные телефоны
-            const contactPhone = "66972153245";
-            const contactLine = "66972153245";
+            const contactPhone = "66972153245"; // Без +
+            const contactLine = "66972153245"; // LINE ID или номер
 
+            // Смена фоновых изображений каждые 8 секунд
             setInterval(() => {
                 if (!selectedProperty && !showFullscreen) {
                     scrollPosition = window.scrollY;
+                    
                     currentHeroBgIndex = (currentHeroBgIndex + 1) % heroBackgrounds.length;
                     currentFilterBgIndex = (currentFilterBgIndex + 1) % filterBackgrounds.length;
                     currentContactBgIndex = (currentContactBgIndex + 1) % contactBackgrounds.length;
+                    
                     render();
+                    
                     setTimeout(() => {
                         window.scrollTo(0, scrollPosition);
                     }, 10);
@@ -1529,17 +1534,355 @@
             
             function render() {
                 const root = document.getElementById('root');
+                
+                // Получаем только активные объекты
                 const activeProperties = getActiveProperties();
+                
                 const filteredProperties = activeProperties.filter(p => 
                     (filterType === 'All' || p.type === filterType)
                 );
+                
                 const visibleProperties = filteredProperties.slice(0, visibleCount);
                 const hasMore = visibleCount < filteredProperties.length;
 
-                root.innerHTML = `...`; // Здесь ваш HTML код
+                root.innerHTML = `
+                    <div class="container max-w-7xl mx-auto px-4 md:px-6">
+                        <!-- HEADER with LOGO -->
+                        <header class="flex flex-col md:flex-row justify-between items-center py-6 line-white">
+                            <div class="flex items-center">
+                                <img 
+                                    src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/ncp2.jpg" 
+                                    alt="NICE PLACE PROPERTY" 
+                                    class="h-20 md:h-24 w-auto object-contain"
+                                    onerror="this.onerror=null; console.log('Логотип загружен');"
+                                >
+                            </div>
+                            
+                            <div class="mt-4 md:mt-0">
+                                <div class="bg-[#17324D] px-5 py-2 rounded-full border border-[#B89A5E]/30 shadow-lg">
+                                    <i class="fas fa-crown text-[#B89A5E] mr-2"></i>
+                                    <a href="#" class="text-[#F0F0F0]/80 no-underline border-b border-dotted border-[#B89A5E]/30">www.niceplacehome.com</a>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!-- Hero Section with Background Image -->
+                        <div class="hero-with-bg">
+                            <div class="hero-background" style="background-image: url('${heroBackgrounds[currentHeroBgIndex]}');"></div>
+                            <div class="overlay-dark"></div>
+                            <div class="content-overlay">
+                                <h2 class="text-3xl md:text-5xl mb-2 font-light text-[#B89A5E] text-center">${t.heroTitle}</h2>
+                            </div>
+                        </div>
+
+                        <!-- Contact Button -->
+                        <div class="flex justify-center my-6">
+                            <button
+                                class="btn-primary px-8 py-3 rounded-full font-medium transition shadow-lg flex items-center gap-2 text-lg"
+                                onclick="toggleContactForm()"
+                            >
+                                <i class="fas fa-envelope"></i>
+                                ${t.contact}
+                            </button>
+                        </div>
+
+                        <!-- Contact Form with Background Image -->
+                        ${showContactForm ? `
+                            <div class="contact-form">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('${contactBackgrounds[currentContactBgIndex]}'); background-size: cover; background-position: center; animation: slowZoom 20s infinite alternate; z-index: 1;"></div>
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(14, 29, 48, 0.8); z-index: 2;"></div>
+                                <div style="position: relative; z-index: 3;">
+                                    <h3 class="text-2xl font-light text-[#B89A5E] mb-6 text-center">${t.contact}</h3>
+                                    <div class="max-w-md mx-auto">
+                                        <input type="text" placeholder="${t.name}" class="input-navy mb-4" id="contactName">
+                                        <input type="tel" placeholder="${t.phone}" class="input-navy mb-4" id="contactPhone">
+                                        <button class="btn-primary w-full py-3 rounded-full font-medium transition" onclick="sendContact()">
+                                            <i class="fas fa-paper-plane mr-2"></i>${t.send}
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="mt-8 text-center">
+                                        <p class="text-[#F0F0F0]/70 mb-4">${t.callUs}:</p>
+                                        <div class="contact-buttons-container">
+                                            <a href="https://t.me/${contactPhone}" target="_blank" class="contact-button telegram">
+                                                <i class="fab fa-telegram"></i>
+                                                Telegram
+                                            </a>
+                                            <a href="https://wa.me/${contactPhone}" target="_blank" class="contact-button whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                                WhatsApp
+                                            </a>
+                                            <a href="https://line.me/ti/p/~${contactLine}" target="_blank" class="contact-button line">
+                                                <i class="fab fa-line"></i>
+                                                LINE
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- FILTERS SECTION WITH BACKGROUND IMAGE -->
+                        <div class="filters-container">
+                            <div class="filters-background" style="background-image: url('${filterBackgrounds[currentFilterBgIndex]}');"></div>
+                            <div class="overlay-dark"></div>
+                            <div class="content-overlay">
+                                <h3 class="filters-title">${t.propertyTypes}</h3>
+                                <div class="flex gap-2 overflow-x-auto pb-2">
+                                    ${['All', 'Villa', 'Condo', 'House'].map(type => `
+                                        <button class="px-5 py-2 rounded-full whitespace-nowrap transition-all ${filterType === type ? 'filter-active' : 'filter-inactive'}" onclick="setFilterType('${type}')">
+                                            ${type === 'All' ? t.all : type === 'Villa' ? t.villa : type === 'Condo' ? t.condo : t.house}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property Grid -->
+                        <div class="py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${visibleProperties.map(p => {
+                                const featureIcon = p.feature === 'бассейн' ? 'fa-swimming-pool' : 
+                                                   p.feature === 'вид на море' ? 'fa-water' :
+                                                   p.feature === 'сад' ? 'fa-leaf' : 'fa-star';
+                                return `
+                                    <div class="card-navy rounded-2xl overflow-hidden p-4" onclick="openPropertyModal(${p.id})">
+                                        <img src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/${p.images[0]}" alt="" class="h-56 w-full object-cover rounded-xl border border-[#B89A5E]/20" loading="lazy" />
+                                        <div class="pt-4">
+                                            <div class="flex justify-between items-center mb-2">
+                                                <span class="badge-white text-sm font-medium px-3 py-1 rounded-full">${p.type === 'Villa' ? t.villa : p.type === 'Condo' ? t.condo : t.house}</span>
+                                                <span class="text-xl font-medium text-[#B89A5E]">฿${p.price.toLocaleString()}</span>
+                                            </div>
+                                            
+                                            <h4 class="text-xl font-light text-[#F0F0F0] mb-1">${p.title}</h4>
+                                            
+                                            <p class="text-[#F0F0F0]/60 text-sm mb-3">
+                                                <i class="fas fa-map-pin text-[#B89A5E] mr-1"></i>
+                                                ${p.area}
+                                            </p>
+                                            
+                                            <div class="property-features">
+                                                <span><i class="fas fa-bed text-[#B89A5E]"></i> ${p.beds}</span>
+                                                <span><i class="fas fa-bath text-[#B89A5E]"></i> ${p.baths}</span>
+                                                <span><i class="fas ${featureIcon} text-[#B89A5E]"></i> ${p.feature}</span>
+                                            </div>
+                                            
+                                            <div class="mt-3"><span class="badge-gold text-xs px-3 py-1 rounded-full"><i class="fas fa-key mr-1"></i> ${t.rent}</span></div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- More Button -->
+                        ${hasMore ? `
+                            <div class="flex justify-center my-8">
+                                <button class="btn-outline px-8 py-3 rounded-full font-medium transition text-lg" onclick="loadMore()">
+                                    <i class="fas fa-chevron-down mr-2"></i>
+                                    ${t.more}
+                                </button>
+                            </div>
+                        ` : ''}
+
+                        <!-- Gold Line -->
+                        <div class="w-full my-10 line-gold"></div>
+
+                        <!-- Footer -->
+                        <footer class="flex flex-col md:flex-row justify-between items-center py-8 text-[#F0F0F0]/60 text-sm">
+                            <div class="mb-4 md:mb-0">© ${new Date().getFullYear()} NICE PLACE — ${t.footer}</div>
+                            <div class="flex gap-6">
+                                <a href="#" class="link-white"><i class="fas fa-villa mr-1"></i>${t.villas}</a>
+                                <a href="#" class="link-white"><i class="fas fa-building mr-1"></i>${t.condos}</a>
+                                <a href="#" class="link-white"><i class="fas fa-home mr-1"></i>${t.houses}</a>
+                            </div>
+                        </footer>
+                    </div>
+
+                    ${selectedProperty && !showFullscreen ? `
+                        <!-- Property Modal -->
+                        <div class="modal-overlay" onclick="closeModal()">
+                            <div class="modal-content" onclick="event.stopPropagation()">
+                                <div class="modal-close" onclick="closeModal()">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                
+                                <h2 class="text-3xl font-light text-[#B89A5E] mb-4">${selectedProperty.title}</h2>
+                                
+                                <!-- Gallery with arrows -->
+                                <div class="gallery-container">
+                                    <div class="gallery-main" onclick="openFullscreen(${currentImageIndex})">
+                                        <img src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/${selectedProperty.images[currentImageIndex]}" alt="">
+                                        <div class="gallery-nav prev" onclick="prevImage(event)">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </div>
+                                        <div class="gallery-nav next" onclick="nextImage(event)">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-thumbnails">
+                                        ${selectedProperty.images.map((img, idx) => `
+                                            <img src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/${img}" alt="" class="${idx === currentImageIndex ? 'active' : ''}" onclick="setImageIndex(event, ${idx})">
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                
+                                <!-- Basic Details -->
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="badge-white p-3 rounded-xl">
+                                        <i class="fas fa-bed text-[#B89A5E] mr-2"></i>
+                                        ${selectedProperty.beds} ${selectedProperty.beds === 1 ? 'спальня' : selectedProperty.beds >= 2 && selectedProperty.beds <= 4 ? 'спальни' : 'спален'}
+                                    </div>
+                                    <div class="badge-white p-3 rounded-xl">
+                                        <i class="fas fa-bath text-[#B89A5E] mr-2"></i>
+                                        ${selectedProperty.baths} ${selectedProperty.baths === 1 ? 'ванная' : selectedProperty.baths >= 2 && selectedProperty.baths <= 4 ? 'ванные' : 'ванных'}
+                                    </div>
+                                </div>
+
+                                <!-- Detailed Information (if available) -->
+                                ${selectedProperty.details && (selectedProperty.details.roomType || selectedProperty.details.size || selectedProperty.details.rentalRates.length > 0 || selectedProperty.details.electrical.length > 0 || selectedProperty.details.facilities.length > 0) ? `
+                                    <div class="details-grid">
+                                        <!-- Left Column -->
+                                        <div class="details-section">
+                                            <h3>О помещении</h3>
+                                            <ul class="details-list">
+                                                ${selectedProperty.details.roomType ? `<li><i class="fas fa-door-open"></i> Тип: ${selectedProperty.details.roomType}</li>` : ''}
+                                                ${selectedProperty.details.size ? `<li><i class="fas fa-ruler-combined"></i> Площадь: ${selectedProperty.details.size}</li>` : ''}
+                                                <li><i class="fas fa-map-marker-alt"></i> Район: ${selectedProperty.area}</li>
+                                                <li><i class="fas fa-store"></i> ${selectedProperty.nearby}</li>
+                                            </ul>
+
+                                            ${selectedProperty.details.rentalRates.length > 0 ? `
+                                                <h3 class="mt-4">Условия аренды</h3>
+                                                <div class="price-details">
+                                                    ${selectedProperty.details.rentalRates.map(rate => `<p>${rate}</p>`).join('')}
+                                                </div>
+                                            ` : ''}
+                                        </div>
+
+                                        <!-- Right Column -->
+                                        <div class="details-section">
+                                            ${selectedProperty.details.electrical.length > 0 ? `
+                                                <h3>Техника</h3>
+                                                <ul class="details-list">
+                                                    ${selectedProperty.details.electrical.map(item => `<li><i class="fas fa-plug"></i> ${item}</li>`).join('')}
+                                                </ul>
+                                            ` : ''}
+
+                                            ${selectedProperty.details.facilities.length > 0 ? `
+                                                <h3 class="mt-4">Инфраструктура</h3>
+                                                <ul class="details-list">
+                                                    ${selectedProperty.details.facilities.map(item => `<li><i class="fas fa-building"></i> ${item}</li>`).join('')}
+                                                </ul>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+
+                                    ${selectedProperty.details.contactPhone ? `
+                                        <div class="text-center mt-6">
+                                            <p class="text-[#F0F0F0]/70 mb-3">Связаться по этому объекту:</p>
+                                            <div class="contact-buttons-container">
+                                                <a href="https://t.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button telegram">
+                                                    <i class="fab fa-telegram"></i>
+                                                    Telegram
+                                                </a>
+                                                <a href="https://wa.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button whatsapp">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                    WhatsApp
+                                                </a>
+                                                <a href="https://line.me/ti/p/~${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button line">
+                                                    <i class="fab fa-line"></i>
+                                                    LINE
+                                                </a>
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                ` : ''}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    ${showFullscreen ? `
+                        <!-- Fullscreen Gallery -->
+                        <div class="fullscreen-gallery" onclick="closeFullscreen()">
+                            <div class="fullscreen-content" onclick="event.stopPropagation()">
+                                <div class="fullscreen-close" onclick="closeFullscreen()">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="fullscreen-nav prev" onclick="prevFullscreen(event)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="fullscreen-nav next" onclick="nextFullscreen(event)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                                <img src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/${selectedProperty.images[fullscreenIndex]}" class="fullscreen-image" alt="">
+                                <div class="fullscreen-counter">
+                                    ${fullscreenIndex + 1} / ${selectedProperty.images.length}
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
             }
 
-            // Остальные функции остаются без изменений
+            // Gallery functions
+            window.prevImage = function(e) {
+                e.stopPropagation();
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                } else {
+                    currentImageIndex = selectedProperty.images.length - 1;
+                }
+                render();
+            };
+
+            window.nextImage = function(e) {
+                e.stopPropagation();
+                if (currentImageIndex < selectedProperty.images.length - 1) {
+                    currentImageIndex++;
+                } else {
+                    currentImageIndex = 0;
+                }
+                render();
+            };
+
+            window.setImageIndex = function(e, index) {
+                e.stopPropagation();
+                currentImageIndex = index;
+                render();
+            };
+
+            // Fullscreen functions
+            window.openFullscreen = function(index) {
+                showFullscreen = true;
+                fullscreenIndex = index;
+                render();
+            };
+
+            window.closeFullscreen = function() {
+                showFullscreen = false;
+                render();
+            };
+
+            window.prevFullscreen = function(e) {
+                e.stopPropagation();
+                if (fullscreenIndex > 0) {
+                    fullscreenIndex--;
+                } else {
+                    fullscreenIndex = selectedProperty.images.length - 1;
+                }
+                render();
+            };
+
+            window.nextFullscreen = function(e) {
+                e.stopPropagation();
+                if (fullscreenIndex < selectedProperty.images.length - 1) {
+                    fullscreenIndex++;
+                } else {
+                    fullscreenIndex = 0;
+                }
+                render();
+            };
+
+            // Other functions
             window.setFilterType = function(type) { 
                 filterType = type; 
                 visibleCount = 6;
@@ -1580,63 +1923,7 @@
                 render();
             };
 
-            window.prevImage = function(e) {
-                e.stopPropagation();
-                if (currentImageIndex > 0) {
-                    currentImageIndex--;
-                } else {
-                    currentImageIndex = selectedProperty.images.length - 1;
-                }
-                render();
-            };
-
-            window.nextImage = function(e) {
-                e.stopPropagation();
-                if (currentImageIndex < selectedProperty.images.length - 1) {
-                    currentImageIndex++;
-                } else {
-                    currentImageIndex = 0;
-                }
-                render();
-            };
-
-            window.setImageIndex = function(e, index) {
-                e.stopPropagation();
-                currentImageIndex = index;
-                render();
-            };
-
-            window.openFullscreen = function(index) {
-                showFullscreen = true;
-                fullscreenIndex = index;
-                render();
-            };
-
-            window.closeFullscreen = function() {
-                showFullscreen = false;
-                render();
-            };
-
-            window.prevFullscreen = function(e) {
-                e.stopPropagation();
-                if (fullscreenIndex > 0) {
-                    fullscreenIndex--;
-                } else {
-                    fullscreenIndex = selectedProperty.images.length - 1;
-                }
-                render();
-            };
-
-            window.nextFullscreen = function(e) {
-                e.stopPropagation();
-                if (fullscreenIndex < selectedProperty.images.length - 1) {
-                    fullscreenIndex++;
-                } else {
-                    fullscreenIndex = 0;
-                }
-                render();
-            };
-
+            // Initial render
             render();
         })();
     </script>
