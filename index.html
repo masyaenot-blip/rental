@@ -543,6 +543,14 @@
             color: var(--text-soft);
         }
         
+        .contact-buttons-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
         .contact-button {
             display: inline-flex;
             align-items: center;
@@ -553,13 +561,42 @@
             border-radius: 2rem;
             font-weight: 500;
             transition: all 0.3s;
-            margin-top: 1rem;
+            text-decoration: none;
+            min-width: 140px;
+            justify-content: center;
         }
         
         .contact-button:hover {
             background-color: #CBAD71;
             transform: translateY(-2px);
             box-shadow: 0 10px 25px -5px rgba(184, 154, 94, 0.3);
+        }
+        
+        .contact-button.telegram {
+            background-color: #0088cc;
+            color: white;
+        }
+        
+        .contact-button.telegram:hover {
+            background-color: #0099dd;
+        }
+        
+        .contact-button.whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .contact-button.whatsapp:hover {
+            background-color: #20b859;
+        }
+        
+        .contact-button.line {
+            background-color: #00B900;
+            color: white;
+        }
+        
+        .contact-button.line:hover {
+            background-color: #00cc00;
         }
     </style>
 </head>
@@ -832,57 +869,57 @@
 
             // ---------- 9 КОНДО (6 активных, 3 скрытых) ----------
             const condos = [
-             {
-    id: 10,
-    title: "Современный кондо Phyll Phuket",
-    type: "Condo",
-    price: 3200,
-    location: "Пхукет",
-    beds: 1,
-    baths: 1,
-    area: "Central Phuket Floresta",
-    nearby: "Central Phuket, торговый центр - 5 минут,<br> 7/11, магазин - 2 минуты",
-    utilities: "Интернет, вода, свет включены",
-    feature: "вид на море",
-    images: ["1/115.jpeg", "1/114.jpeg", "1/118.jpeg", "1/125.jpeg", "1/119.jpeg", "1/120.jpeg", "1/121.jpeg", "1/122.jpeg", "1/123.jpeg", "1/126.jpeg", "1/116.jpeg"],
-    hidden: false,
-    details: {
-        roomType: "Тип B",
-        size: "33 кв.м., Корпус A, 3 этаж",
-        rentalRates: [
-            "Контракт от 6+ месяцев: 28,000 THB/месяц",
-            "Контракт на 1 год: 26,000 THB/месяц",
-            "Депозит: 2 месяца",
-            "Предоплата: 1 месяц",
-            "Интернет включен"
-        ],
-        electrical: [
-            "Стиральная машина",
-            "Электрический чайник",
-            "Микроволновая печь",
-            "Электрическая плита",
-            "2 кондиционера",
-            "Водонагреватель",
-            "Smart TV",
-            "Холодильник"
-        ],
-        facilities: [
-            "Парковка",
-            "Зарядка для электромобилей",
-            "Социальный лобби",
-            "Фитнес",
-            "Йога на крыше",
-            "Парная",
-            "Коворкинг",
-            "Переговорная комната",
-            "Комната для вечеринок",
-            "Бассейн 5x36м",
-            "Зона для барбекю",
-            "Общественная садовая зона"
-        ],
-        contactPhone: "+66816299623"
-    }
-},
+                {
+                    id: 10,
+                    title: "Современный кондо Phyll Phuket",
+                    type: "Condo",
+                    price: 26000,
+                    location: "Пхукет",
+                    beds: 1,
+                    baths: 1,
+                    area: "Central Phuket Floresta",
+                    nearby: "Central Phuket, торговый центр - 5 минут<br>7/11, магазин - 2 минуты",
+                    utilities: "Интернет, вода, свет включены",
+                    feature: "вид на море",
+                    images: ["1/115.jpeg", "1/114.jpeg", "1/118.jpeg", "1/125.jpeg", "1/119.jpeg", "1/120.jpeg", "1/121.jpeg", "1/122.jpeg", "1/123.jpeg", "1/126.jpeg", "1/116.jpeg"],
+                    hidden: false,
+                    details: {
+                        roomType: "Тип B",
+                        size: "33 кв.м., Корпус A, 3 этаж",
+                        rentalRates: [
+                            "Контракт от 6+ месяцев: 28,000 THB/месяц",
+                            "Контракт на 1 год: 26,000 THB/месяц",
+                            "Депозит: 2 месяца",
+                            "Предоплата: 1 месяц",
+                            "Интернет включен"
+                        ],
+                        electrical: [
+                            "Стиральная машина",
+                            "Электрический чайник",
+                            "Микроволновая печь",
+                            "Электрическая плита",
+                            "2 кондиционера",
+                            "Водонагреватель",
+                            "Smart TV",
+                            "Холодильник"
+                        ],
+                        facilities: [
+                            "Парковка",
+                            "Зарядка для электромобилей",
+                            "Социальный лобби",
+                            "Фитнес",
+                            "Йога на крыше",
+                            "Парная",
+                            "Коворкинг",
+                            "Переговорная комната",
+                            "Комната для вечеринок",
+                            "Бассейн 5x36м",
+                            "Зона для барбекю",
+                            "Общественная садовая зона"
+                        ],
+                        contactPhone: "+66816299623"
+                    }
+                },
                 {
                     id: 11,
                     title: "Современный кондо с видом на море",
@@ -1302,6 +1339,10 @@
             
             let scrollPosition = 0;
 
+            // Контактные телефоны
+            const contactPhone = "66972153245"; // Без +
+            const contactLine = "66972153245"; // LINE ID или номер
+
             // Смена фоновых изображений каждые 8 секунд
             setInterval(() => {
                 if (!selectedProperty && !showFullscreen) {
@@ -1390,19 +1431,19 @@
                                     
                                     <div class="mt-8 text-center">
                                         <p class="text-[#F0F0F0]/70 mb-4">${t.callUs}:</p>
-                                        <div class="contact-info">
-                                            <a href="https://wa.me/66972153245" target="_blank" class="contact-item hover:text-[#B89A5E] transition">
-                                                <i class="fab fa-whatsapp"></i>
-                                                <span>WhatsApp</span>
-                                            </a>
-                                            <a href="https://t.me/+66972153245" target="_blank" class="contact-item hover:text-[#B89A5E] transition">
+                                        <div class="contact-buttons-container">
+                                            <a href="https://t.me/${contactPhone}" target="_blank" class="contact-button telegram">
                                                 <i class="fab fa-telegram"></i>
-                                                <span>Telegram</span>
+                                                Telegram
                                             </a>
-                                            <div class="contact-item">
-                                                <i class="fas fa-phone"></i>
-                                                <span>+66 97 215 3245</span>
-                                            </div>
+                                            <a href="https://wa.me/${contactPhone}" target="_blank" class="contact-button whatsapp">
+                                                <i class="fab fa-whatsapp"></i>
+                                                WhatsApp
+                                            </a>
+                                            <a href="https://line.me/ti/p/~${contactLine}" target="_blank" class="contact-button line">
+                                                <i class="fab fa-line"></i>
+                                                LINE
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -1565,10 +1606,21 @@
 
                                     ${selectedProperty.details.contactPhone ? `
                                         <div class="text-center mt-6">
-                                            <a href="https://t.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button">
-                                                <i class="fab fa-telegram"></i>
-                                                Связаться через Telegram
-                                            </a>
+                                            <p class="text-[#F0F0F0]/70 mb-3">Связаться по этому объекту:</p>
+                                            <div class="contact-buttons-container">
+                                                <a href="https://t.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button telegram">
+                                                    <i class="fab fa-telegram"></i>
+                                                    Telegram
+                                                </a>
+                                                <a href="https://wa.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button whatsapp">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                    WhatsApp
+                                                </a>
+                                                <a href="https://line.me/ti/p/~${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button line">
+                                                    <i class="fab fa-line"></i>
+                                                    LINE
+                                                </a>
+                                            </div>
                                         </div>
                                     ` : ''}
                                 ` : ''}
