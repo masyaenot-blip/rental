@@ -657,29 +657,47 @@
 
             // ---------- 9 ВИЛЛ (6 активных, 3 скрытых) ----------
             const villas = [
-                {
-                    id: 1,
-                    title: "Роскошная вилла с видом на море",
-                    type: "Villa",
-                    price: 45000,
-                    location: "Пхукет",
-                    beds: 4,
-                    baths: 3,
-                    area: "Камала",
-                    nearby: "Пляж 5 мин, рестораны, 7-11",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
-                    images: ["villa-kamala-1.jpg", "villa-kamala-2.jpg", "villa-kamala-3.jpg", "villa-kamala-4.jpg"],
-                    hidden: true,
-                    details: {
-                        roomType: "",
-                        size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
-                        contactPhone: ""
-                    }
-                },
+        {
+    id: 1, // следующий свободный номер
+    title: "Seaview Hillside villa in Ao Por",
+    type: "Villa",
+    price: 200000,
+    location: "Пхукет",
+    beds: 4,
+    baths: 5,
+    area: "Ао Пор",
+    nearby: "Вид на море, холмистая местность",
+    utilities: "Электричество и вода оплачиваются отдельно",
+    feature: "бассейн",
+    images: ["villa-aopor-1.jpg", "villa-aopor-2.jpg", "villa-aopor-3.jpg"],
+    hidden: false,
+    details: {
+        roomType: "Тип: 4 спальни",
+        size: "Площадь: уточнить",
+        rentalRates: [
+            "▶️ Аренда: 200,000 THB/месяц",
+            "▶️ Дополнительно за питомца: 3,000 THB/месяц"
+        ],
+        electrical: [
+            "Стиральная машина",
+            "Электрический чайник",
+            "Микроволновая печь",
+            "Электрическая плита",
+            "4 кондиционера",
+            "Водонагреватель",
+            "Smart TV",
+            "Холодильник"
+        ],
+        facilities: [
+            "Бассейн (чистка 2 раза в неделю)",
+            "Садовник (1 раз в неделю)",
+            "Высокоскоростной Wi-Fi",
+            "Уборка 1 раз в неделю"
+        ],
+        utilities: "Электричество и вода оплачиваются отдельно",
+        contactPhone: "+66816299623"
+    }
+},
                 {
                     id: 2,
                     title: "Вилла с бассейном",
