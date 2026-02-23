@@ -272,7 +272,7 @@
             background-color: var(--card-bg);
             border: 1px solid var(--logo-gold);
             border-radius: 2rem;
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -487,6 +487,80 @@
         .hidden-property {
             display: none;
         }
+
+        /* Детальная информация в модальном окне */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .details-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-dim);
+        }
+        
+        .details-section h3 {
+            color: var(--logo-gold);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-dim);
+            padding-bottom: 0.5rem;
+        }
+        
+        .details-list {
+            list-style: none;
+        }
+        
+        .details-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-soft);
+        }
+        
+        .details-list i {
+            color: var(--logo-gold);
+            width: 20px;
+        }
+        
+        .price-details {
+            background-color: rgba(184, 154, 94, 0.1);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price-details p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+        }
+        
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--logo-gold);
+            color: var(--logo-navy);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .contact-button:hover {
+            background-color: #CBAD71;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(184, 154, 94, 0.3);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -509,8 +583,8 @@
                 internet: "Интернет",
                 water: "Вода",
                 electricity: "Свет",
-                bedrooms: "спален",
-                bathrooms: "ванных",
+                bedrooms: "спальн",
+                bathrooms: "ванн",
                 more: "Ещё",
                 close: "Закрыть",
                 villa: "Вилла",
@@ -559,8 +633,16 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-kamala-1.jpg", "villa-kamala-2.jpg", "villa-kamala-3.jpg", "villa-kamala-4.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    // Детальная информация (можно оставить пустой строкой, если нет)
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 2,
@@ -575,8 +657,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-bangtao-1.jpg", "villa-bangtao-2.jpg", "villa-bangtao-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 3,
@@ -591,8 +680,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "сад",
                     images: ["villa-chalong-1.jpg", "villa-chalong-2.jpg", "villa-chalong-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sChalong%20Bay!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 4,
@@ -607,8 +703,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-kamala-private-1.jpg", "villa-kamala-private-2.jpg", "villa-kamala-private-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 5,
@@ -623,8 +726,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-bangtao-beach-1.jpg", "villa-bangtao-beach-2.jpg", "villa-bangtao-beach-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 6,
@@ -639,8 +749,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-rawai-1.jpg", "villa-rawai-2.jpg", "villa-rawai-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sRawai%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 7,
@@ -655,8 +772,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-elite-1.jpg", "villa-elite-2.jpg", "villa-elite-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 8,
@@ -671,8 +795,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["villa-panorama-1.jpg", "villa-panorama-2.jpg", "villa-panorama-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKata%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 9,
@@ -687,8 +818,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["villa-presidential-1.jpg", "villa-presidential-2.jpg", "villa-presidential-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 }
             ];
 
@@ -707,8 +845,43 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["1/115.jpeg", "1/114.jpeg", "1/118.jpeg", "1/125.jpeg", "1/119.jpeg", "1/120.jpeg", "1/121.jpeg", "1/122.jpeg", "1/123.jpeg", "1/126.jpeg", "1/116.jpeg"],
-                    map: "https://www.google.com/maps/place/Phyll+Phuket/@7.8889465,98.3625938,17z/data=!3m1!4b1!4m6!3m5!1s0x305031798f151b17:0x23b5feae463510ef!8m2!3d7.8889465!4d98.3625938!16s%2Fg%2F11p76mnkwc?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "Тип B",
+                        size: "33 кв.м., Корпус A, 3 этаж",
+                        rentalRates: [
+                            "Контракт от 6+ месяцев: 28,000 THB/месяц",
+                            "Контракт на 1 год: 26,000 THB/месяц",
+                            "Депозит: 2 месяца",
+                            "Предоплата: 1 месяц",
+                            "Интернет включен"
+                        ],
+                        electrical: [
+                            "Стиральная машина",
+                            "Электрический чайник",
+                            "Микроволновая печь",
+                            "Электрическая плита",
+                            "2 кондиционера",
+                            "Водонагреватель",
+                            "Smart TV",
+                            "Холодильник"
+                        ],
+                        facilities: [
+                            "Парковка ",
+                            "Зарядка для электромобилей",
+                            "Социальный лобби",
+                            "Фитнес",
+                            "Йога на крыше",
+                            "Парная",
+                            "Коворкинг",
+                            "Переговорная комната",
+                            "Комната для вечеринок",
+                            "Бассейн 5x36м",
+                            "Зона для барбекю",
+                            "Общественная садовая зона"
+                        ],
+                        contactPhone: "+66816299623"
+                    }
                 },
                 {
                     id: 11,
@@ -723,8 +896,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-kata-1.jpg", "condo-kata-2.jpg", "condo-kata-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKata%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 12,
@@ -739,8 +919,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-surin-1.jpg", "condo-surin-2.jpg", "condo-surin-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sSurin%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 13,
@@ -755,8 +942,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-karon-1.jpg", "condo-karon-2.jpg", "condo-karon-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKaron%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 14,
@@ -771,8 +965,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-penthouse-1.jpg", "condo-penthouse-2.jpg", "condo-penthouse-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sPatong%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 15,
@@ -787,8 +988,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-studio-1.jpg", "condo-studio-2.jpg", "condo-studio-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKata%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 16,
@@ -803,8 +1011,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-elite-1.jpg", "condo-elite-2.jpg", "condo-elite-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sPatong%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 17,
@@ -819,8 +1034,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-jacuzzi-1.jpg", "condo-jacuzzi-2.jpg", "condo-jacuzzi-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKaron%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 18,
@@ -835,8 +1057,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["condo-duplex-1.jpg", "condo-duplex-2.jpg", "condo-duplex-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sSurin%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 }
             ];
 
@@ -855,8 +1084,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "сад",
                     images: ["house-rawai-1.jpg", "house-rawai-2.jpg", "house-rawai-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sRawai%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 20,
@@ -871,8 +1107,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "сад",
                     images: ["house-town-1.jpg", "house-town-2.jpg", "house-town-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sPhuket%20Town!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 21,
@@ -887,8 +1130,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["house-pool-1.jpg", "house-pool-2.jpg", "house-pool-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 22,
@@ -903,8 +1153,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "сад",
                     images: ["house-thai-1.jpg", "house-thai-2.jpg", "house-thai-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sChalong%20Bay!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 23,
@@ -919,8 +1176,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "вид на море",
                     images: ["house-ocean-1.jpg", "house-ocean-2.jpg", "house-ocean-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKata%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 24,
@@ -935,8 +1199,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "сад",
                     images: ["house-garden-1.jpg", "house-garden-2.jpg", "house-garden-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: false // Активный
+                    hidden: false,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 25,
@@ -951,8 +1222,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["house-mansion-1.jpg", "house-mansion-2.jpg", "house-mansion-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sKamala%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 26,
@@ -967,8 +1245,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "сад",
                     images: ["house-family-1.jpg", "house-family-2.jpg", "house-family-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sRawai%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 },
                 {
                     id: 27,
@@ -983,8 +1268,15 @@
                     utilities: "Интернет, вода, свет включены",
                     feature: "бассейн",
                     images: ["house-modern-1.jpg", "house-modern-2.jpg", "house-modern-3.jpg"],
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.5858585858!2d98.264512!3d7.880448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f5b9b7b9b9b%3A0x9b9b9b9b9b9b9b9b!2sSurin%20Beach!5e0!3m2!1sen!2sth!4v1234567890",
-                    hidden: true // СКРЫТО - уберите слово HIDDEN чтобы показать
+                    hidden: true,
+                    details: {
+                        roomType: "",
+                        size: "",
+                        rentalRates: [],
+                        electrical: [],
+                        facilities: [],
+                        contactPhone: ""
+                    }
                 }
             ];
 
@@ -1220,50 +1512,66 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Details -->
+                                <!-- Basic Details -->
                                 <div class="grid grid-cols-2 gap-4 mb-6">
                                     <div class="badge-white p-3 rounded-xl">
                                         <i class="fas fa-bed text-[#B89A5E] mr-2"></i>
-                                        ${selectedProperty.beds} ${t.bedrooms}
+                                        ${selectedProperty.beds} ${selectedProperty.beds === 1 ? 'спальня' : selectedProperty.beds >= 2 && selectedProperty.beds <= 4 ? 'спальни' : 'спален'}
                                     </div>
                                     <div class="badge-white p-3 rounded-xl">
                                         <i class="fas fa-bath text-[#B89A5E] mr-2"></i>
-                                        ${selectedProperty.baths} ${t.bathrooms}
+                                        ${selectedProperty.baths} ${selectedProperty.baths === 1 ? 'ванная' : selectedProperty.baths >= 2 && selectedProperty.baths <= 4 ? 'ванные' : 'ванных'}
                                     </div>
                                 </div>
-                                
-                                <!-- Area / District -->
-                                <div class="mb-4">
-                                    <h3 class="text-lg text-[#B89A5E] mb-2">${t.area}</h3>
-                                    <p class="text-[#F0F0F0]/80">${selectedProperty.area}</p>
-                                </div>
-                                
-                                <!-- Google Map -->
-                                <div class="modal-map mb-4">
-                                    <iframe src="${selectedProperty.map}" allowfullscreen="" loading="lazy"></iframe>
-                                </div>
-                                
-                                <!-- Nearby -->
-                                <div class="mb-4">
-                                    <h3 class="text-lg text-[#B89A5E] mb-2">${t.nearby}</h3>
-                                    <p class="text-[#F0F0F0]/80">${selectedProperty.nearby}</p>
-                                </div>
-                                
-                                <!-- Utilities -->
-                                <div class="mb-4">
-                                    <h3 class="text-lg text-[#B89A5E] mb-2">${t.utilities}</h3>
-                                    <div class="flex gap-4">
-                                        <span class="badge-gold px-3 py-1 rounded-full"><i class="fas fa-wifi mr-1"></i> ${t.internet}</span>
-                                        <span class="badge-gold px-3 py-1 rounded-full"><i class="fas fa-water mr-1"></i> ${t.water}</span>
-                                        <span class="badge-gold px-3 py-1 rounded-full"><i class="fas fa-bolt mr-1"></i> ${t.electricity}</span>
+
+                                <!-- Detailed Information (if available) -->
+                                ${selectedProperty.details && (selectedProperty.details.roomType || selectedProperty.details.size || selectedProperty.details.rentalRates.length > 0 || selectedProperty.details.electrical.length > 0 || selectedProperty.details.facilities.length > 0) ? `
+                                    <div class="details-grid">
+                                        <!-- Left Column -->
+                                        <div class="details-section">
+                                            <h3>О помещении</h3>
+                                            <ul class="details-list">
+                                                ${selectedProperty.details.roomType ? `<li><i class="fas fa-door-open"></i> Тип: ${selectedProperty.details.roomType}</li>` : ''}
+                                                ${selectedProperty.details.size ? `<li><i class="fas fa-ruler-combined"></i> Площадь: ${selectedProperty.details.size}</li>` : ''}
+                                                <li><i class="fas fa-map-marker-alt"></i> Район: ${selectedProperty.area}</li>
+                                                <li><i class="fas fa-store"></i> ${selectedProperty.nearby}</li>
+                                            </ul>
+
+                                            ${selectedProperty.details.rentalRates.length > 0 ? `
+                                                <h3 class="mt-4">Условия аренды</h3>
+                                                <div class="price-details">
+                                                    ${selectedProperty.details.rentalRates.map(rate => `<p>${rate}</p>`).join('')}
+                                                </div>
+                                            ` : ''}
+                                        </div>
+
+                                        <!-- Right Column -->
+                                        <div class="details-section">
+                                            ${selectedProperty.details.electrical.length > 0 ? `
+                                                <h3>Техника</h3>
+                                                <ul class="details-list">
+                                                    ${selectedProperty.details.electrical.map(item => `<li><i class="fas fa-plug"></i> ${item}</li>`).join('')}
+                                                </ul>
+                                            ` : ''}
+
+                                            ${selectedProperty.details.facilities.length > 0 ? `
+                                                <h3 class="mt-4">Инфраструктура</h3>
+                                                <ul class="details-list">
+                                                    ${selectedProperty.details.facilities.map(item => `<li><i class="fas fa-building"></i> ${item}</li>`).join('')}
+                                                </ul>
+                                            ` : ''}
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <!-- Price -->
-                                <div class="text-center mt-6">
-                                    <span class="text-2xl font-medium text-[#B89A5E]">$${selectedProperty.price}</span>
-                                    <span class="text-[#F0F0F0]/60"> / month</span>
-                                </div>
+
+                                    ${selectedProperty.details.contactPhone ? `
+                                        <div class="text-center mt-6">
+                                            <a href="https://t.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button">
+                                                <i class="fab fa-telegram"></i>
+                                                Связаться через Telegram
+                                            </a>
+                                        </div>
+                                    ` : ''}
+                                ` : ''}
                             </div>
                         </div>
                     ` : ''}
