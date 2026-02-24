@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>NICE PLACE · Пхукет</title>
+    <title>NICE PLACE · Phuket</title>
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -621,6 +621,36 @@
                 gap: 0.75rem;
             }
         }
+
+        /* Language selector */
+        .lang-selector {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            background-color: transparent;
+            border: 1px solid var(--logo-gold);
+            color: var(--logo-white);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn:hover {
+            background-color: var(--logo-gold);
+            color: var(--logo-navy);
+        }
+        
+        .lang-btn.active {
+            background-color: var(--logo-gold);
+            color: var(--logo-navy);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -628,36 +658,139 @@
 
     <script>
         (function() {
-            // ---------- ТОЛЬКО РУССКИЙ ЯЗЫК ----------
-            const t = {
-                heroTitle: "Премиальная недвижимость Пхукет",
-                contact: "Связаться с нами",
-                name: "Имя",
-                phone: "Номер телефона",
-                send: "Отправить",
-                callUs: "Также вы можете связаться с нами через",
-                features: "Особенности",
-                area: "Район",
-                nearby: "Что рядом",
-                utilities: "Удобства",
-                internet: "Интернет",
-                water: "Вода",
-                electricity: "Свет",
-                bedrooms: "", // убрали текст
-                bathrooms: "", // убрали текст
-                more: "Ещё",
-                close: "Закрыть",
-                villa: "Вилла",
-                condo: "Кондо",
-                house: "Дом",
-                all: "Все",
-                rent: "Аренда",
-                footer: "Все права защищены",
-                villas: "Виллы",
-                condos: "Кондо",
-                houses: "Дома",
-                propertyTypes: "Типы недвижимости"
+            // ---------- МУЛЬТИЯЗЫЧНОСТЬ ----------
+            const translations = {
+                en: {
+                    heroTitle: "Premium Real Estate Phuket",
+                    contact: "Contact us",
+                    name: "Name",
+                    phone: "Phone number",
+                    send: "Send",
+                    callUs: "You can also contact us via",
+                    about: "About",
+                    area: "Area",
+                    nearby: "Nearby",
+                    rentalTerms: "Rental Terms",
+                    appliances: "Appliances",
+                    infrastructure: "Infrastructure",
+                    internet: "Internet",
+                    water: "Water",
+                    electricity: "Electricity",
+                    bedrooms: "",
+                    bathrooms: "",
+                    more: "More",
+                    close: "Close",
+                    villa: "Villa",
+                    condo: "Condo",
+                    house: "House",
+                    all: "All",
+                    rent: "Rent",
+                    footer: "All rights reserved",
+                    villas: "Villas",
+                    condos: "Condos",
+                    houses: "Houses",
+                    propertyTypes: "Property Types",
+                    contactObject: "Contact about this property"
+                },
+                zh: {
+                    heroTitle: "普吉岛高端房产",
+                    contact: "联系我们",
+                    name: "姓名",
+                    phone: "电话号码",
+                    send: "发送",
+                    callUs: "您也可以通过以下方式联系我们",
+                    about: "关于",
+                    area: "区域",
+                    nearby: "周边",
+                    rentalTerms: "租赁条款",
+                    appliances: "电器",
+                    infrastructure: "基础设施",
+                    internet: "网络",
+                    water: "水",
+                    electricity: "电",
+                    bedrooms: "",
+                    bathrooms: "",
+                    more: "更多",
+                    close: "关闭",
+                    villa: "别墅",
+                    condo: "公寓",
+                    house: "住宅",
+                    all: "全部",
+                    rent: "出租",
+                    footer: "版权所有",
+                    villas: "别墅",
+                    condos: "公寓",
+                    houses: "住宅",
+                    propertyTypes: "房产类型",
+                    contactObject: "联系此房产"
+                },
+                ru: {
+                    heroTitle: "Премиальная недвижимость Пхукет",
+                    contact: "Связаться с нами",
+                    name: "Имя",
+                    phone: "Номер телефона",
+                    send: "Отправить",
+                    callUs: "Также вы можете связаться с нами через",
+                    about: "О помещении",
+                    area: "Район",
+                    nearby: "Что рядом",
+                    rentalTerms: "Условия аренды",
+                    appliances: "Техника",
+                    infrastructure: "Инфраструктура",
+                    internet: "Интернет",
+                    water: "Вода",
+                    electricity: "Свет",
+                    bedrooms: "",
+                    bathrooms: "",
+                    more: "Ещё",
+                    close: "Закрыть",
+                    villa: "Вилла",
+                    condo: "Кондо",
+                    house: "Дом",
+                    all: "Все",
+                    rent: "Аренда",
+                    footer: "Все права защищены",
+                    villas: "Виллы",
+                    condos: "Кондо",
+                    houses: "Дома",
+                    propertyTypes: "Типы недвижимости",
+                    contactObject: "Связаться по этому объекту"
+                },
+                th: {
+                    heroTitle: "อสังหาริมทรัพย์ระดับพรีเมียม ภูเก็ต",
+                    contact: "ติดต่อเรา",
+                    name: "ชื่อ",
+                    phone: "เบอร์โทรศัพท์",
+                    send: "ส่ง",
+                    callUs: "คุณสามารถติดต่อเราผ่าน",
+                    about: "เกี่ยวกับ",
+                    area: "พื้นที่",
+                    nearby: "ใกล้เคียง",
+                    rentalTerms: "เงื่อนไขการเช่า",
+                    appliances: "เครื่องใช้ไฟฟ้า",
+                    infrastructure: "สิ่งอำนวยความสะดวก",
+                    internet: "อินเทอร์เน็ต",
+                    water: "น้ำ",
+                    electricity: "ไฟฟ้า",
+                    bedrooms: "",
+                    bathrooms: "",
+                    more: "เพิ่มเติม",
+                    close: "ปิด",
+                    villa: "วิลล่า",
+                    condo: "คอนโด",
+                    house: "บ้าน",
+                    all: "ทั้งหมด",
+                    rent: "ให้เช่า",
+                    footer: "สงวนลิขสิทธิ์",
+                    villas: "วิลล่า",
+                    condos: "คอนโด",
+                    houses: "บ้าน",
+                    propertyTypes: "ประเภทอสังหาริมทรัพย์",
+                    contactObject: "ติดต่อเกี่ยวกับทรัพย์นี้"
+                }
             };
+
+            let currentLang = 'en';
 
             // ---------- ФОНОВЫЕ ИЗОБРАЖЕНИЯ ----------
             const heroBackgrounds = [
@@ -678,821 +811,1112 @@
                 "contact-bg-2.jpg"
             ].map(filename => `https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/${filename}`);
 
-            // ---------- 9 ВИЛЛ (6 активных, 3 скрытых) ----------
-            const villas = [
+            // ---------- ВСЕ ОБЪЕКТЫ С ПЕРЕВОДАМИ (27 объектов) ----------
+            const properties = [
+                // ===== ВИЛЛЫ (9 шт) =====
                 {
                     id: 1,
-                    title: "Seaview Hillside villa in Ao Por",
                     type: "Villa",
                     price: 200000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 5,
-                    area: "Ао Пор",
-                    nearby: "Вид на море",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "бассейн",
+                    area: { en: "Ao Por", zh: "奥波", ru: "Ао Пор", th: "อ่าวปอ" },
+                    title: {
+                        en: "Seaview Hillside villa in Ao Por",
+                        zh: "奥波海景山坡别墅",
+                        ru: "Вилла на склоне холма с видом на море в Ао Пор",
+                        th: "วิลล่าฮิลล์ไซด์วิวทะเลในอ่าวปอ"
+                    },
+                    nearby: {
+                        en: "Sea view",
+                        zh: "海景",
+                        ru: "Вид на море",
+                        th: "วิวทะเล"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["3/34.jpeg", "3/31.jpeg", "3/32.jpeg", "3/33.jpeg", "3/35.jpeg", "3/36.jpeg", "3/37.jpeg", "3/38.jpeg", "3/39.jpeg", "3/310.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "Тип: 4 спальни",
+                        roomType: {
+                            en: "Type: 4 bedrooms",
+                            zh: "类型：4卧室",
+                            ru: "Тип: 4 спальни",
+                            th: "ประเภท: 4 ห้องนอน"
+                        },
                         size: "",
-                        rentalRates: [
-                            "▶️ Аренда: 200,000 THB/месяц",
-                            "▶️ Дополнительно за питомца: 3,000 THB/месяц"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "4 кондиционера",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник"
-                        ],
-                        facilities: [
-                            "Бассейн (чистка 2 раза в неделю)",
-                            "Садовник (1 раз в неделю)",
-                            "Высокоскоростной Wi-Fi",
-                            "Уборка 1 раз в неделю"
-                        ],
-                        utilities: "Электричество и вода оплачиваются отдельно",
+                        rentalRates: {
+                            en: ["▶️ Rent: 200,000 THB/month", "▶️ Extra pet: 3,000 THB/month"],
+                            zh: ["▶️ 租金：200,000 泰铢/月", "▶️ 宠物附加费：3,000 泰铢/月"],
+                            ru: ["▶️ Аренда: 200,000 THB/месяц", "▶️ Дополнительно за питомца: 3,000 THB/месяц"],
+                            th: ["▶️ ค่าเช่า: 200,000 THB/เดือน", "▶️ ค่าเลี้ยงสัตว์: 3,000 THB/เดือน"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Electric kettle", "Microwave", "Electric stove", "4 Air conditioners", "Water heater", "Smart TV", "Refrigerator"],
+                            zh: ["洗衣机", "电热水壶", "微波炉", "电炉", "4台空调", "热水器", "智能电视", "冰箱"],
+                            ru: ["Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "4 кондиционера", "Водонагреватель", "Smart TV", "Холодильник"],
+                            th: ["เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ 4 เครื่อง", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น"]
+                        },
+                        facilities: {
+                            en: ["Pool (cleaning twice a week)", "Gardener (once a week)", "High-speed Wi-Fi", "Cleaning once a week"],
+                            zh: ["游泳池（每周清洁两次）", "园丁（每周一次）", "高速Wi-Fi", "每周清洁一次"],
+                            ru: ["Бассейн (чистка 2 раза в неделю)", "Садовник (1 раз в неделю)", "Высокоскоростной Wi-Fi", "Уборка 1 раз в неделю"],
+                            th: ["สระว่ายน้ำ (ทำความสะอาดสัปดาห์ละ 2 ครั้ง)", "คนสวน (สัปดาห์ละ 1 ครั้ง)", "Wi-Fi ความเร็วสูง", "ทำความสะอาดสัปดาห์ละ 1 ครั้ง"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 2,
-                    title: "Luxury Seaview Pool Villa Chalong",
                     type: "Villa",
                     price: 500000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 5,
                     baths: 6,
-                    area: "Чалонг",
-                    nearby: "Пляж Чалонг 1 км, потрясающий вид на Андаманское море",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "бассейн",
+                    area: { en: "Chalong", zh: "查龙", ru: "Чалонг", th: "ฉลอง" },
+                    title: {
+                        en: "Luxury Seaview Pool Villa Chalong",
+                        zh: "查龙豪华海景泳池别墅",
+                        ru: "Роскошная вилла с бассейном и видом на море в Чалонге",
+                        th: "วิลล่าสระว่ายน้ำวิวทะเลหรู ฉลอง"
+                    },
+                    nearby: {
+                        en: "Chalong Beach 1 km, stunning Andaman Sea view",
+                        zh: "查龙海滩1公里，安达曼海壮丽景色",
+                        ru: "Пляж Чалонг 1 км, потрясающий вид на Андаманское море",
+                        th: "หาดฉลอง 1 กม. วิวทะเลอันดามันอันตระการตา"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["4/41.jpeg", "4/42.jpeg", "4/43.jpeg", "4/44.jpeg", "4/45.jpeg", "4/46.jpeg", "4/47.jpeg", "4/48.jpeg", "4/49.jpeg", "4/410.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "4+1 спальня",
+                        roomType: {
+                            en: "4+1 bedrooms",
+                            zh: "4+1卧室",
+                            ru: "4+1 спальня",
+                            th: "4+1 ห้องนอน"
+                        },
                         size: "",
-                        rentalRates: [
-                            "▶️ Аренда: 500,000 THB/месяц",
-                            "▶️ Код объекта: VR500-CH1019"
-                        ],
-                        electrical: [
-                            "Полностью оборудованная кухня",
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "5+ кондиционеров",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник",
-                            "Посудомоечная машина"
-                        ],
-                        facilities: [
-                            "Бесконечный бассейн (Infinity pool)",
-                            "Потрясающий вид на Андаманское море",
-                            "Терраса",
-                            "Сад",
-                            "Зона барбекю",
-                            "Парковка",
-                            "Wi-Fi"
-                        ],
-                        utilities: "Электричество и вода оплачиваются отдельно",
+                        rentalRates: {
+                            en: ["▶️ Rent: 500,000 THB/month", "▶️ Property code: VR500-CH1019"],
+                            zh: ["▶️ 租金：500,000 泰铢/月", "▶️ 房源代码：VR500-CH1019"],
+                            ru: ["▶️ Аренда: 500,000 THB/месяц", "▶️ Код объекта: VR500-CH1019"],
+                            th: ["▶️ ค่าเช่า: 500,000 THB/เดือน", "▶️ รหัสทรัพย์: VR500-CH1019"]
+                        },
+                        electrical: {
+                            en: ["Fully equipped kitchen", "Washing machine", "Electric kettle", "Microwave", "Electric stove", "5+ Air conditioners", "Water heater", "Smart TV", "Refrigerator", "Dishwasher"],
+                            zh: ["设备齐全的厨房", "洗衣机", "电热水壶", "微波炉", "电炉", "5台以上空调", "热水器", "智能电视", "冰箱", "洗碗机"],
+                            ru: ["Полностью оборудованная кухня", "Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "5+ кондиционеров", "Водонагреватель", "Smart TV", "Холодильник", "Посудомоечная машина"],
+                            th: ["ครัวครบครัน", "เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ 5+ เครื่อง", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น", "เครื่องล้างจาน"]
+                        },
+                        facilities: {
+                            en: ["Infinity pool", "Stunning Andaman Sea view", "Terrace", "Garden", "BBQ area", "Parking", "Wi-Fi"],
+                            zh: ["无边泳池", "安达曼海壮丽景色", "露台", "花园", "烧烤区", "停车场", "Wi-Fi"],
+                            ru: ["Бесконечный бассейн", "Потрясающий вид на Андаманское море", "Терраса", "Сад", "Зона барбекю", "Парковка", "Wi-Fi"],
+                            th: ["สระว่ายน้ำ Infinity", "วิวทะเลอันดามันอันตระการตา", "ระเบียง", "สวน", "พื้นที่บาร์บีคิว", "ที่จอดรถ", "Wi-Fi"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 3,
-                    title: "Private Pool Villa near Surin Beach & Bang Tao Beach",
                     type: "Villa",
                     price: 78000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 2,
-                    area: "Сурин / Банг Тао",
-                    nearby: "Рядом рестораны и магазины",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "бассейн",
+                    area: { en: "Surin / Bang Tao", zh: "苏林/邦涛", ru: "Сурин / Банг Тао", th: "สุรินทร์ / บางเทา" },
+                    title: {
+                        en: "Private Pool Villa near Surin Beach & Bang Tao Beach",
+                        zh: "苏林海滩和邦涛海滩附近的私人泳池别墅",
+                        ru: "Вилла с частным бассейном рядом с пляжами Сурин и Банг Тао",
+                        th: "วิลล่าส่วนตัวสระว่ายน้ำใกล้หาดสุรินทร์และหาดบางเทา"
+                    },
+                    nearby: {
+                        en: "Near restaurants and shops",
+                        zh: "靠近餐厅和商店",
+                        ru: "Рядом рестораны и магазины",
+                        th: "ใกล้ร้านอาหารและร้านค้า"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["7/71.jpeg", "7/72.jpeg", "7/73.jpeg", "7/74.jpeg", "7/75.jpeg", "7/76.jpeg", "7/77.jpeg", "7/78.jpeg", "7/79.jpeg", "7/710.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "4 спальни",
+                        roomType: {
+                            en: "4 bedrooms",
+                            zh: "4卧室",
+                            ru: "4 спальни",
+                            th: "4 ห้องนอน"
+                        },
                         size: "",
-                        rentalRates: [
-                            "▶️ Аренда: 78,000 THB/месяц",
-                            "▶️ Животные не разрешены"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "4 кондиционера",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник"
-                        ],
-                        facilities: [
-                            "Частный бассейн",
-                            "Идеально для отдыха",
-                            "Короткосрочная аренда"
-                        ],
-                        utilities: "Электричество и вода оплачиваются отдельно",
+                        rentalRates: {
+                            en: ["▶️ Rent: 78,000 THB/month", "▶️ No pets allowed"],
+                            zh: ["▶️ 租金：78,000 泰铢/月", "▶️ 不允许携带宠物"],
+                            ru: ["▶️ Аренда: 78,000 THB/месяц", "▶️ Животные не разрешены"],
+                            th: ["▶️ ค่าเช่า: 78,000 THB/เดือน", "▶️ ไม่เลี้ยงสัตว์"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Electric kettle", "Microwave", "Electric stove", "4 Air conditioners", "Water heater", "Smart TV", "Refrigerator"],
+                            zh: ["洗衣机", "电热水壶", "微波炉", "电炉", "4台空调", "热水器", "智能电视", "冰箱"],
+                            ru: ["Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "4 кондиционера", "Водонагреватель", "Smart TV", "Холодильник"],
+                            th: ["เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ 4 เครื่อง", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น"]
+                        },
+                        facilities: {
+                            en: ["Private pool", "Ideal for holidays", "Short-term rental"],
+                            zh: ["私人泳池", "理想度假", "短期租赁"],
+                            ru: ["Частный бассейн", "Идеально для отдыха", "Короткосрочная аренда"],
+                            th: ["สระว่ายน้ำส่วนตัว", "เหมาะสำหรับวันหยุด", "เช่าระยะสั้น"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 4,
-                    title: "Brand New Pool Villa — Pasak, Cherng Talay",
                     type: "Villa",
                     price: 160000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 5,
-                    area: "Чернг Талай (Pasak)",
-                    nearby: "10 мин до UWC, 10-15 мин до HeadStart, 5-6 мин до Laguna & Bangtao Beach, 15 мин до аэропорта",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "бассейн",
+                    area: { en: "Cherng Talay (Pasak)", zh: "承塔萊 (帕萨克)", ru: "Чернг Талай (Pasak)", th: "เชิงทะเล (ป่าหลาก)" },
+                    title: {
+                        en: "Brand New Pool Villa — Pasak, Cherng Talay",
+                        zh: "全新泳池别墅 — 帕萨克, 承塔萊",
+                        ru: "Новая вилла с бассейном — Пасак, Чернг Талай",
+                        th: "วิลล่าสระว่ายน้ำใหม่เอี่ยม — ป่าหลาก, เชิงทะเล"
+                    },
+                    nearby: {
+                        en: "10 min to UWC, 10-15 min to HeadStart, 5-6 min to Laguna & Bangtao Beach, 15 min to airport",
+                        zh: "10分钟到UWC，10-15分钟到HeadStart，5-6分钟到Laguna和邦涛海滩，15分钟到机场",
+                        ru: "10 мин до UWC, 10-15 мин до HeadStart, 5-6 мин до Laguna & Bangtao Beach, 15 мин до аэропорта",
+                        th: "10 นาทีถึง UWC, 10-15 นาทีถึง HeadStart, 5-6 นาทีถึง Laguna & หาดบางเทา, 15 นาทีถึงสนามบิน"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["9/91.jpeg", "9/92.jpeg", "9/93.jpeg", "9/94.jpeg", "9/95.jpeg", "9/96.jpeg", "9/97.jpeg", "9/98.jpeg", "9/99.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "3 спальни + офис (можно как 4-я спальня)",
-                        size: "Земля 545 кв.м., Дом 300 кв.м.",
-                        rentalRates: [
-                            "▶️ Аренда: 160,000 THB/месяц (контракт на 1 год)",
-                            "▶️ Продажа: 23.9 млн THB",
-                            "▶️ Право собственности: Freehold (Chanote)"
-                        ],
-                        electrical: [
-                            "Полностью меблировано",
-                            "Стиральная машина",
-                            "Микроволновая печь",
-                            "Холодильник",
-                            "Современный дизайн",
-                            "CTV"
-                        ],
-                        facilities: [
-                            "Частный бассейн",
-                            "Бар у бассейна с ванной",
-                            "Офис/кабинет",
-                            "Идеально для семьи",
-                            "Инвестиционно привлекательно"
-                        ],
-                        utilities: "Электричество и вода оплачиваются отдельно",
+                        roomType: {
+                            en: "3 bedrooms + office (can be 4th bedroom)",
+                            zh: "3卧室 + 办公室（可作为第4间卧室）",
+                            ru: "3 спальни + офис (можно как 4-я спальня)",
+                            th: "3 ห้องนอน + ห้องทำงาน (สามารถเป็นห้องนอนที่ 4 ได้)"
+                        },
+                        size: {
+                            en: "Land 545 sq.m., House 300 sq.m.",
+                            zh: "土地545平方米，房屋300平方米",
+                            ru: "Земля 545 кв.м., Дом 300 кв.м.",
+                            th: "ที่ดิน 545 ตร.ม., บ้าน 300 ตร.ม."
+                        },
+                        rentalRates: {
+                            en: ["▶️ Rent: 160,000 THB/month (1-year contract)", "▶️ Sale: 23.9 million THB", "▶️ Ownership: Freehold (Chanote)"],
+                            zh: ["▶️ 租金：160,000 泰铢/月（1年合同）", "▶️ 售价：2390万泰铢", "▶️ 产权：永久产权（Chanote）"],
+                            ru: ["▶️ Аренда: 160,000 THB/месяц (контракт на 1 год)", "▶️ Продажа: 23.9 млн THB", "▶️ Право собственности: Freehold (Chanote)"],
+                            th: ["▶️ ค่าเช่า: 160,000 THB/เดือน (สัญญา 1 ปี)", "▶️ ขาย: 23.9 ล้าน THB", "▶️ สิทธิ์ครอบครอง: Freehold (Chanote)"]
+                        },
+                        electrical: {
+                            en: ["Fully furnished", "Washing machine", "Microwave", "Refrigerator", "Modern design", "CCTV"],
+                            zh: ["全家具", "洗衣机", "微波炉", "冰箱", "现代设计", "监控系统"],
+                            ru: ["Полностью меблировано", "Стиральная машина", "Микроволновая печь", "Холодильник", "Современный дизайн", "CTV"],
+                            th: ["เฟอร์นิเจอร์ครบ", "เครื่องซักผ้า", "ไมโครเวฟ", "ตู้เย็น", "ดีไซน์ทันสมัย", "กล้องวงจรปิด"]
+                        },
+                        facilities: {
+                            en: ["Private pool", "Pool bar with bathroom", "Office/study", "Ideal for family", "Good investment"],
+                            zh: ["私人泳池", "池畔酒吧带浴室", "办公室/书房", "理想家庭住宅", "投资良机"],
+                            ru: ["Частный бассейн", "Бар у бассейна с ванной", "Офис/кабинет", "Идеально для семьи", "Инвестиционно привлекательно"],
+                            th: ["สระว่ายน้ำส่วนตัว", "บาร์ริมสระน้ำพร้อมห้องน้ำ", "ห้องทำงาน/อ่านหนังสือ", "เหมาะสำหรับครอบครัว", "น่าลงทุน"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 5,
-                    title: "Роскошная вилла на пляже",
                     type: "Villa",
                     price: 78000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 5,
                     baths: 4,
-                    area: "Банг Тао",
-                    nearby: "Выход к пляжу, рестораны",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Bang Tao", zh: "邦涛", ru: "Банг Тао", th: "บางเทา" },
+                    title: {
+                        en: "Luxury beachfront villa",
+                        zh: "豪华海滨别墅",
+                        ru: "Роскошная вилла на пляже",
+                        th: "วิลล่าติดหาดหรู"
+                    },
+                    nearby: {
+                        en: "Beach access, restaurants",
+                        zh: "直达海滩，餐厅",
+                        ru: "Выход к пляжу, рестораны",
+                        th: "ติดหาด ร้านอาหาร"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["villa-bangtao-beach-1.jpg", "villa-bangtao-beach-2.jpg", "villa-bangtao-beach-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 6,
-                    title: "Современная вилла с бассейном",
                     type: "Villa",
                     price: 59000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 3,
-                    area: "Раваи",
-                    nearby: "Пляж Раваи 5 мин, рыбный рынок",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Rawai", zh: "拉威", ru: "Раваи", th: "ราไวย์" },
+                    title: {
+                        en: "Modern pool villa",
+                        zh: "现代泳池别墅",
+                        ru: "Современная вилла с бассейном",
+                        th: "วิลล่าสระว่ายน้ำทันสมัย"
+                    },
+                    nearby: {
+                        en: "Rawai Beach 5 min, seafood market",
+                        zh: "拉威海滩5分钟，海鲜市场",
+                        ru: "Пляж Раваи 5 мин, рыбный рынок",
+                        th: "หาดราไวย์ 5 นาที ตลาดอาหารทะเล"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["villa-rawai-1.jpg", "villa-rawai-2.jpg", "villa-rawai-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 7,
-                    title: "Элитная вилла с инфраструктурой",
                     type: "Villa",
                     price: 82000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 5,
                     baths: 5,
-                    area: "Камала",
-                    nearby: "Элитный район, вид на океан",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Kamala", zh: "卡马拉", ru: "Камала", th: "กมลา" },
+                    title: {
+                        en: "Elite villa with infrastructure",
+                        zh: "精英别墅配套设施",
+                        ru: "Элитная вилла с инфраструктурой",
+                        th: "วิลล่าชั้นเลิศพร้อมสิ่งอำนวยความสะดวก"
+                    },
+                    nearby: {
+                        en: "Elite area, ocean view",
+                        zh: "精英区，海景",
+                        ru: "Элитный район, вид на океан",
+                        th: "พื้นที่ชั้นเลิศ วิวทะเล"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["villa-elite-1.jpg", "villa-elite-2.jpg", "villa-elite-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 8,
-                    title: "Вилла с панорамным видом",
                     type: "Villa",
                     price: 72000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 4,
-                    area: "Ката",
-                    nearby: "Вид на океан, уединение",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Kata", zh: "卡塔", ru: "Ката", th: "กะตะ" },
+                    title: {
+                        en: "Villa with panoramic view",
+                        zh: "全景别墅",
+                        ru: "Вилла с панорамным видом",
+                        th: "วิลล่าวิวพาโนรามา"
+                    },
+                    nearby: {
+                        en: "Ocean view, privacy",
+                        zh: "海景，私密",
+                        ru: "Вид на океан, уединение",
+                        th: "วิวทะเล ความเป็นส่วนตัว"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["villa-panorama-1.jpg", "villa-panorama-2.jpg", "villa-panorama-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 9,
-                    title: "Президентская вилла",
                     type: "Villa",
                     price: 120000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 6,
                     baths: 6,
-                    area: "Банг Тао",
-                    nearby: "Премиум район, приватный пляж",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Bang Tao", zh: "邦涛", ru: "Банг Тао", th: "บางเทา" },
+                    title: {
+                        en: "Presidential villa",
+                        zh: "总统别墅",
+                        ru: "Президентская вилла",
+                        th: "วิลล่าประธานาธิบดี"
+                    },
+                    nearby: {
+                        en: "Premium area, private beach",
+                        zh: "高级区，私人海滩",
+                        ru: "Премиум район, приватный пляж",
+                        th: "พื้นที่พรีเมียม หาดส่วนตัว"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["villa-presidential-1.jpg", "villa-presidential-2.jpg", "villa-presidential-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
-                }
-            ];
-
-            // ---------- 9 КОНДО (6 активных, 3 скрытых) ----------
-            const condos = [
+                },
+                // ===== КОНДО (9 шт) =====
                 {
                     id: 10,
-                    title: "Современный кондо Phyll Phuket",
                     type: "Condo",
                     price: 26000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 1,
                     baths: 1,
-                    area: "Central Phuket Floresta",
-                    nearby: "Central Phuket, торговый центр - 5 минут<br>7/11, магазин - 2 минуты",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Central Phuket Floresta", zh: "中央普吉 Floresta", ru: "Central Phuket Floresta", th: "เซ็นทรัล ภูเก็ต ฟอเรสต้า" },
+                    title: {
+                        en: "Modern condo Phyll Phuket",
+                        zh: "现代公寓 Phyll Phuket",
+                        ru: "Современный кондо Phyll Phuket",
+                        th: "คอนโดทันสมัย Phyll Phuket"
+                    },
+                    nearby: {
+                        en: "Central Phuket, shopping mall - 5 min<br>7/11, shop - 2 min",
+                        zh: "中央普吉，购物中心 - 5分钟<br>7/11，商店 - 2分钟",
+                        ru: "Central Phuket, торговый центр - 5 минут<br>7/11, магазин - 2 минуты",
+                        th: "เซ็นทรัล ภูเก็ต ห้างสรรพสินค้า - 5 นาที<br>7/11 ร้านค้า - 2 นาที"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["1/115.jpeg", "1/114.jpeg", "1/118.jpeg", "1/125.jpeg", "1/119.jpeg", "1/120.jpeg", "1/121.jpeg", "1/122.jpeg", "1/123.jpeg", "1/126.jpeg", "1/116.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "1 спальня",
-                        size: "33 кв.м., Корпус A, 3 этаж",
-                        rentalRates: [
-                            "▶️ Контракт от 6+ месяцев: 28,000 THB/месяц",
-                            "▶️ Контракт на 1 год: 26,000 THB/месяц",
-                            "▶️ Депозит: 2 месяца",
-                            "▶️ Предоплата: 1 месяц"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "2 кондиционера",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник"
-                        ],
-                        facilities: [
-                            "Парковка",
-                            "Зарядка для электромобилей",
-                            "Социальный лобби",
-                            "Фитнес",
-                            "Йога на крыше",
-                            "Парная",
-                            "Коворкинг",
-                            "Переговорная комната",
-                            "Комната для вечеринок",
-                            "Бассейн 5x36м",
-                            "Зона для барбекю",
-                            "Общественная садовая зона"
-                        ],
+                        roomType: {
+                            en: "1 bedroom",
+                            zh: "1卧室",
+                            ru: "1 спальня",
+                            th: "1 ห้องนอน"
+                        },
+                        size: {
+                            en: "33 sq.m., Building A, 3rd floor",
+                            zh: "33平方米，A栋，3楼",
+                            ru: "33 кв.м., Корпус A, 3 этаж",
+                            th: "33 ตร.ม., อาคาร A, ชั้น 3"
+                        },
+                        rentalRates: {
+                            en: ["▶️ 6+ months contract: 28,000 THB/month", "▶️ 1 year contract: 26,000 THB/month", "▶️ Deposit: 2 months", "▶️ Advance payment: 1 month"],
+                            zh: ["▶️ 6个月以上合同：28,000泰铢/月", "▶️ 1年合同：26,000泰铢/月", "▶️ 押金：2个月", "▶️ 预付款：1个月"],
+                            ru: ["▶️ Контракт от 6+ месяцев: 28,000 THB/месяц", "▶️ Контракт на 1 год: 26,000 THB/месяц", "▶️ Депозит: 2 месяца", "▶️ Предоплата: 1 месяц"],
+                            th: ["▶️ สัญญา 6+ เดือน: 28,000 THB/เดือน", "▶️ สัญญา 1 ปี: 26,000 THB/เดือน", "▶️ เงินประกัน: 2 เดือน", "▶️ จ่ายล่วงหน้า: 1 เดือน"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Electric kettle", "Microwave", "Electric stove", "2 Air conditioners", "Water heater", "Smart TV", "Refrigerator"],
+                            zh: ["洗衣机", "电热水壶", "微波炉", "电炉", "2台空调", "热水器", "智能电视", "冰箱"],
+                            ru: ["Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "2 кондиционера", "Водонагреватель", "Smart TV", "Холодильник"],
+                            th: ["เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ 2 เครื่อง", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น"]
+                        },
+                        facilities: {
+                            en: ["Parking", "EV charger", "Social lobby", "Fitness", "Yoga roof deck", "Steam Room", "Co-Working Space", "Meeting room", "Party room", "Swimming pool 5x36m", "BBQ Lawn", "Communal Garden Area"],
+                            zh: ["停车场", "电动车充电器", "社交大堂", "健身", "瑜伽屋顶", "桑拿", "共享办公空间", "会议室", "派对室", "游泳池5x36米", "烧烤草坪", "公共花园区"],
+                            ru: ["Парковка", "Зарядка для электромобилей", "Социальный лобби", "Фитнес", "Йога на крыше", "Парная", "Коворкинг", "Переговорная комната", "Комната для вечеринок", "Бассейн 5x36м", "Зона для барбекю", "Общественная садовая зона"],
+                            th: ["ที่จอดรถ", "ที่ชาร์จรถยนต์ไฟฟ้า", "ล็อบบี้สังคม", "ฟิตเนส", "โยคะบนดาดฟ้า", "ห้องอบไอน้ำ", "พื้นที่ทำงานร่วมกัน", "ห้องประชุม", "ห้องปาร์ตี้", "สระว่ายน้ำ 5x36ม.", "พื้นที่บาร์บีคิว", "พื้นที่สวนส่วนกลาง"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 11,
-                    title: "Современный кондо The Cube Amaze",
                     type: "Condo",
                     price: 23000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 1,
                     baths: 1,
-                    area: "Thalang",
-                    nearby: "7/11 - 5 минут, <br> Кафе/ресторан - 2 минуты",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Thalang", zh: "他朗", ru: "Тхаланг", th: "ถลาง" },
+                    title: {
+                        en: "Modern condo The Cube Amaze",
+                        zh: "现代公寓 The Cube Amaze",
+                        ru: "Современный кондо The Cube Amaze",
+                        th: "คอนโดทันสมัย The Cube Amaze"
+                    },
+                    nearby: {
+                        en: "7/11 - 5 min, <br> Cafe/restaurant - 2 min",
+                        zh: "7/11 - 5分钟，<br> 咖啡馆/餐厅 - 2分钟",
+                        ru: "7/11 - 5 минут, <br> Кафе/ресторан - 2 минуты",
+                        th: "7/11 - 5 นาที, <br> คาเฟ่/ร้านอาหาร - 2 นาที"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["2/2.jpg", "2/22.jpeg", "2/21.jpeg", "2/210.jpeg", "2/212.jpeg", "2/215.jpeg", "2/216.jpeg", "2/218.jpeg", "2/213.jpeg", "2/213.jpeg", "2/214.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "1 спальня",
-                        size: "34 кв.м., Корпус B, 3 этаж",
-                        rentalRates: [
-                            "▶️ Контракт от 6+ месяцев: 28,000 THB/месяц",
-                            "▶️ Контракт на 1 год: 23,000 THB/месяц",
-                            "▶️ Депозит: 2 месяца",
-                            "▶️ Предоплата: 1 месяц"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "2 кондиционера",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник"
-                        ],
-                        facilities: [
-                            "Парковка",
-                            "Социальный лобби",
-                            "Фитнес",
-                            "Коворкинг",
-                            "Бассейн"
-                        ],
+                        roomType: {
+                            en: "1 bedroom",
+                            zh: "1卧室",
+                            ru: "1 спальня",
+                            th: "1 ห้องนอน"
+                        },
+                        size: {
+                            en: "34 sq.m., Building B, 3rd floor",
+                            zh: "34平方米，B栋，3楼",
+                            ru: "34 кв.м., Корпус B, 3 этаж",
+                            th: "34 ตร.ม., อาคาร B, ชั้น 3"
+                        },
+                        rentalRates: {
+                            en: ["▶️ 6+ months contract: 28,000 THB/month", "▶️ 1 year contract: 23,000 THB/month", "▶️ Deposit: 2 months", "▶️ Advance payment: 1 month"],
+                            zh: ["▶️ 6个月以上合同：28,000泰铢/月", "▶️ 1年合同：23,000泰铢/月", "▶️ 押金：2个月", "▶️ 预付款：1个月"],
+                            ru: ["▶️ Контракт от 6+ месяцев: 28,000 THB/месяц", "▶️ Контракт на 1 год: 23,000 THB/месяц", "▶️ Депозит: 2 месяца", "▶️ Предоплата: 1 месяц"],
+                            th: ["▶️ สัญญา 6+ เดือน: 28,000 THB/เดือน", "▶️ สัญญา 1 ปี: 23,000 THB/เดือน", "▶️ เงินประกัน: 2 เดือน", "▶️ จ่ายล่วงหน้า: 1 เดือน"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Electric kettle", "Microwave", "Electric stove", "2 Air conditioners", "Water heater", "Smart TV", "Refrigerator"],
+                            zh: ["洗衣机", "电热水壶", "微波炉", "电炉", "2台空调", "热水器", "智能电视", "冰箱"],
+                            ru: ["Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "2 кондиционера", "Водонагреватель", "Smart TV", "Холодильник"],
+                            th: ["เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ 2 เครื่อง", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น"]
+                        },
+                        facilities: {
+                            en: ["Parking", "Social lobby", "Fitness", "Co-Working Space", "Swimming pool"],
+                            zh: ["停车场", "社交大堂", "健身", "共享办公空间", "游泳池"],
+                            ru: ["Парковка", "Социальный лобби", "Фитнес", "Коворкинг", "Бассейн"],
+                            th: ["ที่จอดรถ", "ล็อบบี้สังคม", "ฟิตเนส", "พื้นที่ทำงานร่วมกัน", "สระว่ายน้ำ"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 12,
-                    title: "The Base Height",
                     type: "Condo",
                     price: 19000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 1,
                     baths: 1,
-                    area: "Пхукет Таун",
-                    nearby: "Пхукет Таун 5 мин, Central Phuket 10 мин",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "вид на город",
+                    area: { en: "Phuket Town", zh: "普吉镇", ru: "Пхукет Таун", th: "เมืองภูเก็ต" },
+                    title: {
+                        en: "The Base Height",
+                        zh: "The Base Height",
+                        ru: "The Base Height",
+                        th: "The Base Height"
+                    },
+                    nearby: {
+                        en: "Phuket Town 5 min, Central Phuket 10 min",
+                        zh: "普吉镇5分钟，中央普吉10分钟",
+                        ru: "Пхукет Таун 5 мин, Central Phuket 10 мин",
+                        th: "เมืองภูเก็ต 5 นาที, เซ็นทรัลภูเก็ต 10 นาที"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "city view", zh: "城市景观", ru: "вид на город", th: "วิวเมือง" },
                     images: ["5/52.jpeg", "5/51.jpeg", "5/53.jpeg", "5/54.jpeg", "5/55.jpeg", "5/56.jpeg", "5/57.jpeg", "5/58.jpeg", "5/59.jpeg", "5/510.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "1 спальня",
-                        size: "36 кв.м., 5 этаж",
-                        rentalRates: [
-                            "▶️ Аренда: 19,000 THB/месяц",
-                            "▶️ Депозит: 2 месяца"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "Кондиционер",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник"
-                        ],
-                        facilities: [
-                            "Фитнес",
-                            "Бассейн",
-                            "Парковка для автомобиля",
-                            "Охрана 24/7",
-                            "Рабочая зона (коворкинг)"
-                        ],
+                        roomType: {
+                            en: "1 bedroom",
+                            zh: "1卧室",
+                            ru: "1 спальня",
+                            th: "1 ห้องนอน"
+                        },
+                        size: {
+                            en: "36 sq.m., 5th floor",
+                            zh: "36平方米，5楼",
+                            ru: "36 кв.м., 5 этаж",
+                            th: "36 ตร.ม., ชั้น 5"
+                        },
+                        rentalRates: {
+                            en: ["▶️ Rent: 19,000 THB/month", "▶️ Deposit: 2 months"],
+                            zh: ["▶️ 租金：19,000 泰铢/月", "▶️ 押金：2个月"],
+                            ru: ["▶️ Аренда: 19,000 THB/месяц", "▶️ Депозит: 2 месяца"],
+                            th: ["▶️ ค่าเช่า: 19,000 THB/เดือน", "▶️ เงินประกัน: 2 เดือน"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Electric kettle", "Microwave", "Electric stove", "Air conditioner", "Water heater", "Smart TV", "Refrigerator"],
+                            zh: ["洗衣机", "电热水壶", "微波炉", "电炉", "空调", "热水器", "智能电视", "冰箱"],
+                            ru: ["Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "Кондиционер", "Водонагреватель", "Smart TV", "Холодильник"],
+                            th: ["เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น"]
+                        },
+                        facilities: {
+                            en: ["Fitness", "Swimming pool", "Car parking", "Security 24/7", "Working area (co-working)"],
+                            zh: ["健身", "游泳池", "停车场", "24小时保安", "工作区（共享办公）"],
+                            ru: ["Фитнес", "Бассейн", "Парковка для автомобиля", "Охрана 24/7", "Рабочая зона (коворкинг)"],
+                            th: ["ฟิตเนส", "สระว่ายน้ำ", "ที่จอดรถ", "รักษาความปลอดภัย 24 ชม.", "พื้นที่ทำงาน (โคเวิร์คกิ้ง)"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 28,
-                    title: "The Base Height",
                     type: "Condo",
                     price: 17000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 1,
                     baths: 1,
-                    area: "Пхукет Таун",
-                    nearby: "Пхукет Таун 5 мин, Central Phuket 10 мин",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "вид на город",
+                    area: { en: "Phuket Town", zh: "普吉镇", ru: "Пхукет Таун", th: "เมืองภูเก็ต" },
+                    title: {
+                        en: "The Base Height",
+                        zh: "The Base Height",
+                        ru: "The Base Height",
+                        th: "The Base Height"
+                    },
+                    nearby: {
+                        en: "Phuket Town 5 min, Central Phuket 10 min",
+                        zh: "普吉镇5分钟，中央普吉10分钟",
+                        ru: "Пхукет Таун 5 мин, Central Phuket 10 мин",
+                        th: "เมืองภูเก็ต 5 นาที, เซ็นทรัลภูเก็ต 10 นาที"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "city view", zh: "城市景观", ru: "вид на город", th: "วิวเมือง" },
                     images: ["6/61.jpeg", "6/62.jpeg", "6/64.jpeg", "6/65.jpeg", "6/66.jpeg", "6/67.jpeg", "6/68.jpeg", "6/69.jpeg", "6/610.jpeg", "6/59.jpeg", "6/510.jpeg", "6/51.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "1 спальня",
-                        size: "34 кв.м., 11 этаж",
-                        rentalRates: [
-                            "▶️ Аренда: 17,000 THB/месяц",
-                            "▶️ Депозит: 2 месяца"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Электрический чайник",
-                            "Микроволновая печь",
-                            "Электрическая плита",
-                            "Кондиционер",
-                            "Водонагреватель",
-                            "Smart TV",
-                            "Холодильник"
-                        ],
-                        facilities: [
-                            "Фитнес",
-                            "Бассейн",
-                            "Парковка для автомобиля",
-                            "Охрана 24/7",
-                            "Рабочая зона (коворкинг)"
-                        ],
+                        roomType: {
+                            en: "1 bedroom",
+                            zh: "1卧室",
+                            ru: "1 спальня",
+                            th: "1 ห้องนอน"
+                        },
+                        size: {
+                            en: "34 sq.m., 11th floor",
+                            zh: "34平方米，11楼",
+                            ru: "34 кв.м., 11 этаж",
+                            th: "34 ตร.ม., ชั้น 11"
+                        },
+                        rentalRates: {
+                            en: ["▶️ Rent: 17,000 THB/month", "▶️ Deposit: 2 months"],
+                            zh: ["▶️ 租金：17,000 泰铢/月", "▶️ 押金：2个月"],
+                            ru: ["▶️ Аренда: 17,000 THB/месяц", "▶️ Депозит: 2 месяца"],
+                            th: ["▶️ ค่าเช่า: 17,000 THB/เดือน", "▶️ เงินประกัน: 2 เดือน"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Electric kettle", "Microwave", "Electric stove", "Air conditioner", "Water heater", "Smart TV", "Refrigerator"],
+                            zh: ["洗衣机", "电热水壶", "微波炉", "电炉", "空调", "热水器", "智能电视", "冰箱"],
+                            ru: ["Стиральная машина", "Электрический чайник", "Микроволновая печь", "Электрическая плита", "Кондиционер", "Водонагреватель", "Smart TV", "Холодильник"],
+                            th: ["เครื่องซักผ้า", "กาต้มน้ำ", "ไมโครเวฟ", "เตาไฟฟ้า", "เครื่องปรับอากาศ", "เครื่องทำน้ำอุ่น", "Smart TV", "ตู้เย็น"]
+                        },
+                        facilities: {
+                            en: ["Fitness", "Swimming pool", "Car parking", "Security 24/7", "Working area (co-working)"],
+                            zh: ["健身", "游泳池", "停车场", "24小时保安", "工作区（共享办公）"],
+                            ru: ["Фитнес", "Бассейн", "Парковка для автомобиля", "Охрана 24/7", "Рабочая зона (коворкинг)"],
+                            th: ["ฟิตเนส", "สระว่ายน้ำ", "ที่จอดรถ", "รักษาความปลอดภัย 24 ชม.", "พื้นที่ทำงาน (โคเวิร์คกิ้ง)"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 14,
-                    title: "Пентхаус с террасой",
                     type: "Condo",
                     price: 52000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 3,
                     baths: 3,
-                    area: "Патонг",
-                    nearby: "Центр развлечений, рестораны",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Patong", zh: "芭东", ru: "Патонг", th: "ป่าตอง" },
+                    title: {
+                        en: "Penthouse with terrace",
+                        zh: "带露台的顶层公寓",
+                        ru: "Пентхаус с террасой",
+                        th: "เพนท์เฮาส์พร้อมระเบียง"
+                    },
+                    nearby: {
+                        en: "Entertainment center, restaurants",
+                        zh: "娱乐中心，餐厅",
+                        ru: "Центр развлечений, рестораны",
+                        th: "ศูนย์รวมความบันเทิง ร้านอาหาร"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["condo-penthouse-1.jpg", "condo-penthouse-2.jpg", "condo-penthouse-3.jpg"],
-                    hidden: false,
+                    hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 15,
-                    title: "Студия с видом на море",
                     type: "Condo",
                     price: 28000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 1,
                     baths: 1,
-                    area: "Ката",
-                    nearby: "Пляж, кафе, магазины",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Kata", zh: "卡塔", ru: "Ката", th: "กะตะ" },
+                    title: {
+                        en: "Studio with sea view",
+                        zh: "海景单间公寓",
+                        ru: "Студия с видом на море",
+                        th: "สตูดิโอวิวทะเล"
+                    },
+                    nearby: {
+                        en: "Beach, cafes, shops",
+                        zh: "海滩，咖啡馆，商店",
+                        ru: "Пляж, кафе, магазины",
+                        th: "ชายหาด คาเฟ่ ร้านค้า"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["condo-studio-1.jpg", "condo-studio-2.jpg", "condo-studio-3.jpg"],
-                    hidden: false,
+                    hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 16,
-                    title: "Элитный кондо в центре",
                     type: "Condo",
                     price: 67000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 3,
-                    area: "Патонг",
-                    nearby: "Вся инфраструктура рядом",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Patong", zh: "芭东", ru: "Патонг", th: "ป่าตอง" },
+                    title: {
+                        en: "Elite condo in the center",
+                        zh: "市中心精英公寓",
+                        ru: "Элитный кондо в центре",
+                        th: "คอนโดหรูกลางเมือง"
+                    },
+                    nearby: {
+                        en: "All infrastructure nearby",
+                        zh: "周边设施齐全",
+                        ru: "Вся инфраструктура рядом",
+                        th: "สิ่งอำนวยความสะดวกครบครัน"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["condo-elite-1.jpg", "condo-elite-2.jpg", "condo-elite-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 17,
-                    title: "Кондо с джакузи на балконе",
                     type: "Condo",
                     price: 59000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 2,
                     baths: 2,
-                    area: "Карон",
-                    nearby: "Вид на океан, джакузи",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Karon", zh: "卡隆", ru: "Карон", th: "กะรน" },
+                    title: {
+                        en: "Condo with jacuzzi on the balcony",
+                        zh: "带阳台按摩浴缸的公寓",
+                        ru: "Кондо с джакузи на балконе",
+                        th: "คอนโดพร้อมอ่างจากุซซี่บนระเบียง"
+                    },
+                    nearby: {
+                        en: "Ocean view, jacuzzi",
+                        zh: "海景，按摩浴缸",
+                        ru: "Вид на океан, джакузи",
+                        th: "วิวทะเล อ่างจากุซซี่"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["condo-jacuzzi-1.jpg", "condo-jacuzzi-2.jpg", "condo-jacuzzi-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 18,
-                    title: "Дуплекс с панорамным видом",
                     type: "Condo",
                     price: 71000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 3,
                     baths: 3,
-                    area: "Сурин",
-                    nearby: "Элитный район, приватность",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Surin", zh: "苏林", ru: "Сурин", th: "สุรินทร์" },
+                    title: {
+                        en: "Duplex with panoramic view",
+                        zh: "全景复式公寓",
+                        ru: "Дуплекс с панорамным видом",
+                        th: "ดูเพล็กซ์วิวพาโนรามา"
+                    },
+                    nearby: {
+                        en: "Elite area, privacy",
+                        zh: "高级区，私密",
+                        ru: "Элитный район, приватность",
+                        th: "พื้นที่ชั้นเลิศ ความเป็นส่วนตัว"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["condo-duplex-1.jpg", "condo-duplex-2.jpg", "condo-duplex-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
-                }
-            ];
-
-            // ---------- 9 ДОМОВ (6 активных, 3 скрытых) ----------
-            const houses = [
+                },
+                // ===== ДОМА (9 шт) =====
                 {
                     id: 19,
-                    title: "Corner House for rent Monument, Thalang",
                     type: "House",
                     price: 50000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 3,
                     baths: 3,
-                    area: "Тхаланг (Monument)",
-                    nearby: "Район Monument, Тхаланг",
-                    utilities: "Электричество и вода оплачиваются отдельно",
-                    feature: "сад",
+                    area: { en: "Thalang (Monument)", zh: "他朗 (纪念碑)", ru: "Тхаланг (Monument)", th: "ถลาง (อนุสาวรีย์)" },
+                    title: {
+                        en: "Corner House for rent Monument, Thalang",
+                        zh: "转角房屋出租 纪念碑, 他朗",
+                        ru: "Угловой дом в аренду Monument, Тхаланг",
+                        th: "บ้านหัวมุมให้เช่า อนุสาวรีย์, ถลาง"
+                    },
+                    nearby: {
+                        en: "Monument area, Thalang",
+                        zh: "纪念碑区域，他朗",
+                        ru: "Район Monument, Тхаланг",
+                        th: "พื้นที่อนุสาวรีย์, ถลาง"
+                    },
+                    utilities: "Electricity and water paid separately",
+                    feature: { en: "garden", zh: "花园", ru: "сад", th: "สวน" },
                     images: ["8/81.jpeg", "8/82.jpeg", "8/83.jpeg", "8/84.jpeg", "8/85.jpeg", "8/86.jpeg", "8/87.jpeg"],
                     hidden: false,
                     details: {
-                        roomType: "3 спальни",
+                        roomType: {
+                            en: "3 bedrooms",
+                            zh: "3卧室",
+                            ru: "3 спальни",
+                            th: "3 ห้องนอน"
+                        },
                         size: "",
-                        rentalRates: [
-                            "▶️ Контракт на 1 год: 50,000 THB/месяц",
-                            "▶️ Контракт на 6 месяцев: 60,000 THB/месяц",
-                            "▶️ С питомцем: +30,000 THB депозит",
-                            "▶️ Код объекта: HS50-TL1776"
-                        ],
-                        electrical: [
-                            "Стиральная машина",
-                            "Микроволновая печь",
-                            "Холодильник",
-                            "4 кондиционера",
-                            "Телевизор",
-                            "Полностью меблировано"
-                        ],
-                        facilities: [
-                            "Wi-Fi включен",
-                            "Коммунальные платежи включены",
-                            "Кухня",
-                            "Кладовая",
-                            "2 парковочных места"
-                        ],
-                        utilities: "Электричество и вода оплачиваются отдельно",
+                        rentalRates: {
+                            en: ["▶️ 1 year contract: 50,000 THB/month", "▶️ 6 months contract: 60,000 THB/month", "▶️ With pet: +30,000 THB deposit", "▶️ Property code: HS50-TL1776"],
+                            zh: ["▶️ 1年合同：50,000泰铢/月", "▶️ 6个月合同：60,000泰铢/月", "▶️ 带宠物：+30,000泰铢押金", "▶️ 房源代码：HS50-TL1776"],
+                            ru: ["▶️ Контракт на 1 год: 50,000 THB/месяц", "▶️ Контракт на 6 месяцев: 60,000 THB/месяц", "▶️ С питомцем: +30,000 THB депозит", "▶️ Код объекта: HS50-TL1776"],
+                            th: ["▶️ สัญญา 1 ปี: 50,000 THB/เดือน", "▶️ สัญญา 6 เดือน: 60,000 THB/เดือน", "▶️ เลี้ยงสัตว์: +30,000 THB เงินประกัน", "▶️ รหัสทรัพย์: HS50-TL1776"]
+                        },
+                        electrical: {
+                            en: ["Washing machine", "Microwave", "Refrigerator", "4 Air conditioners", "TV", "Fully furnished"],
+                            zh: ["洗衣机", "微波炉", "冰箱", "4台空调", "电视", "全套家具"],
+                            ru: ["Стиральная машина", "Микроволновая печь", "Холодильник", "4 кондиционера", "Телевизор", "Полностью меблировано"],
+                            th: ["เครื่องซักผ้า", "ไมโครเวฟ", "ตู้เย็น", "เครื่องปรับอากาศ 4 เครื่อง", "ทีวี", "เฟอร์นิเจอร์ครบ"]
+                        },
+                        facilities: {
+                            en: ["Wi-Fi included", "Common fees included", "Kitchen", "Storage room", "2 parking spots"],
+                            zh: ["包含Wi-Fi", "包含公共费用", "厨房", "储藏室", "2个停车位"],
+                            ru: ["Wi-Fi включен", "Коммунальные платежи включены", "Кухня", "Кладовая", "2 парковочных места"],
+                            th: ["รวม Wi-Fi", "รวมค่าส่วนกลาง", "ครัว", "ห้องเก็บของ", "ที่จอดรถ 2 คัน"]
+                        },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 20,
-                    title: "Современный дом в городе",
                     type: "House",
                     price: 22000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 3,
                     baths: 2,
-                    area: "Пхукет Таун",
-                    nearby: "Старый город 5 мин, рынки, кафе",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "сад",
+                    area: { en: "Phuket Town", zh: "普吉镇", ru: "Пхукет Таун", th: "เมืองภูเก็ต" },
+                    title: {
+                        en: "Modern city house",
+                        zh: "现代城市住宅",
+                        ru: "Современный дом в городе",
+                        th: "บ้านเมืองทันสมัย"
+                    },
+                    nearby: {
+                        en: "Old Town 5 min, markets, cafes",
+                        zh: "老城区5分钟，市场，咖啡馆",
+                        ru: "Старый город 5 мин, рынки, кафе",
+                        th: "เมืองเก่า 5 นาที ตลาด ร้านกาแฟ"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "garden", zh: "花园", ru: "сад", th: "สวน" },
                     images: ["house-town-1.jpg", "house-town-2.jpg", "house-town-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 21,
-                    title: "Дом с бассейном",
                     type: "House",
                     price: 39000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 3,
-                    area: "Камала",
-                    nearby: "Тихий район, близко к пляжу",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Kamala", zh: "卡马拉", ru: "Камала", th: "กมลา" },
+                    title: {
+                        en: "House with pool",
+                        zh: "带泳池的房子",
+                        ru: "Дом с бассейном",
+                        th: "บ้านพร้อมสระว่ายน้ำ"
+                    },
+                    nearby: {
+                        en: "Quiet area, close to beach",
+                        zh: "安静区域，靠近海滩",
+                        ru: "Тихий район, близко к пляжу",
+                        th: "พื้นที่เงียบสงบ ใกล้ชายหาด"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["house-pool-1.jpg", "house-pool-2.jpg", "house-pool-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 22,
-                    title: "Традиционный тайский дом",
                     type: "House",
                     price: 31000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 3,
                     baths: 2,
-                    area: "Чалонг",
-                    nearby: "Аутентичный район, храмы",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "сад",
+                    area: { en: "Chalong", zh: "查龙", ru: "Чалонг", th: "ฉลอง" },
+                    title: {
+                        en: "Traditional Thai house",
+                        zh: "传统泰式住宅",
+                        ru: "Традиционный тайский дом",
+                        th: "บ้านไทยดั้งเดิม"
+                    },
+                    nearby: {
+                        en: "Authentic area, temples",
+                        zh: "正宗区域，寺庙",
+                        ru: "Аутентичный район, храмы",
+                        th: "พื้นที่แท้ วัด"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "garden", zh: "花园", ru: "сад", th: "สวน" },
                     images: ["house-thai-1.jpg", "house-thai-2.jpg", "house-thai-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 23,
-                    title: "Дом с видом на океан",
                     type: "House",
                     price: 52000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 3,
-                    area: "Ката",
-                    nearby: "Вид на океан, уединение",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "вид на море",
+                    area: { en: "Kata", zh: "卡塔", ru: "Ката", th: "กะตะ" },
+                    title: {
+                        en: "House with ocean view",
+                        zh: "海景住宅",
+                        ru: "Дом с видом на океан",
+                        th: "บ้านวิวทะเล"
+                    },
+                    nearby: {
+                        en: "Ocean view, privacy",
+                        zh: "海景，私密",
+                        ru: "Вид на океан, уединение",
+                        th: "วิวทะเล ความเป็นส่วนตัว"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "sea view", zh: "海景", ru: "вид на море", th: "วิวทะเล" },
                     images: ["house-ocean-1.jpg", "house-ocean-2.jpg", "house-ocean-3.jpg"],
-                    hidden: false,
+                    hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 24,
-                    title: "Вилла с садом",
                     type: "House",
                     price: 43000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 3,
                     baths: 3,
-                    area: "Банг Тао",
-                    nearby: "Спокойный район, природа",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "сад",
+                    area: { en: "Bang Tao", zh: "邦涛", ru: "Банг Тао", th: "บางเทา" },
+                    title: {
+                        en: "Villa with garden",
+                        zh: "带花园的别墅",
+                        ru: "Вилла с садом",
+                        th: "วิลล่าพร้อมสวน"
+                    },
+                    nearby: {
+                        en: "Quiet area, nature",
+                        zh: "安静区域，自然",
+                        ru: "Спокойный район, природа",
+                        th: "พื้นที่เงียบสงบ ธรรมชาติ"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "garden", zh: "花园", ru: "сад", th: "สวน" },
                     images: ["house-garden-1.jpg", "house-garden-2.jpg", "house-garden-3.jpg"],
                     hidden: false,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: "+66816299623"
                     }
                 },
                 {
                     id: 25,
-                    title: "Элитный особняк",
                     type: "House",
                     price: 89000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 5,
                     baths: 5,
-                    area: "Камала",
-                    nearby: "Премиум район, приватность",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Kamala", zh: "卡马拉", ru: "Камала", th: "กมลา" },
+                    title: {
+                        en: "Elite mansion",
+                        zh: "精英豪宅",
+                        ru: "Элитный особняк",
+                        th: "คฤหาสน์หรู"
+                    },
+                    nearby: {
+                        en: "Premium area, privacy",
+                        zh: "高级区，私密",
+                        ru: "Премиум район, приватность",
+                        th: "พื้นที่พรีเมียม ความเป็นส่วนตัว"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["house-mansion-1.jpg", "house-mansion-2.jpg", "house-mansion-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 26,
-                    title: "Дом с инфраструктурой",
                     type: "House",
                     price: 47000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 3,
-                    area: "Раваи",
-                    nearby: "Все удобства рядом",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "сад",
+                    area: { en: "Rawai", zh: "拉威", ru: "Раваи", th: "ราไวย์" },
+                    title: {
+                        en: "House with infrastructure",
+                        zh: "配套设施齐全的住宅",
+                        ru: "Дом с инфраструктурой",
+                        th: "บ้านพร้อมสิ่งอำนวยความสะดวก"
+                    },
+                    nearby: {
+                        en: "All amenities nearby",
+                        zh: "周边设施齐全",
+                        ru: "Все удобства рядом",
+                        th: "สิ่งอำนวยความสะดวกครบครัน"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "garden", zh: "花园", ru: "сад", th: "สวน" },
                     images: ["house-family-1.jpg", "house-family-2.jpg", "house-family-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 },
                 {
                     id: 27,
-                    title: "Современный дом с бассейном",
                     type: "House",
                     price: 62000,
-                    location: "Пхукет",
+                    location: "Phuket",
                     beds: 4,
                     baths: 4,
-                    area: "Сурин",
-                    nearby: "Элитный район, близко к пляжу",
-                    utilities: "Интернет, вода, свет включены",
-                    feature: "бассейн",
+                    area: { en: "Surin", zh: "苏林", ru: "Сурин", th: "สุรินทร์" },
+                    title: {
+                        en: "Modern house with pool",
+                        zh: "现代泳池住宅",
+                        ru: "Современный дом с бассейном",
+                        th: "บ้านทันสมัยพร้อมสระว่ายน้ำ"
+                    },
+                    nearby: {
+                        en: "Elite area, close to beach",
+                        zh: "高级区，靠近海滩",
+                        ru: "Элитный район, близко к пляжу",
+                        th: "พื้นที่พรีเมียม ใกล้ชายหาด"
+                    },
+                    utilities: "Internet, water, electricity included",
+                    feature: { en: "pool", zh: "游泳池", ru: "бассейн", th: "สระว่ายน้ำ" },
                     images: ["house-modern-1.jpg", "house-modern-2.jpg", "house-modern-3.jpg"],
                     hidden: true,
                     details: {
-                        roomType: "",
+                        roomType: { en: "", zh: "", ru: "", th: "" },
                         size: "",
-                        rentalRates: [],
-                        electrical: [],
-                        facilities: [],
+                        rentalRates: { en: [], zh: [], ru: [], th: [] },
+                        electrical: { en: [], zh: [], ru: [], th: [] },
+                        facilities: { en: [], zh: [], ru: [], th: [] },
                         contactPhone: ""
                     }
                 }
             ];
 
-            // ---------- ОБЪЕДИНЯЕМ ВСЕ ОБЪЕКТЫ И ФИЛЬТРУЕМ СКРЫТЫЕ ----------
-            let allProperties = [...villas, ...condos, ...houses];
+            // ---------- ФИЛЬТРАЦИЯ СКРЫТЫХ ОБЪЕКТОВ ----------
+            let allProperties = properties;
             
-            // Функция для получения только активных объектов (hidden = false)
             function getActiveProperties() {
                 return allProperties.filter(p => !p.hidden);
             }
@@ -1508,24 +1932,26 @@
             let currentHeroBgIndex = 0;
             let currentFilterBgIndex = 0;
             let currentContactBgIndex = 0;
-            
             let scrollPosition = 0;
 
             // Контактные телефоны
-            const contactPhone = "66972153245"; // Без +
-            const contactLine = "66972153245"; // LINE ID или номер
+            const contactPhone = "66972153245";
+            const contactLine = "66972153245";
+
+            // Функция смены языка
+            window.setLanguage = function(lang) {
+                currentLang = lang;
+                render();
+            };
 
             // Смена фоновых изображений каждые 8 секунд
             setInterval(() => {
                 if (!selectedProperty && !showFullscreen) {
                     scrollPosition = window.scrollY;
-                    
                     currentHeroBgIndex = (currentHeroBgIndex + 1) % heroBackgrounds.length;
                     currentFilterBgIndex = (currentFilterBgIndex + 1) % filterBackgrounds.length;
                     currentContactBgIndex = (currentContactBgIndex + 1) % contactBackgrounds.length;
-                    
                     render();
-                    
                     setTimeout(() => {
                         window.scrollTo(0, scrollPosition);
                     }, 10);
@@ -1533,20 +1959,44 @@
             }, 8000);
             
             function render() {
+                const t = translations[currentLang];
                 const root = document.getElementById('root');
                 
-                // Получаем только активные объекты
                 const activeProperties = getActiveProperties();
-                
                 const filteredProperties = activeProperties.filter(p => 
                     (filterType === 'All' || p.type === filterType)
                 );
-                
                 const visibleProperties = filteredProperties.slice(0, visibleCount);
                 const hasMore = visibleCount < filteredProperties.length;
 
+                // Функция для получения переведенного значения
+                const getTranslated = (obj, defaultValue = '') => {
+                    if (!obj) return defaultValue;
+                    if (typeof obj === 'string') return obj;
+                    if (obj[currentLang]) return obj[currentLang];
+                    if (obj.en) return obj.en;
+                    return defaultValue;
+                };
+
+                // Функция для получения переведенного массива
+                const getTranslatedArray = (obj) => {
+                    if (!obj) return [];
+                    if (Array.isArray(obj)) return obj;
+                    if (obj[currentLang]) return obj[currentLang];
+                    if (obj.en) return obj.en;
+                    return [];
+                };
+
                 root.innerHTML = `
                     <div class="container max-w-7xl mx-auto px-4 md:px-6">
+                        <!-- Language Selector -->
+                        <div class="lang-selector">
+                            <button class="lang-btn ${currentLang === 'en' ? 'active' : ''}" onclick="setLanguage('en')">ENG</button>
+                            <button class="lang-btn ${currentLang === 'zh' ? 'active' : ''}" onclick="setLanguage('zh')">中文</button>
+                            <button class="lang-btn ${currentLang === 'ru' ? 'active' : ''}" onclick="setLanguage('ru')">РУС</button>
+                            <button class="lang-btn ${currentLang === 'th' ? 'active' : ''}" onclick="setLanguage('th')">ไทย</button>
+                        </div>
+
                         <!-- HEADER with LOGO -->
                         <header class="flex flex-col md:flex-row justify-between items-center py-6 line-white">
                             <div class="flex items-center">
@@ -1641,9 +2091,10 @@
                         <!-- Property Grid -->
                         <div class="py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             ${visibleProperties.map(p => {
-                                const featureIcon = p.feature === 'бассейн' ? 'fa-swimming-pool' : 
-                                                   p.feature === 'вид на море' ? 'fa-water' :
-                                                   p.feature === 'сад' ? 'fa-leaf' : 'fa-star';
+                                const featureTranslated = getTranslated(p.feature);
+                                const featureIcon = featureTranslated.includes('pool') || featureTranslated.includes('бассейн') || featureTranslated.includes('สระ') || featureTranslated.includes('泳') ? 'fa-swimming-pool' : 
+                                                   featureTranslated.includes('sea') || featureTranslated.includes('море') || featureTranslated.includes('ทะเล') || featureTranslated.includes('海') ? 'fa-water' :
+                                                   featureTranslated.includes('garden') || featureTranslated.includes('сад') || featureTranslated.includes('สวน') || featureTranslated.includes('花园') ? 'fa-leaf' : 'fa-star';
                                 return `
                                     <div class="card-navy rounded-2xl overflow-hidden p-4" onclick="openPropertyModal(${p.id})">
                                         <img src="https://raw.githubusercontent.com/masyaenot-blip/rental/main/images/${p.images[0]}" alt="" class="h-56 w-full object-cover rounded-xl border border-[#B89A5E]/20" loading="lazy" />
@@ -1653,17 +2104,17 @@
                                                 <span class="text-xl font-medium text-[#B89A5E]">฿${p.price.toLocaleString()}</span>
                                             </div>
                                             
-                                            <h4 class="text-xl font-light text-[#F0F0F0] mb-1">${p.title}</h4>
+                                            <h4 class="text-xl font-light text-[#F0F0F0] mb-1">${getTranslated(p.title)}</h4>
                                             
                                             <p class="text-[#F0F0F0]/60 text-sm mb-3">
                                                 <i class="fas fa-map-pin text-[#B89A5E] mr-1"></i>
-                                                ${p.area}
+                                                ${getTranslated(p.area)}
                                             </p>
                                             
                                             <div class="property-features">
                                                 <span><i class="fas fa-bed text-[#B89A5E]"></i> ${p.beds}</span>
                                                 <span><i class="fas fa-bath text-[#B89A5E]"></i> ${p.baths}</span>
-                                                <span><i class="fas ${featureIcon} text-[#B89A5E]"></i> ${p.feature}</span>
+                                                <span><i class="fas ${featureIcon} text-[#B89A5E]"></i> ${featureTranslated}</span>
                                             </div>
                                             
                                             <div class="mt-3"><span class="badge-gold text-xs px-3 py-1 rounded-full"><i class="fas fa-key mr-1"></i> ${t.rent}</span></div>
@@ -1705,7 +2156,7 @@
                                     <i class="fas fa-times"></i>
                                 </div>
                                 
-                                <h2 class="text-3xl font-light text-[#B89A5E] mb-4">${selectedProperty.title}</h2>
+                                <h2 class="text-3xl font-light text-[#B89A5E] mb-4">${getTranslated(selectedProperty.title)}</h2>
                                 
                                 <!-- Gallery with arrows -->
                                 <div class="gallery-container">
@@ -1729,48 +2180,48 @@
                                 <div class="grid grid-cols-2 gap-4 mb-6">
                                     <div class="badge-white p-3 rounded-xl">
                                         <i class="fas fa-bed text-[#B89A5E] mr-2"></i>
-                                        ${selectedProperty.beds} ${selectedProperty.beds === 1 ? 'спальня' : selectedProperty.beds >= 2 && selectedProperty.beds <= 4 ? 'спальни' : 'спален'}
+                                        ${selectedProperty.beds} ${t.bedrooms}
                                     </div>
                                     <div class="badge-white p-3 rounded-xl">
                                         <i class="fas fa-bath text-[#B89A5E] mr-2"></i>
-                                        ${selectedProperty.baths} ${selectedProperty.baths === 1 ? 'ванная' : selectedProperty.baths >= 2 && selectedProperty.baths <= 4 ? 'ванные' : 'ванных'}
+                                        ${selectedProperty.baths} ${t.bathrooms}
                                     </div>
                                 </div>
 
                                 <!-- Detailed Information (if available) -->
-                                ${selectedProperty.details && (selectedProperty.details.roomType || selectedProperty.details.size || selectedProperty.details.rentalRates.length > 0 || selectedProperty.details.electrical.length > 0 || selectedProperty.details.facilities.length > 0) ? `
+                                ${selectedProperty.details ? `
                                     <div class="details-grid">
                                         <!-- Left Column -->
                                         <div class="details-section">
-                                            <h3>О помещении</h3>
+                                            <h3>${t.about}</h3>
                                             <ul class="details-list">
-                                                ${selectedProperty.details.roomType ? `<li><i class="fas fa-door-open"></i> Тип: ${selectedProperty.details.roomType}</li>` : ''}
-                                                ${selectedProperty.details.size ? `<li><i class="fas fa-ruler-combined"></i> Площадь: ${selectedProperty.details.size}</li>` : ''}
-                                                <li><i class="fas fa-map-marker-alt"></i> Район: ${selectedProperty.area}</li>
-                                                <li><i class="fas fa-store"></i> ${selectedProperty.nearby}</li>
+                                                ${selectedProperty.details.roomType ? `<li><i class="fas fa-door-open"></i> ${getTranslated(selectedProperty.details.roomType)}</li>` : ''}
+                                                ${selectedProperty.details.size ? `<li><i class="fas fa-ruler-combined"></i> ${getTranslated(selectedProperty.details.size)}</li>` : ''}
+                                                <li><i class="fas fa-map-marker-alt"></i> ${t.area}: ${getTranslated(selectedProperty.area)}</li>
+                                                <li><i class="fas fa-store"></i> ${t.nearby}: ${getTranslated(selectedProperty.nearby)}</li>
                                             </ul>
 
-                                            ${selectedProperty.details.rentalRates.length > 0 ? `
-                                                <h3 class="mt-4">Условия аренды</h3>
+                                            ${selectedProperty.details.rentalRates ? `
+                                                <h3 class="mt-4">${t.rentalTerms}</h3>
                                                 <div class="price-details">
-                                                    ${selectedProperty.details.rentalRates.map(rate => `<p>${rate}</p>`).join('')}
+                                                    ${getTranslatedArray(selectedProperty.details.rentalRates).map(rate => `<p>${rate}</p>`).join('')}
                                                 </div>
                                             ` : ''}
                                         </div>
 
                                         <!-- Right Column -->
                                         <div class="details-section">
-                                            ${selectedProperty.details.electrical.length > 0 ? `
-                                                <h3>Техника</h3>
+                                            ${selectedProperty.details.electrical ? `
+                                                <h3>${t.appliances}</h3>
                                                 <ul class="details-list">
-                                                    ${selectedProperty.details.electrical.map(item => `<li><i class="fas fa-plug"></i> ${item}</li>`).join('')}
+                                                    ${getTranslatedArray(selectedProperty.details.electrical).map(item => `<li><i class="fas fa-plug"></i> ${item}</li>`).join('')}
                                                 </ul>
                                             ` : ''}
 
-                                            ${selectedProperty.details.facilities.length > 0 ? `
-                                                <h3 class="mt-4">Инфраструктура</h3>
+                                            ${selectedProperty.details.facilities ? `
+                                                <h3 class="mt-4">${t.infrastructure}</h3>
                                                 <ul class="details-list">
-                                                    ${selectedProperty.details.facilities.map(item => `<li><i class="fas fa-building"></i> ${item}</li>`).join('')}
+                                                    ${getTranslatedArray(selectedProperty.details.facilities).map(item => `<li><i class="fas fa-building"></i> ${item}</li>`).join('')}
                                                 </ul>
                                             ` : ''}
                                         </div>
@@ -1778,7 +2229,7 @@
 
                                     ${selectedProperty.details.contactPhone ? `
                                         <div class="text-center mt-6">
-                                            <p class="text-[#F0F0F0]/70 mb-3">Связаться по этому объекту:</p>
+                                            <p class="text-[#F0F0F0]/70 mb-3">${t.contactObject}:</p>
                                             <div class="contact-buttons-container">
                                                 <a href="https://t.me/${selectedProperty.details.contactPhone.replace('+', '')}" target="_blank" class="contact-button telegram">
                                                     <i class="fab fa-telegram"></i>
@@ -1903,11 +2354,14 @@
                 const name = document.getElementById('contactName')?.value;
                 const phone = document.getElementById('contactPhone')?.value;
                 if (name && phone) {
-                    alert('Сообщение отправлено!');
+                    alert(translations[currentLang].send);
                     showContactForm = false;
                     render();
                 } else {
-                    alert('Заполните все поля');
+                    alert(translations[currentLang].send === 'Send' ? 'Please fill all fields' : 
+                         translations[currentLang].send === 'ส่ง' ? 'กรุณากรอกข้อมูลให้ครบ' : 
+                         translations[currentLang].send === '发送' ? '请填写所有字段' : 
+                         'Заполните все поля');
                 }
             };
             
